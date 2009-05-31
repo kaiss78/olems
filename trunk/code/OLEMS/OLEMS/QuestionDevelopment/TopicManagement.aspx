@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TopicManagement.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TopicManagement.aspx.cs" Inherits="OLEMS.QuestionDevelopment.TopicManagement" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head runat="server">
+    <head id="Head1" runat="server">
          <title>Topic Management</title>
     </head>
 <%-- baslik-----------------------------------------------------------------------------------------------------%>   
@@ -24,7 +24,7 @@
         </div>
 <%-- Topic sqldatasource-------------------------------------------------------------------------------------------------%>   
         <asp:SqlDataSource ID="Topic_SqlDataSource" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:IS50220082G4ConnectionString %>" 
+            ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
             SelectCommand="SELECT [name], [id] FROM [Topic]"
             InsertCommand="INSERT INTO [Topic] ([name]) VALUES (@name)"
             UpdateCommand="UPDATE [Topic] SET [name] = @name WHERE [id] = @id"
