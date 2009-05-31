@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="OLEMS.master.cs" Inherits="OLEMS.OLEMS" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="~/OLEMS.css" rel="stylesheet" type="text/css" />
+    <title>OLEMS</title>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .styleTopTable
+        {
+            border-style: none;
+            border-width: 0;
+            margin: 0px;
+            width: 100%;
+            padding: 0;
+            border-spacing: 0px;
+        }
+        .styleMiddleTable
+        {
+            border-style: none;
+            border-width: 0;
+            margin: 0px;
+            width: 100%;
+            padding: 0;
+            border-spacing: 0px;
+            vertical-align: top;
+            text-align: left;
+        }
+        .styleContentPlaceHolder
+        {
+            vertical-align: top;
+        }
+        .styleMasterMenu
+        {
+            width: 25%;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <form id="FormMaster" runat="server">
+    <div>
+        <table class="styleTopTable">
+            <tr>
+                <td class="HeaderCell">
+                    <asp:Label ID="lblAppCourseCode" runat="server" Text="<%$ AppSettings:AppCourseCode %>"
+                        CssClass="HeaderLabel"></asp:Label>
+                </td>
+                <td class="HeaderCellCentered">
+                    <asp:Label ID="lblAppCourseName" runat="server" Text="<%$ AppSettings:AppCourseName %>"
+                        CssClass="HeaderLabel"></asp:Label>
+                </td>
+                <td class="HeaderCell">
+                    <asp:Label ID="lblTerm" runat="server" Text="<%$ AppSettings:Term %>" CssClass="HeaderLabel"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="ExplanationCell">
+                    <asp:LoginStatus ID="LoginStatusMaster" runat="server" />
+                    <asp:LoginName ID="LoginNameMaster" runat="server" />
+                </td>
+                <td class="ExplanationCell">
+                    <asp:SiteMapPath ID="SiteMapPathMaster" runat="server" Font-Names="Verdana" Font-Size="0.8em"
+                        PathSeparator=" : ">
+                        <PathSeparatorStyle Font-Bold="True" ForeColor="#990000" />
+                        <CurrentNodeStyle ForeColor="#333333" />
+                        <NodeStyle Font-Bold="True" ForeColor="#990000" />
+                        <RootNodeStyle Font-Bold="True" ForeColor="#FF8000" />
+                    </asp:SiteMapPath>
+                </td>
+                <td class="ExplanationCell">
+                </td>
+            </tr>
+        </table>
+        <table class="styleMiddleTable">
+            <tr>
+                <td class="styleMasterMenu">
+                    <asp:TreeView ID="TreeViewSiteMap" runat="server" DataSourceID="SiteMapDataSourceOLEMS">
+                    </asp:TreeView>
+                    <asp:SiteMapDataSource ID="SiteMapDataSourceOLEMS" runat="server" />
+                </td>
+                <td class="styleContentPlaceHolder">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
