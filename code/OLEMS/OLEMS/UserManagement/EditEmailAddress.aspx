@@ -23,10 +23,14 @@
         </tr>
         <tr>
             <td>
-                <asp:LinkButton ID="lnkUpdateEmailAddress" runat="server" Text="<%$ Resources:UILabels, lnkUpdateEmailAddress %>"></asp:LinkButton>
+                <asp:LinkButton ID="lnkUpdateEmailAddress" runat="server" 
+                    Text="<%$ Resources:UILabels, lnkUpdateEmailAddress %>" 
+                    onclick="lnkUpdateEmailAddress_Click"></asp:LinkButton>
             </td>
             <td>
-                <asp:LinkButton ID="lnkCancelUpdateEmailAddress" runat="server" Text="<%$ Resources:UILabels, lnkCancelUpdateEmailAddress %>"></asp:LinkButton>
+                <asp:LinkButton ID="lnkCancelUpdateEmailAddress" runat="server" 
+                    Text="<%$ Resources:UILabels, lnkCancelUpdateEmailAddress %>" 
+                    onclick="lnkCancelUpdateEmailAddress_Click"></asp:LinkButton>
             </td>
             <td>
                 <asp:TextBox ID="txtEmailAddress" runat="server" MaxLength="40"></asp:TextBox>
@@ -71,10 +75,14 @@
                     <asp:Label ID="lblDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lblDiscardChanges %>"></asp:Label>
                 </td>
                 <td>
-                    <asp:LinkButton ID="lnkYesDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lnkYesDiscardChanges %>"></asp:LinkButton>
+                    <asp:LinkButton ID="lnkYesDiscardChanges" runat="server" 
+                        Text="<%$ Resources:UILabels, lnkYesDiscardChanges %>" 
+                        onclick="lnkYesDiscardChanges_Click"></asp:LinkButton>
                 </td>
                 <td>
-                    <asp:LinkButton ID="lnkNoDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lnkNoDiscardChanges %>"></asp:LinkButton>
+                    <asp:LinkButton ID="lnkNoDiscardChanges" runat="server" 
+                        Text="<%$ Resources:UILabels, lnkNoDiscardChanges %>" 
+                        onclick="lnkNoDiscardChanges_Click"></asp:LinkButton>
                 </td>
             </tr>
         </table>
