@@ -151,11 +151,11 @@
     <Compile Include="UserManagement\EditEmailAddress.aspx.designer.cs">
       <DependentUpon>EditEmailAddress.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserManagement\Login.aspx.cs">
+    <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserManagement\Login.aspx.designer.cs">
+    <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserManagement\ManageProfile.aspx.cs">
@@ -197,7 +197,7 @@
     <Content Include="UserManagement\ChangePassword.aspx" />
     <Content Include="UserManagement\Default.aspx" />
     <Content Include="UserManagement\EditEmailAddress.aspx" />
-    <Content Include="UserManagement\Login.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="UserManagement\ManageProfile.aspx" />
     <Content Include="UserManagement\Springboard.aspx" />
   </ItemGroup>
