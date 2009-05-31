@@ -1,9 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LocationManagement.aspx.cs" Inherits="UI_QuestionDevelopment_LocationManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LocationManagement.aspx.cs" Inherits="OLEMS.SystemAdministration.LocationManagement" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title>Location Management</title>
 </head>
  <body>
@@ -20,7 +19,7 @@
         <div>
 <%-- Location sqldatasource-------------------------------------------------------------------------------------------------%>   
         <asp:SqlDataSource ID="Location_SqlDataSource" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:IS50220082G4ConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
                 SelectCommand="SELECT * FROM [Location]"
                 InsertCommand="INSERT INTO [Location] ([name],[capacity],[locationBuildingId]) VALUES (@name,@capacity,@locationBuildingId)"
                 UpdateCommand="UPDATE [Location] SET [name] = @name, [capacity] =@capacity, [locationBuildingId]= @locationBuildingId WHERE [id] = @id"
@@ -45,7 +44,7 @@
 <%--Building sqldatasource--------------------------------------------------------------------------------------%>   
          
         <asp:SqlDataSource ID="Building_SqlDataSource" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:IS50220082G4ConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
                 SelectCommand="SELECT [id],[name] FROM [LocationBuilding]">
             </asp:SqlDataSource>
         
