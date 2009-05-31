@@ -1,0 +1,104 @@
+﻿body
+{
+}
+table
+{
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-spacing: 0px;
+}
+table.WindowWide
+{
+    border-color: #800000;
+    width: 100%;
+}
+td.AlignTop
+{
+    border-width: 0px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+td.HeaderCell
+{
+    background-color: #990000;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+td.HeaderCellCentered
+{
+    background-color: #990000;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    text-transform: capitalize;
+}
+td.HeaderCellRight
+{
+    background-color: #990000;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: right;
+    text-transform: capitalize;
+}
+td.ExplanationCell
+{
+    background-color: #FFFBD6;
+    font-weight: bold;
+    color: #333333;
+}
+td.ExplanationCellCentered
+{
+    background-color: #FFFBD6;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+}
+td.NormalCellCentered
+{
+    font-weight: bold;
+    text-align: center;
+}
+td.StudentHeaderCell
+{
+    background: #5D7B9D;
+    font-weight: bold;
+    color: White;
+}
+td.StudentHighlightCell
+{
+    background: #F7F6F3;
+    color: #333333;
+    text-align: center;
+}
+label.HeaderLabel
+{
+    font-weight: bold;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+label.HeaderSubLabel
+{
+    font-weight: bold;
+    color: #FFFFFF;
+}
+label.ExplanationLabel
+{
+    font-weight: bold;
+    color: #333333;
+}
+label.WindowWideLabel
+{
+    width: 100%;
+}
+linkButton.DetailsViewLink
+{
+    background: #FFFFC0;
+    color: #333333;
+    font-weight: bold;
+}
