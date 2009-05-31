@@ -5,7 +5,7 @@ namespace OLEMS.UserManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/UserManagement/EditEmailAddress.aspx", true);
         }
     }
 }
