@@ -7,7 +7,8 @@
     <asp:Login ID="LoginOLEMS" runat="server" BackColor="#FFFBD6" BorderColor="#FFDFAD"
         BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
         Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop" DisplayRememberMe="False"
-        FailureText="<%$ Resources:Errors, unsuccessfulLoginAttempt %>" DestinationPageUrl="~/UserManagement/Springboard.aspx">
+        FailureText="<%$ Resources:Errors, unsuccessfulLoginAttempt %>" 
+        DestinationPageUrl="~/Springboard.aspx">
         <TextBoxStyle Font-Size="0.8em" />
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" BorderWidth="1px"
             Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" />
