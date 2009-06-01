@@ -28,7 +28,7 @@ namespace OLEMS.UserManagement
             }
             else
             {
-                Response.Redirect("~/UserManagement/Login.aspx", true);
+                Response.Redirect("~/Login.aspx", true);
             }
         }
     }
