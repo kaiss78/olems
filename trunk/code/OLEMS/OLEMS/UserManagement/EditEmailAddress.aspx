@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true"
-    CodeBehind="EditEmailAddress.aspx.cs" Inherits="OLEMS.UserManagement.EditEmailAddress" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="EditEmailAddress.aspx.cs"
+    Inherits="OLEMS.UserManagement.EditEmailAddress" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <style type="text/css">
@@ -23,14 +23,10 @@
         </tr>
         <tr>
             <td>
-                <asp:LinkButton ID="lnkUpdateEmailAddress" runat="server" 
-                    Text="<%$ Resources:UILabels, lnkUpdateEmailAddress %>" 
-                    onclick="lnkUpdateEmailAddress_Click"></asp:LinkButton>
+                <asp:LinkButton ID="lnkUpdateEmailAddress" runat="server" Text="<%$ Resources:UILabels, lnkUpdateEmailAddress %>"></asp:LinkButton>
             </td>
             <td>
-                <asp:LinkButton ID="lnkCancelUpdateEmailAddress" runat="server" 
-                    Text="<%$ Resources:UILabels, lnkCancelUpdateEmailAddress %>" 
-                    onclick="lnkCancelUpdateEmailAddress_Click"></asp:LinkButton>
+                <asp:LinkButton ID="lnkCancelUpdateEmailAddress" runat="server" Text="<%$ Resources:UILabels, lnkCancelUpdateEmailAddress %>"></asp:LinkButton>
             </td>
             <td>
                 <asp:TextBox ID="txtEmailAddress" runat="server" MaxLength="40"></asp:TextBox>
@@ -58,9 +54,9 @@
         </tr>
         <tr>
             <td>
-            </td>
+                &nbsp;</td>
             <td>
-            </td>
+                &nbsp;</td>
             <td>
             </td>
             <td>
@@ -75,14 +71,10 @@
                     <asp:Label ID="lblDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lblDiscardChanges %>"></asp:Label>
                 </td>
                 <td>
-                    <asp:LinkButton ID="lnkYesDiscardChanges" runat="server" 
-                        Text="<%$ Resources:UILabels, lnkYesDiscardChanges %>" 
-                        onclick="lnkYesDiscardChanges_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lnkYesDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lnkYesDiscardChanges %>"></asp:LinkButton>
                 </td>
                 <td>
-                    <asp:LinkButton ID="lnkNoDiscardChanges" runat="server" 
-                        Text="<%$ Resources:UILabels, lnkNoDiscardChanges %>" 
-                        onclick="lnkNoDiscardChanges_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="lnkNoDiscardChanges" runat="server" Text="<%$ Resources:UILabels, lnkNoDiscardChanges %>"></asp:LinkButton>
                 </td>
             </tr>
         </table>
