@@ -24,7 +24,12 @@ namespace OLEMS.UserManagement
         {
             if (FileUpload1.HasFile)
             {
-                PImportExcelFile(FileUpload1.PostedFile, this.GridView1);
+                Stream uploadedFile = FileUpload1.PostedFile.InputStream;
+                DataSet data = BuildDataSet(uploadedFile, "MyTable", ",");
+                GridView1.DataSource = data;
+                GridView1.DataBind();
+                LabelInfo.Text = "Text file read successfully.";
+                divReadTextFile.Visible = true;
             }
         }
     }

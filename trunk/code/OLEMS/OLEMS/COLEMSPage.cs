@@ -26,99 +26,80 @@ namespace OLEMS
             Response.Write(oStringWriter.ToString());
             Response.End();
         }
-        public void PImportExcelFile(string strFileName, GridView dg)
+
+        #region BuildDataSet
+        /// <summary>
+        /// method to read a text file into a DataSet
+        /// </summary>
+        /// <param name="file">file to read from</param>
+        /// <param name="tableName">name of the DataTable we want to add</param>
+        /// <param name="delimeter">delimiter to split on</param>
+        /// <returns>a populated DataSet</returns>
+        public DataSet BuildDataSet(Stream uploadedContent, string tableName, string delimeter)
         {
-            
-            string strConn;
-            strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" +
-            "Data Source=" + strFileName + ";" +
-            "Extended Properties=Excel 8.0;";
-            //You must use the $ after the object you reference in the spreadsheet
-            OleDbDataAdapter myCommand = new OleDbDataAdapter("SELECT * FROM [Sheet1$]", strConn);
-            DataSet myDataSet = new DataSet();
-            myCommand.Fill(myDataSet, "ExcelInfo");
-            dg.DataSource = myDataSet.Tables["ExcelInfo"].DefaultView;
-            dg.DataBind();
-        }
-        public string PImportTextFile(string strFilePath, GridView dg)
-        {
-            int tabSize = 4;
-            string[] arInfo;
-            string line, contents;
-            DataTable table = CreateTable();
-            DataRow row;
+            //create our DataSet
+            DataSet domains = new DataSet();
+            //add our table
+            domains.Tables.Add(tableName);
             try
             {
-                StreamReader objStreamReader;
-                objStreamReader = File.OpenText(strFilePath);
-                //Get a StreamReader class that can be used to read the file
-                while ((line = objStreamReader.ReadLine()) != null)
+                //create a StreamReader and open our text file
+                StreamReader reader = new StreamReader(uploadedContent);
+                //read the first line in and split it into columns
+                string[] columns = reader.ReadLine().Split(delimeter.ToCharArray());
+                //now add our columns (we will check to make sure the column doesnt exist before adding it)
+                foreach (string col in columns)
                 {
-                    contents = line.Replace(("").PadRight(tabSize, ' '), "\t");
-                    // define which character is seperating fields
-                    char[] textdelimiter = { ']' };
-                    arInfo = contents.Split(textdelimiter);
-                    for (int i = 0; i <= arInfo.Length; i++)
+                    //variable to determine if a column has been added
+                    bool added = false;
+                    //string next = "";
+                    //our counter
+                    int i = 0;
+                    while (!(added))
                     {
-                        row = table.NewRow();
-                        if (i < arInfo.Length)
-                            row["Type"] = arInfo[i].ToString().Replace("[", " ");
-                        if (i + 1 < arInfo.Length)
-                            row["Source"] = arInfo[i + 1].ToString().Replace("[", " ");
-                        if (i + 2 < arInfo.Length)
-                            row["Time"] = arInfo[i + 2].ToString().Substring(1);
-                        if (i + 3 < arInfo.Length)
+                        string columnName = col;
+                        //now check to see if the column already exists in our DataTable
+                        if (!(domains.Tables[tableName].Columns.Contains(columnName)))
                         {
-                            row["Description"] = arInfo[i + 3].ToString().Replace("[", " ");
-                            table.Rows.Add(row);
+                            //since its not in our DataSet we will add it
+                            domains.Tables[tableName].Columns.Add(columnName, typeof(string));
+                            added = true;
                         }
-                        i = i + 2;
+                        else
+                        {
+                            //we didnt add the column so increment out counter
+                            i++;
+                        }
                     }
                 }
-                objStreamReader.Close();
-                // Set to DataGrid.DataSource property to the table.
-                dg.DataSource = table;
-                dg.DataBind();
-                return "success";
+                //now we need to read the rest of the text file
+                string data = reader.ReadToEnd();
+                //now we will split the file on the carriage return/line feed
+                //and toss it into a string array
+                string[] rows = data.Split("\r".ToCharArray());
+                //now we will add the rows to our DataTable
+                foreach (string r in rows)
+                {
+                    string[] items = r.Split(delimeter.ToCharArray());
+                    //split the row at the delimiter
+                    domains.Tables[tableName].Rows.Add(items);
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                string inner_message = ex.Message;
+                return null;
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                string outer_message = ex.Message;
+                return null;
             }
+
+            //now return the DataSet
+            return domains;
         }
-        private DataTable CreateTable()
-        {
-            try
-            {
-                DataTable table = new DataTable();
-                // Declare DataColumn and DataRow variables.
-                DataColumn column;
-                // Create new DataColumn, set DataType, ColumnName
-                // and add to DataTable.    
-                column = new DataColumn();
-                column.DataType = System.Type.GetType("System.String");
-                column.ColumnName = "Type";
-                table.Columns.Add(column);
-                // Create second column.
-                column = new DataColumn();
-                column.DataType = Type.GetType("System.String");
-                column.ColumnName = "Time";
-                table.Columns.Add(column);
-                column = new DataColumn();
-                column.DataType = System.Type.GetType("System.String");
-                column.ColumnName = "Source";
-                table.Columns.Add(column);
-                column = new DataColumn();
-                column.DataType = System.Type.GetType("System.String");
-                column.ColumnName = "Description";
-                table.Columns.Add(column);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+        #endregion
 
         private void Page_Load(object sender, EventArgs e)
         {
