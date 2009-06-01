@@ -12,7 +12,7 @@
             <tr>
                 <td align="center" style="height: 21px">
                     <asp:Label ID="baslik" runat="server" Font-Bold="True" Font-Names="Arial" 
-                     Font-Size ="Medium" ForeColor="#507CD1">TOPIC MANAGEMET
+                     Font-Size ="Medium" ForeColor="#CC0000">TOPIC MANAGEMENT
                     </asp:Label>
                 </td>
             </tr>
@@ -52,11 +52,11 @@
             Style="z-index: 102; left: 193px;position: absolute; top: 95px; width: 509px;" 
             Height="50px" DefaultMode="Insert" AllowPaging="True" DataKeyNames="id" 
             HeaderText="CREATE TOPIC">
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
-            <RowStyle BackColor="#EFF3FB" />
-            <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" Font-Italic="False" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <Fields>
                 <asp:TemplateField HeaderText="Topic Name" SortExpression="name">               
                     <InsertItemTemplate>
@@ -72,8 +72,7 @@
                 </asp:TemplateField>
                 <asp:CommandField ShowEditButton="True" />
             </Fields>
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <EditRowStyle BackColor="#2461BF" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <AlternatingRowStyle BackColor="White" />
         </asp:DetailsView>
 <%-- search button-----------------------------------------------------------------------------------------------------%>   
@@ -94,7 +93,7 @@
             Font-Names="Arial" Font-Size="Small" 
             AutoGenerateColumns="False" onrowediting="TopicGridView_RowEditing" 
                 onrowupdated="TopicGridView_RowUpdated">
-            <RowStyle BackColor="#EFF3FB" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             <Columns>
                 <asp:CommandField ValidationGroup="GV" ShowEditButton="True" ><ControlStyle Font-Bold="True" /></asp:CommandField>
                 <asp:CommandField ShowDeleteButton="True"><ControlStyle Font-Bold="True" /></asp:CommandField>
@@ -118,11 +117,10 @@
                     SortExpression="id" Visible="False" />
             </Columns>
             <EmptyDataRowStyle ForeColor="Red" />       
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>  
         </body>     
