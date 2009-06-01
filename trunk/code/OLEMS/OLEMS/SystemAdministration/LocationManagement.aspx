@@ -11,7 +11,7 @@
                 <tr>
                     <td align="center" style="height: 21px">
                         <asp:Label ID="baslik" runat="server" Font-Bold="True" Font-Names="Arial" 
-                         Font-Size ="Medium" ForeColor="#507CD1">LOCATION MANAGEMET
+                         Font-Size ="Medium" ForeColor="#CC0000">LOCATION MANAGEMENT
                         </asp:Label>
                     </td>
                 </tr>
@@ -60,11 +60,11 @@
             DefaultMode="Insert" 
             AutoGenerateInsertButton="True" Font-Names="Arial" 
             Font-Size="Small">
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
-            <RowStyle BackColor="#EFF3FB" />
-            <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <Fields>
                 <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="False" />
                 
@@ -119,8 +119,7 @@
                 <asp:BoundField DataField="createdAt" HeaderText="createdAt" 
                     SortExpression="createdAt" Visible="False" />
             </Fields>
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <EditRowStyle BackColor="#2461BF" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <AlternatingRowStyle BackColor="White" />
         </asp:DetailsView>
 <%--check box----------------------------------------------------------------------------------------------%>   
@@ -146,7 +145,7 @@
             Font-Names="Arial" Font-Size="Small" 
             onrowediting="LocationGridView_RowEditing" 
             onrowupdated="LocationGridView_RowUpdated">
-            <RowStyle BackColor="#EFF3FB"/>
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333"/>
             <Columns>
               
                 <asp:CommandField ValidationGroup ="GV" ShowEditButton="True" ><ControlStyle Font-Bold="True" /></asp:CommandField>
@@ -218,12 +217,11 @@
                     SortExpression="createdAt" Visible="False" />
             </Columns>
             <EmptyDataRowStyle ForeColor="Red" />  
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" 
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" 
                 HorizontalAlign="Left" Width="100px" Wrap="True" />
-            <EditRowStyle BackColor="#2461BF" />
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>
                       
