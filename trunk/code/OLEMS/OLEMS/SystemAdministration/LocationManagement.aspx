@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LocationManagement.aspx.cs" Inherits="OLEMS.SystemAdministration.LocationManagement" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="LocationManagement.aspx.cs" Inherits="OLEMS.SystemAdministration.LocationManagement" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title>Location Management</title>
-</head>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
  <body>
-    <form id="form1" runat="server">
+  
         <table width="100%">
                 <tr>
                     <td align="center" style="height: 21px">
@@ -50,16 +48,24 @@
         
         </div>
 <%--Detailsview------------------------------------------------------------------------------------------------%>   
+        <asp:LinkButton ID="lnkSearch" 
+                Font-Bold="true"  runat="server" CausesValidation ="false"
+                
+            Style="z-index: 101; left: 294px; position: absolute; top: 256px; height: 19px; right: 673px; width: 123px;" Font-Names="Arial" 
+                Font-Size="Small" ForeColor="Black" onclick="lnkSearch_Click"                 
+                
+            ToolTip="Type a keyword in location name or a number for capacity and press this button for search">Search Location(s)
+            </asp:LinkButton>
         <asp:DetailsView ID="LocationDetailsView" 
             runat="server" AutoGenerateRows="False" 
             CellPadding="4" DataKeyNames="id" 
             DataSourceID="Location_SqlDataSource" 
             ForeColor="#333333" GridLines="None" 
-            Style="z-index: 102; left: 187px; position: absolute; top: 53px; width: 500px;" 
+            Style="z-index: 102; left: 291px; position: absolute; top: 114px; width: 500px;" 
             Height="50px"
             DefaultMode="Insert" 
             AutoGenerateInsertButton="True" Font-Names="Arial" 
-            Font-Size="Small">
+            Font-Size="Small" oniteminserted="LocationDetailsView_ItemInserted">
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -124,27 +130,22 @@
         </asp:DetailsView>
 <%--check box----------------------------------------------------------------------------------------------%>   
         <asp:CheckBox ID="SearchAllCheckBox" runat="server" 
-            Style="z-index: 101; left: 338px; position: absolute; top: 181px; height: 19px; right: 357px; width: 189px;"
+            Style="z-index: 101; left: 423px; position: absolute; top: 255px; height: 19px; right: 478px; width: 189px;"
             Font-Names="Arial" Font-Size="Small" Text="Search in All Buildings" />
 <%--search button-------------------------------------------------------------------------------------------%>                   
-        <asp:LinkButton ID="lnkSearch" 
-                Font-Bold="true"  runat="server" CausesValidation ="false"
-                Style="z-index: 101; left: 188px; position: absolute; top: 184px; height: 19px; right: 488px; width: 123px;" Font-Names="Arial" 
-                Font-Size="Small" ForeColor="Black" onclick="lnkSearch_Click"                 
-                ToolTip="Type a keyword in location name or a number for capacity and press this button for search">Search Location(s)
-            </asp:LinkButton>
-<%--Gridview-------------------------------------------------------------------------------------------------%>               
+        <%--Gridview-------------------------------------------------------------------------------------------------%>               
         <asp:GridView ID="LocationGridView" runat="server" AllowPaging="True" 
             AllowSorting="True" AutoGenerateColumns="False"             
             CellPadding="4" 
             DataKeyNames="id" 
             EmptyDataText="<B>No records found!</B>" 
-            Style="z-index: 101; left: 191px; position: absolute; top: 215px; height: 414px; width: 496px;" 
+            Style="z-index: 101; left: 293px; position: absolute; top: 288px; height: 414px; width: 496px;" 
             DataSourceID="Location_SqlDataSource" 
             ForeColor="#333333" GridLines="None" 
             Font-Names="Arial" Font-Size="Small" 
             onrowediting="LocationGridView_RowEditing" 
-            onrowupdated="LocationGridView_RowUpdated">
+            onrowupdated="LocationGridView_RowUpdated" 
+            onrowdeleted="LocationGridView_RowDeleted">
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333"/>
             <Columns>
               
@@ -224,7 +225,6 @@
                 HorizontalAlign="Left" Width="100px" Wrap="True" />
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>
-                      
-    </form>
+ 
 </body>
-</html>
+</asp:Content>

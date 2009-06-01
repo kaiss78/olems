@@ -55,6 +55,34 @@ namespace OLEMS.SystemAdministration
         protected void LocationGridView_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
             ApplyFilter();
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Location successfully updated");
+            }
+        }
+
+        protected void ShowMessageBox(string message)
+        {
+            string sJavaScript = "<script language=javascript>\n";
+            sJavaScript += "alert('" + message + "');\n";
+            sJavaScript += "</script>";
+            this.RegisterStartupScript("MessageBox", sJavaScript);
+        }
+
+        protected void LocationDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Location successfully created");
+            } 
+        }
+
+        protected void LocationGridView_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Location successfully deleted");
+            }
         }
 
     }

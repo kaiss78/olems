@@ -14,24 +14,6 @@ namespace OLEMS.SystemAdministration {
     public partial class LocationManagement {
         
         /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// baslik control.
         /// </summary>
         /// <remarks>
@@ -59,6 +41,15 @@ namespace OLEMS.SystemAdministration {
         protected global::System.Web.UI.WebControls.SqlDataSource Building_SqlDataSource;
         
         /// <summary>
+        /// lnkSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkSearch;
+        
+        /// <summary>
         /// LocationDetailsView control.
         /// </summary>
         /// <remarks>
@@ -75,15 +66,6 @@ namespace OLEMS.SystemAdministration {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox SearchAllCheckBox;
-        
-        /// <summary>
-        /// lnkSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSearch;
         
         /// <summary>
         /// LocationGridView control.
