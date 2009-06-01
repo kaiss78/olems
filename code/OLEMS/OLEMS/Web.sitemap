@@ -2,16 +2,25 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode title="OLEMS"  description="" roles="*">
         <siteMapNode url="~/Login.aspx" title="Login"  description="" />
-        <siteMapNode url="~/UserManagement/Default.aspx" title="User Management"  description="">
+        <siteMapNode url="~/UserManagement/" title="User Management"  description="">
             <siteMapNode url="~/UserManagement/ChangePassword.aspx" title="Change Password"  description="" />
             <siteMapNode url="~/UserManagement/EditEmailAddress.aspx" title="Edit Email Address"  description="" />
             <siteMapNode url="~/UserManagement/ManageProfile.aspx" title="Manage Profile"  description="" />
         </siteMapNode>
-        <siteMapNode url="~/SectionManagement/Default.aspx" title="Section Management"  description="">
+        <siteMapNode url="~/SectionManagement/" title="Section Management"  description="">
             <siteMapNode url="~/SectionManagement/CreateSection.aspx" title="Create Section"  description="" />
         </siteMapNode>
-        <siteMapNode url="~/SystemAdministration/Default.aspx" title="System Administration"  description="">
+        <siteMapNode url="~/QuestionDevelopment/" title="Question Development"  description="">
+            <siteMapNode url="~/QuestionDevelopment/TopicManagement.aspx" title="Topic Management"  description="" />
+        </siteMapNode>
+        <siteMapNode url="~/SystemAdministration/" title="System Administration"  description="">
             <siteMapNode url="~/SystemAdministration/LocationManagement.aspx" title="Location Management"  description="" />
+        </siteMapNode>
+        <siteMapNode url="~/Reports/" title="Reports"  description="">
+            <siteMapNode url="~/Reports/Default.aspx" title="Reports"  description="" />
+        </siteMapNode>
+        <siteMapNode url="~/ExamManagement/" title="Exam Management"  description="">
+            <siteMapNode url="~/ExamManagement/Default.aspx" title="Exam Management"  description="" />
         </siteMapNode>
     </siteMapNode>
 </siteMap>
