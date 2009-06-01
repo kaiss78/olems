@@ -15,7 +15,7 @@ namespace OLEMS.UserManagement
 
         protected void LoginOLEMS_LoggedIn(object sender, EventArgs e)
         {
-            Response.Redirect("~/UserManagement/Springboard.aspx", true);
+            Response.Redirect("~/Springboard.aspx", true);
         }
     }
 }
