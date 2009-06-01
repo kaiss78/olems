@@ -144,6 +144,13 @@
     <Compile Include="SystemAdministration\LocationManagement.aspx.designer.cs">
       <DependentUpon>LocationManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserManagement\AddStudents.aspx.cs">
+      <DependentUpon>AddStudents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserManagement\AddStudents.aspx.designer.cs">
+      <DependentUpon>AddStudents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserManagement\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +240,8 @@
     <Content Include="SystemAdministration\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\MSExcel.jpg" />
+    <Content Include="UserManagement\AddStudents.aspx" />
     <Content Include="UserManagement\web.config" />
   </ItemGroup>
   <ItemGroup>
