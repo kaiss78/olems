@@ -6,6 +6,7 @@
             <siteMapNode url="~/UserManagement/ChangePassword.aspx" title="Change Password"  description="" />
             <siteMapNode url="~/UserManagement/EditEmailAddress.aspx" title="Edit Email Address"  description="" />
             <siteMapNode url="~/UserManagement/ManageProfile.aspx" title="Manage Profile"  description="" />
+            <siteMapNode url="~/UserManagement/AddStudents.aspx" title="Add Students"  description="" />
         </siteMapNode>
         <siteMapNode url="~/SectionManagement/" title="Section Management"  description="">
             <siteMapNode url="~/SectionManagement/CreateSection.aspx" title="Create Section"  description="" />
