@@ -1,13 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TopicManagement.aspx.cs" Inherits="OLEMS.QuestionDevelopment.TopicManagement" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="TopicManagement.aspx.cs" Inherits="OLEMS.QuestionDevelopment.TopicManagement" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head id="Head1" runat="server">
-         <title>Topic Management</title>
-    </head>
 <%-- baslik-----------------------------------------------------------------------------------------------------%>   
-    <form id="form1" runat="server" title="Topic Management">
+     <body>
         <table width="100%">
             <tr>
                 <td align="center" style="height: 21px">
@@ -18,10 +14,7 @@
             </tr>
         </table>
         
-        <body>
-        <div>
-        
-        </div>
+       
 <%-- Topic sqldatasource-------------------------------------------------------------------------------------------------%>   
         <asp:SqlDataSource ID="Topic_SqlDataSource" runat="server" 
             ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
@@ -49,9 +42,9 @@
             Font-Names="Arial" Font-Size="Small" 
             CellPadding="4" 
             DataSourceID="Topic_SqlDataSource" ForeColor="#333333" GridLines="None" 
-            Style="z-index: 102; left: 193px;position: absolute; top: 95px; width: 509px;" 
+            Style="z-index: 102; left: 294px; position: absolute; top: 99px; width: 509px;" 
             Height="50px" DefaultMode="Insert" AllowPaging="True" DataKeyNames="id" 
-            HeaderText="CREATE TOPIC">
+            HeaderText="CREATE TOPIC" oniteminserted="TopicDetailsView_ItemInserted">
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -76,8 +69,8 @@
             <AlternatingRowStyle BackColor="White" />
         </asp:DetailsView>
 <%-- search button-----------------------------------------------------------------------------------------------------%>   
-        <asp:LinkButton ID="lnkSearch" Font-Bold="true"  runat="server" Style="z-index: 101; left: 194px; position: absolute;
-            top: 184px; height: 19px; right: 443px;" Width="100px" Font-Names="Arial" CausesValidation ="false"
+        <asp:LinkButton ID="lnkSearch" Font-Bold="true"  runat="server" Style="z-index: 101; left: 294px; position: absolute;
+            top: 190px; height: 19px; " Width="100px" Font-Names="Arial" CausesValidation ="false"
                 Font-Size="Small" ForeColor="Black" onclick="lnkSearch_Click" 
             ToolTip="Type a keyword in topic name and press this button for search">Search Topic(s)
         </asp:LinkButton>
@@ -88,11 +81,12 @@
             DataKeyNames= "id" 
             DataSourceID="Topic_SqlDataSource" 
             EmptyDataText="<B>No records found!</B>"
-            Style="z-index: 101; left: 191px; position: absolute; top: 205px; height: 414px; width: 510px;" 
+            Style="z-index: 101; left: 293px; position: absolute; top: 213px; height: 414px; width: 510px;" 
             ForeColor="#333333" GridLines="None" 
             Font-Names="Arial" Font-Size="Small" 
             AutoGenerateColumns="False" onrowediting="TopicGridView_RowEditing" 
-                onrowupdated="TopicGridView_RowUpdated">
+                onrowupdated="TopicGridView_RowUpdated" 
+             onrowdeleted="TopicGridView_RowDeleted">
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
             <Columns>
                 <asp:CommandField ValidationGroup="GV" ShowEditButton="True" ><ControlStyle Font-Bold="True" /></asp:CommandField>
@@ -124,6 +118,5 @@
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>  
         </body>     
-    </form>
+  </asp:Content>
 
-</html>

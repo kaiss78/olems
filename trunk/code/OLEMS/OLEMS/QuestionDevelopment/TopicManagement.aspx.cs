@@ -43,6 +43,33 @@ namespace OLEMS.QuestionDevelopment
         protected void TopicGridView_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
             ApplyFilter();
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Topic successfully updated");
+            }
+        }
+
+        protected void TopicDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Topic successfully created");
+            }
+        }
+        protected void ShowMessageBox(string message)
+        {
+            string sJavaScript = "<script language=javascript>\n";
+            sJavaScript += "alert('" + message + "');\n";
+            sJavaScript += "</script>";
+            this.RegisterStartupScript("MessageBox", sJavaScript);
+        }
+
+        protected void TopicGridView_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                ShowMessageBox("Topic successfully deleted");
+            }
         }
     }
 }
