@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode title="OLEMS"  description="">
+    <siteMapNode title="OLEMS"  description="" roles="*">
         <siteMapNode url="~/Login.aspx" title="Login"  description="" />
         <siteMapNode url="~/UserManagement/Default.aspx" title="User Management"  description="">
             <siteMapNode url="~/UserManagement/ChangePassword.aspx" title="Change Password"  description="" />
