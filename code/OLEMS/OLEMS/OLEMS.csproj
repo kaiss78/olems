@@ -179,11 +179,11 @@
     <Compile Include="UserManagement\ManageProfile.aspx.designer.cs">
       <DependentUpon>ManageProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserManagement\Springboard.aspx.cs">
+    <Compile Include="Springboard.aspx.cs">
       <DependentUpon>Springboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserManagement\Springboard.aspx.designer.cs">
+    <Compile Include="Springboard.aspx.designer.cs">
       <DependentUpon>Springboard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -213,7 +213,7 @@
     <Content Include="UserManagement\EditEmailAddress.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="UserManagement\ManageProfile.aspx" />
-    <Content Include="UserManagement\Springboard.aspx" />
+    <Content Include="Springboard.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="QuestionDevelopment\TopicManagement.aspx" />
