@@ -221,6 +221,21 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExamManagement\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QuestionDevelopment\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SectionManagement\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SystemAdministration\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserManagement\web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
     <Folder Include="QuestionDevelopment\App_LocalResources\" />
