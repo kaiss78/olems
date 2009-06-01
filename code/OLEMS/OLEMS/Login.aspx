@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="OLEMS.UserManagement.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="Login.aspx.cs"
+    Inherits="OLEMS.UserManagement.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
@@ -7,8 +7,7 @@
     <asp:Login ID="LoginOLEMS" runat="server" BackColor="#FFFBD6" BorderColor="#FFDFAD"
         BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana"
         Font-Size="0.8em" ForeColor="#333333" TextLayout="TextOnTop" DisplayRememberMe="False"
-        FailureText="<%$ Resources:Errors, unsuccessfulLoginAttempt %>" DestinationPageUrl="~/UserManagement/Springboard.aspx"
-        OnLoggedIn="LoginOLEMS_LoggedIn">
+        FailureText="<%$ Resources:Errors, unsuccessfulLoginAttempt %>" DestinationPageUrl="~/UserManagement/Springboard.aspx">
         <TextBoxStyle Font-Size="0.8em" />
         <LoginButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid" BorderWidth="1px"
             Font-Names="Verdana" Font-Size="0.8em" ForeColor="#990000" />

@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true"
-    CodeBehind="CreateSection.aspx.cs" Inherits="OLEMS.SectionManagement.CreateSection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="CreateSection.aspx.cs"
+    Inherits="OLEMS.SectionManagement.CreateSection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>

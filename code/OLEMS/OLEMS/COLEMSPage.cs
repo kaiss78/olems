@@ -9,14 +9,14 @@ using System.IO;
 
 namespace OLEMS
 {
-    public class COLEMSPage : System.Web.UI.Page
+    public class COLEMSPage : Page
     {
         public void PExportToExcel(string strFileName, GridView dg)
         {
             Response.Clear();
             Response.Buffer = true;
             Response.ContentType = "application/vnd.ms-excel";
-        //'Response.Charset = "ISO-8859-1"
+            //'Response.Charset = "ISO-8859-1"
             this.EnableViewState = false;
             StringWriter oStringWriter = new StringWriter();
             HtmlTextWriter oHtmlTextWriter = new HtmlTextWriter(oStringWriter);

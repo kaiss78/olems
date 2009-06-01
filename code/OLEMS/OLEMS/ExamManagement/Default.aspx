@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="OLEMS.ExamManagement.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="Default.aspx.cs"
+    Inherits="OLEMS.ExamManagement.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>

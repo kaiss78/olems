@@ -5,8 +5,6 @@ C:\Documents and Settings\tufan\My Documents\Visual Studio 2008\Projects\OLEMS\O
 C:\Documents and Settings\tufan\My Documents\Visual Studio 2008\Projects\OLEMS\OLEMS\obj\Debug\OLEMS.pdb
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\bin\OLEMS.dll
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\bin\OLEMS.pdb
-C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\bin\Debug\OLEMS.dll
-C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\bin\Debug\OLEMS.pdb
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\OLEMS.dll
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\OLEMS.pdb
