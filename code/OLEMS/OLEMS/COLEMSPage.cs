@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +27,32 @@ namespace OLEMS
             Response.Write(oStringWriter.ToString());
             Response.End();
         }
-
+        #region GetConnectionstring
+        /// <summary>
+        /// method to retrieve connection stringed in the web.config file
+        /// </summary>
+        /// <param name="str">Name of the connection</param>
+        /// <remarks>Need a reference to the System.Configuration Namespace</remarks>
+        /// <returns></returns>
+        public string GetConnectionString(string str)
+        {
+            //variable to hold our return value
+            string strConn = string.Empty;
+            //check if a value was provided
+            if (!string.IsNullOrEmpty(str))
+            {
+                //name provided so search for that connection
+                strConn = ConfigurationManager.ConnectionStrings[str].ConnectionString.ToString();
+            }
+            else
+            //name not provided, get the 'default' connection
+            {
+                strConn = ConfigurationManager.ConnectionStrings["IS50220082G4_ConnectionString"].ConnectionString.ToString();
+            }
+            //return the value
+            return strConn;
+        }
+        #endregion 
         #region BuildDataSet
         /// <summary>
         /// method to read a text file into a DataSet

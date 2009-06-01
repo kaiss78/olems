@@ -17,5 +17,7 @@
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <AlternatingRowStyle BackColor="White" />
         </asp:GridView>
+        <br />
+        <asp:Button ID="Button2" runat="server" Text="Button" onclick="Button2_Click" />
     </div>
 </asp:Content>
