@@ -144,13 +144,6 @@
     <Compile Include="SystemAdministration\LocationManagement.aspx.designer.cs">
       <DependentUpon>LocationManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserManagement\AddStudents.aspx.cs">
-      <DependentUpon>AddStudents.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserManagement\AddStudents.aspx.designer.cs">
-      <DependentUpon>AddStudents.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserManagement\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,7 +218,6 @@
   <ItemGroup>
     <Content Include="QuestionDevelopment\TopicManagement.aspx" />
     <Content Include="SystemAdministration\LocationManagement.aspx" />
-    <Content Include="UserManagement\AddStudents.aspx" />
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>

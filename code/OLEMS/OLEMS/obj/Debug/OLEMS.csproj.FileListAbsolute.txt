@@ -8,3 +8,6 @@ C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\bin\OLEM
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\OLEMS.dll
 C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMSC\OLEMS\obj\Debug\OLEMS.pdb
+C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMS\OLEMS\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMS\OLEMS\obj\Debug\OLEMS.dll
+C:\Users\tufankaynak\Documents\Visual Studio 2008\Projects\OLEMS\OLEMS\obj\Debug\OLEMS.pdb
