@@ -67,6 +67,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UILabels.resx</DependentUpon>
     </Compile>
+    <Compile Include="QuestionDevelopment\QuestionManagement.aspx.cs">
+      <DependentUpon>QuestionManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionDevelopment\QuestionManagement.aspx.designer.cs">
+      <DependentUpon>QuestionManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restricted\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restricted\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="COLEMSPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -151,13 +165,6 @@
     <Compile Include="SystemAdministration\AddStudents.aspx.designer.cs">
       <DependentUpon>AddStudents.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserManagement\ChangePassword.aspx.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserManagement\ChangePassword.aspx.designer.cs">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserManagement\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,7 +221,6 @@
       <LastGenOutput>UILabels.Designer.cs</LastGenOutput>
     </Content>
     <Content Include="SectionManagement\CreateSection.aspx" />
-    <Content Include="UserManagement\ChangePassword.aspx" />
     <Content Include="UserManagement\Default.aspx" />
     <Content Include="UserManagement\EditEmailAddress.aspx" />
     <Content Include="Login.aspx" />
@@ -239,6 +245,8 @@
     <Content Include="SystemAdministration\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="QuestionDevelopment\QuestionManagement.aspx" />
+    <Content Include="Restricted\ChangePassword.aspx" />
     <Content Include="images\MSExcel.jpg" />
     <Content Include="SystemAdministration\AddStudents.aspx" />
     <Content Include="SystemAdministration\Default.aspx" />

@@ -26,6 +26,10 @@ namespace OLEMS
             {
                 Response.Redirect("~/SystemAdministration/", true);
             }
+            else if (Roles.IsUserInRole("StudentMustChangePassword"))
+            {
+                Response.Redirect("~/Restricted/ChangePassword.aspx", true);
+            }
             else
             {
                 Response.Redirect("~/Login.aspx", true);
