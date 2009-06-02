@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 namespace OLEMS.SystemAdministration
 {
-    public partial class LocationManagement : System.Web.UI.Page
+    public partial class LocationManagement : COLEMSPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,10 +63,23 @@ namespace OLEMS.SystemAdministration
 
         protected void ShowMessageBox(string message)
         {
-            string sJavaScript = "<script language=javascript>\n";
-            sJavaScript += "alert('" + message + "');\n";
-            sJavaScript += "</script>";
-            this.RegisterStartupScript("MessageBox", sJavaScript);
+            // Define the name and type of the client scripts on the page.
+            String csname = "MessageBox";
+            Type cstype = this.GetType();
+
+            // Get a ClientScriptManager reference from the Page class.
+            ClientScriptManager cs = Page.ClientScript;
+
+            // Check to see if the startup script is already registered.
+            if (!cs.IsStartupScriptRegistered(cstype, csname))
+            {
+                String cstext = "alert('" + message + "');";
+                cs.RegisterStartupScript(cstype, csname, cstext, true);
+            }
+            //string sJavaScript = "<script language=javascript>\n";
+            //sJavaScript += "alert('" + message + "');\n";
+            //sJavaScript += "</script>";
+            //this.RegisterStartupScript("MessageBox", sJavaScript);
         }
 
         protected void LocationDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)

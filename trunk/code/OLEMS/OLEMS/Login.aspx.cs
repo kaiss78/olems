@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Security;
-namespace OLEMS.UserManagement
+namespace OLEMS
 {
     public partial class Login : CPage
     {
@@ -9,7 +9,7 @@ namespace OLEMS.UserManagement
             if (User.Identity.IsAuthenticated)
             {
                 FormsAuthentication.SignOut();
-                Response.Redirect("~/UserManagement/Login.aspx", true);
+                Response.Redirect("~/Login.aspx", true);
             }
         }
 

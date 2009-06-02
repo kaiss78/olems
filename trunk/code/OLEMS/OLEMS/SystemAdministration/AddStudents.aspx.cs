@@ -13,7 +13,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Data.SqlClient;
 
-namespace OLEMS.UserManagement
+namespace OLEMS.SystemAdministration
 {
     public partial class AddStudents : COLEMSPage
     {

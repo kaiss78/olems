@@ -11,6 +11,6 @@
 namespace OLEMS.UserManagement {
     
     
-    public partial class Default {
+    public partial class SystemAdministrationDefault {
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OLEMS.UserManagement {
+namespace OLEMS {
     
     
     public partial class Login {

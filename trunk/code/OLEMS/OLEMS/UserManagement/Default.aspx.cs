@@ -1,7 +1,7 @@
 ﻿using System;
-namespace OLEMS.UserManagement
+namespace OLEMS.SystemAdministration
 {
-    public partial class Default : COLEMSPage
+    public partial class SystemAdministrationDefault : COLEMSPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

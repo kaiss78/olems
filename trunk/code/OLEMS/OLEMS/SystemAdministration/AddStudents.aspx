@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="AddStudents.aspx.cs"
-    Inherits="OLEMS.UserManagement.AddStudents" Title="Untitled Page" %>
+    Inherits="OLEMS.SystemAdministration.AddStudents" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
