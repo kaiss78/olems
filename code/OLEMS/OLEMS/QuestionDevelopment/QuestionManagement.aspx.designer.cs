@@ -23,13 +23,31 @@ namespace OLEMS.QuestionDevelopment {
         protected global::System.Web.UI.WebControls.Label baslik;
         
         /// <summary>
-        /// QuestionSqlDataSource control.
+        /// Question_SqlDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource QuestionSqlDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource Question_SqlDataSource;
+        
+        /// <summary>
+        /// Topic_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Topic_SqlDataSource;
+        
+        /// <summary>
+        /// QuestionType_SqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource QuestionType_SqlDataSource;
         
         /// <summary>
         /// QuestionDetailsView control.
@@ -39,5 +57,14 @@ namespace OLEMS.QuestionDevelopment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView QuestionDetailsView;
+        
+        /// <summary>
+        /// QuestionGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView QuestionGridView;
     }
 }
