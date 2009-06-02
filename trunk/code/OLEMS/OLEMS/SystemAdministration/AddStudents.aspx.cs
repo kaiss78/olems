@@ -50,7 +50,8 @@ namespace OLEMS.SystemAdministration
                     string strStudentName = GridView1.Rows[i].Cells[2].Text.ToString();
                     string strStudentEmail = "e" + strStudentId + "@metu.edu.tr";
                     string strStudentUserName = "e" + strStudentId;
-                    string strStudentPassword = Membership.GeneratePassword(intLength, intAlphaChars);
+                    //string strStudentPassword = Membership.GeneratePassword(intLength, intAlphaChars);
+                    string strStudentPassword = strStudentId;
                     MembershipCreateStatus mcs = new MembershipCreateStatus();
                     Membership.CreateUser(strStudentUserName, strStudentPassword, strStudentEmail, "Adın?", "Soyadın.", true, out mcs);
                     if (mcs == MembershipCreateStatus.Success)
@@ -66,7 +67,7 @@ namespace OLEMS.SystemAdministration
                         {
                             break;
                         }
-                        Roles.AddUserToRole(strStudentUserName, "Student");
+                        Roles.AddUserToRole(strStudentUserName, "StudentMustChangePassword");
 
                         Guid gUserId = new Guid(Membership.GetUser(strStudentUserName).ProviderUserKey.ToString());
 
