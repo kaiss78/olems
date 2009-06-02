@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Security;
-namespace OLEMS.UserManagement
+namespace OLEMS
 {
     public partial class Springboard : COLEMSPage
     {

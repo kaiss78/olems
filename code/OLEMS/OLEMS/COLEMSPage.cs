@@ -14,6 +14,14 @@ namespace OLEMS
 {
     public class COLEMSPage : Page
     {
+        #region PExportToExcel
+        /// <summary>
+        /// method to export Excel files from the GridView with the given file name
+        /// </summary>
+        /// <param name="strFileName">Name of the file</param>
+        /// <param name="dg">GridView control of which the contents to be exported</param>
+        /// <remarks>Need a reference to the System.IO Namespace</remarks>
+        /// <returns></returns>
         public void PExportToExcel(string strFileName, GridView dg)
         {
             Response.Clear();
@@ -27,6 +35,7 @@ namespace OLEMS
             Response.Write(oStringWriter.ToString());
             Response.End();
         }
+        #endregion
         #region GetConnectionstring
         /// <summary>
         /// method to retrieve connection stringed in the web.config file
@@ -52,7 +61,7 @@ namespace OLEMS
             //return the value
             return strConn;
         }
-        #endregion 
+        #endregion
         #region BuildDataSet
         /// <summary>
         /// method to read a text file into a DataSet

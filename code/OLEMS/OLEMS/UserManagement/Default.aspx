@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="Default.aspx.cs"
-    Inherits="OLEMS.UserManagement.Default" %>
+    Inherits="OLEMS.UserManagement.SystemAdministrationDefault" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>

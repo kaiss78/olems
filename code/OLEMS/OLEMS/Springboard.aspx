@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/OLEMS.Master" CodeBehind="Springboard.aspx.cs"
-    Inherits="OLEMS.UserManagement.Springboard" %>
+    Inherits="OLEMS.Springboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
