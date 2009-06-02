@@ -12,6 +12,7 @@
         </siteMapNode>
         <siteMapNode url="~/QuestionDevelopment/" title="Question Development"  description="">
             <siteMapNode url="~/QuestionDevelopment/TopicManagement.aspx" title="Topic Management"  description="" />
+            <siteMapNode url="~/QuestionDevelopment/QuestionManagement.aspx" title="Question Management"  description="" />
         </siteMapNode>
         <siteMapNode url="~/SystemAdministration/" title="System Administration"  description="">
             <siteMapNode url="~/SystemAdministration/LocationManagement.aspx" title="Location Management"  description="" />
