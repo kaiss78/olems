@@ -117,6 +117,10 @@ namespace OLEMS
                 {
                     string[] items = r.Split(delimeter.ToCharArray());
                     //split the row at the delimiter
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        items[i]=items[i].Trim();
+                    }
                     domains.Tables[tableName].Rows.Add(items);
                 }
             }
