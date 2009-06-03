@@ -12,7 +12,7 @@ using System.Data;
 
 namespace OLEMS
 {
-    public class COLEMSPage : Page
+    public class COLEMSPage : System.Web.UI.Page
     {
         #region PExportToExcel
         /// <summary>
@@ -144,7 +144,6 @@ namespace OLEMS
             else
             {
                 Response.Redirect("~/Login.aspx");
-
             }
         }
     }

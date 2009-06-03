@@ -253,6 +253,9 @@
     <Content Include="UserManagement\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
     <Folder Include="QuestionDevelopment\App_LocalResources\" />
