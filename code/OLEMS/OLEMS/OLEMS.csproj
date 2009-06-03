@@ -200,6 +200,13 @@
     <Compile Include="Springboard.aspx.designer.cs">
       <DependentUpon>Springboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdministration\RemoveUsersFromRole.aspx.cs">
+      <DependentUpon>RemoveUsersFromRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdministration\RemoveUsersFromRole.aspx.designer.cs">
+      <DependentUpon>RemoveUsersFromRole.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExamManagement\Default.aspx" />
@@ -254,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reports\web.config" />
+    <Content Include="SystemAdministration\RemoveUsersFromRole.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
