@@ -58,7 +58,8 @@
             </tr>
             <tr>
                 <td class="ExplanationCell">
-                    <asp:LoginStatus ID="LoginStatusMaster" runat="server" LogoutPageUrl="~/Default.aspx" />
+                    <asp:LoginStatus ID="LoginStatusMaster" runat="server" 
+                        LogoutPageUrl="~/Login.aspx" />
                     <asp:LoginName ID="LoginNameMaster" runat="server" />
                 </td>
                 <td class="ExplanationCell">
