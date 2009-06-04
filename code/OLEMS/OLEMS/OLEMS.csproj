@@ -130,19 +130,26 @@
     <Compile Include="Reports\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SectionManagement\CreateSection.aspx.cs">
-      <DependentUpon>CreateSection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SectionManagement\CreateSection.aspx.designer.cs">
-      <DependentUpon>CreateSection.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SectionManagement\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SectionManagement\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SectionManagement\SectionManagement.aspx.cs">
+      <DependentUpon>SectionManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SectionManagement\SectionManagement.aspx.designer.cs">
+      <DependentUpon>SectionManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SectionManagement\SectionInstructorManagement.aspx.cs">
+      <DependentUpon>SectionInstructorManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SectionManagement\SectionInstructorManagement.aspx.designer.cs">
+      <DependentUpon>SectionInstructorManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemAdministration\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -227,7 +234,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>UILabels.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="SectionManagement\CreateSection.aspx" />
     <Content Include="UserManagement\Default.aspx" />
     <Content Include="UserManagement\EditEmailAddress.aspx" />
     <Content Include="Login.aspx" />
@@ -261,6 +267,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reports\web.config" />
+    <Content Include="SectionManagement\SectionManagement.aspx" />
+    <Content Include="SectionManagement\SectionInstructorManagement.aspx" />
     <Content Include="SystemAdministration\RemoveUsersFromRole.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -287,7 +295,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1142</DevelopmentServerPort>
+          <DevelopmentServerPort>61672</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
