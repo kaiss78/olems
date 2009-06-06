@@ -6,37 +6,40 @@
         <tr>
             <td align="center" style="height: 21px">
                 <asp:Label ID="baslik" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="Medium"
-                    ForeColor="#CC0000">QUESTION MANAGEMENT
+                    ForeColor="#CC0000">QUESTION MANAGEMENT 
                 </asp:Label>
             </td>
         </tr>
         <tr>
             <td>  
                 <asp:SqlDataSource ID="Question_SqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
-        SelectCommand="SELECT id, topicId, body, point, questionTypeId, isActive, createdBy, createdAt, surum FROM Question"
-        InsertCommand="INSERT INTO [Question] (topicId, body, point, questionTypeId, isActive) VALUES (@topicId, @body, @point, @questionTypeId, @isActive)" 
-        UpdateCommand="UPDATE Question SET topicId=@topicId , body=@body, point=@point, questionTypeId=@questionTypeId, isActive=@isActive WHERE id=@id" 
-        DeleteCommand="DELETE FROM  [Question]  WHERE id=@id">
-        <DeleteParameters>
-            <asp:Parameter Name="id" />
-        </DeleteParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="topicId" />
-            <asp:Parameter Name="body" />
-            <asp:Parameter Name="point" />
-            <asp:Parameter Name="questionTypeId" />
-            <asp:Parameter Name="isActive" />
-            <asp:Parameter Name="id" />
-        </UpdateParameters>
-        <InsertParameters>
-            <asp:Parameter Name="topicId" />
-            <asp:Parameter Name="body" />
-            <asp:Parameter Name="point" />
-            <asp:Parameter Name="questionTypeId" />
-            <asp:Parameter Name="isActive" />
-        </InsertParameters>
-    </asp:SqlDataSource>
+                    ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
+                    SelectCommand="SELECT id, topicId, body, point, questionTypeId, isActive, questionFilePath, createdBy, createdAt, surum FROM Question"
+                    InsertCommand="INSERT INTO [Question] (topicId, body, point, questionTypeId, isActive,questionFilePath,createdBy) VALUES (@topicId, @body, @point, @questionTypeId, @isActive,@questionFilePath,@createdBy)" 
+                    UpdateCommand="UPDATE Question SET topicId=@topicId , body=@body, point=@point, questionTypeId=@questionTypeId, isActive=@isActive,questionFilePath=@questionFilePath WHERE id=@id" 
+                    DeleteCommand="DELETE FROM  [Question]  WHERE id=@id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="topicId" />
+                        <asp:Parameter Name="body" />
+                        <asp:Parameter Name="point" />
+                        <asp:Parameter Name="questionTypeId" />
+                        <asp:Parameter Name="isActive" />
+                        <asp:Parameter Name="questionFilePath" />
+                        <asp:Parameter Name="id" />
+                    </UpdateParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="topicId" />
+                        <asp:Parameter Name="body" />
+                        <asp:Parameter Name="point" />
+                        <asp:Parameter Name="questionTypeId" />
+                        <asp:Parameter Name="isActive"/>
+                        <asp:Parameter Name="questionFilePath" />
+                        <asp:Parameter Name="createdBy" />            
+                    </InsertParameters>
+                </asp:SqlDataSource>
                 <asp:SqlDataSource ID="Topic_SqlDataSource" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
                     SelectCommand="SELECT [id], [name] FROM [Topic] order by 2">
@@ -49,12 +52,13 @@
         </tr>
         <tr>
             <td>
-              <asp:DetailsView ID="QuestionDetailsView" runat="server" CellPadding="4" 
-                    ForeColor="#333333" GridLines="None" Height="50px" Width="297px" 
+                <asp:DetailsView ID="QuestionDetailsView" runat="server" CellPadding="4" 
+                    ForeColor="#333333" GridLines="None" Height="50px" Width="452px" 
                     DataSourceID="Question_SqlDataSource" DataKeyNames="id" 
                     DefaultMode="Insert" AutoGenerateInsertButton="True" 
                     AutoGenerateRows="False" Font-Names="Arial" Font-Size="Small" 
-                    oniteminserted="QuestionDetailsView_ItemInserted">
+                    oniteminserted="QuestionDetailsView_ItemInserted" 
+                    oniteminserting="QuestionDetailsView_ItemInserting">
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -71,8 +75,29 @@
                                 </asp:DropDownList>
                             </InsertItemTemplate>                              
                         </asp:TemplateField>
-                        <asp:BoundField DataField="body" HeaderText="Body" SortExpression="body" />
-                        <asp:BoundField DataField="point" HeaderText="Point" SortExpression="point" />
+                        <asp:TemplateField HeaderText="Body" SortExpression="body">                           
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="txtBody" runat="server" Text='<%# Bind("body") %>' Width ="350px"></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorBody" runat="server" 
+                                    ErrorMessage="Please enter body of the question"
+                                    ControlToValidate="txtBody" Font-Names="Arial" Font-Size="Small">
+                                </asp:RequiredFieldValidator>
+                            </InsertItemTemplate>
+                           
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Point" SortExpression="point">
+                            <InsertItemTemplate>
+                                <asp:TextBox ID="txtPoint" runat="server" Text='<%# Bind("point") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorPoint" runat="server" 
+                                    ErrorMessage="Please enter point"
+                                    ControlToValidate="txtPoint" Font-Names="Arial" Font-Size="Small">
+                                </asp:RequiredFieldValidator>
+                                <asp:RangeValidator Display="Dynamic" ID="valPoint" runat="server" ControlToValidate="txtPoint"
+                                    MaximumValue="100" MinimumValue="1" Type="Integer" Font-Names="Arial" Font-Size="Small"> Point should be between 1-100
+                                </asp:RangeValidator>
+                            </InsertItemTemplate>
+                           
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Type" SortExpression="questionTypeId">
                             <InsertItemTemplate>
                                 <asp:DropDownList ID="qTypeDropDownList" runat="server" DataSourceID="QuestionType_SqlDataSource"
@@ -82,24 +107,48 @@
                             </InsertItemTemplate>                           
                         </asp:TemplateField>
                         <asp:CheckBoxField DataField="isActive" HeaderText="Status" SortExpression="isActive" />
-                        <asp:BoundField DataField="createdBy" HeaderText="createdBy" SortExpression="createdBy" Visible="False" />
+                        <asp:BoundField DataField="createdBy" HeaderText="createdBy" 
+                            SortExpression="createdBy" Visible="False" />
                         <asp:BoundField DataField="createdAt" HeaderText="createdAt" SortExpression="createdAt" Visible="False" />
+                        <asp:TemplateField HeaderText="Image File" SortExpression="questionFilePath">
+                           
+                            <InsertItemTemplate>
+                                <asp:FileUpload ID="imageFileUpload" runat="server"  />
+                            </InsertItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("questionFilePath") %>'></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Wrap="False" />
+                        </asp:TemplateField>
                     </Fields>
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <AlternatingRowStyle BackColor="White" />
-                </asp:DetailsView>                
+                </asp:DetailsView>  
+            </td> 
+        </tr>
+        <tr>
+            <td>
+              <asp:Label ID="LblError" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="Small"
+                    ForeColor="Red" Width="1091px" Height="18px" >
+              </asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td>              
                 <asp:GridView ID="QuestionGridView" runat="server" AutoGenerateColumns="False" 
                     CellPadding="4" DataKeyNames="id" DataSourceID="Question_SqlDataSource" 
                     EmptyDataText="No records found!" Font-Names="Arial" Font-Size="Small" 
                     ForeColor="#333333" GridLines="None" AllowPaging="True" 
                     AllowSorting="True" onrowdeleted="QuestionGridView_RowDeleted" 
-                    onrowupdated="QuestionGridView_RowUpdated">
+                    onrowupdated="QuestionGridView_RowUpdated" 
+                    onrowediting="QuestionGridView_RowEditing" 
+                    onrowdeleting="QuestionGridView_RowDeleting">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <EmptyDataRowStyle ForeColor="Red" />
                     <Columns>
-                        <asp:CommandField ShowSelectButton="True" SelectText="AnswerSet"><ControlStyle Font-Bold="True" /></asp:CommandField> 
-                        <asp:CommandField ShowEditButton="True"><ControlStyle Font-Bold="True" /></asp:CommandField>
-                        <asp:CommandField ShowDeleteButton="True"><ControlStyle Font-Bold="True" /></asp:CommandField>
+                        <asp:CommandField ShowSelectButton="True" ValidationGroup="GV" SelectText="AnswerSet"><ControlStyle Font-Bold="True" /></asp:CommandField> 
+                        <asp:CommandField ShowEditButton="True" ValidationGroup="GV"><ControlStyle Font-Bold="True" /></asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True" ValidationGroup="GV"><ControlStyle Font-Bold="True" /></asp:CommandField>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" Visible="False" />
                         <asp:TemplateField HeaderText="Topic" SortExpression="topicId">
                             <EditItemTemplate>
@@ -118,13 +167,31 @@
                         <asp:TemplateField HeaderText="Body" SortExpression="body">
                             <EditItemTemplate>
                                 <asp:TextBox ID="txtBody"  Width ="100" runat="server" Text='<%# Bind("body") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorGVBody" ValidationGroup="GV" runat="server" 
+                                    ErrorMessage="Please enter body"
+                                    ControlToValidate="txtBody" Font-Names="Arial" Font-Size="Small">
+                                </asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblBody" runat="server" Width ="200" Text='<%# Bind("body") %>'></asp:Label>
                             </ItemTemplate>
                             <ItemStyle Width="200px" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="point" HeaderText="Point" SortExpression="point" />
+                        <asp:TemplateField HeaderText="Point" SortExpression="point">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtPoint" runat="server" Text='<%# Bind("point") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorGVPoint" ValidationGroup="GV" runat="server" 
+                                    ErrorMessage="Please enter point"
+                                    ControlToValidate="txtPoint" Font-Names="Arial" Font-Size="Small">
+                                </asp:RequiredFieldValidator>
+                                <asp:RangeValidator Display="Dynamic" ID="valGVPoint" runat="server" ValidationGroup="GV" ControlToValidate="txtPoint"
+                                    MaximumValue="100" MinimumValue="1" Type="Integer" Font-Names="Arial" Font-Size="Small"> Point should be between 1-100
+                                </asp:RangeValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblPoint" runat="server" Text='<%# Bind("point") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Type" SortExpression="questionTypeId">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="qTypeDropDownList" runat="server" DataSourceID="QuestionType_SqlDataSource"
@@ -139,12 +206,20 @@
                                 </asp:DropDownList> 
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CheckBoxField DataField="isActive" HeaderText="Status" 
-                            SortExpression="isActive" />
-                        <asp:BoundField DataField="createdBy" HeaderText="Owner" 
-                            SortExpression="createdBy" />
+                        <asp:CheckBoxField DataField="isActive" HeaderText="Status" SortExpression="isActive" />
+                        <asp:TemplateField HeaderText="Owner" SortExpression="createdBy">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="txtOwner" runat="server" Text='<%# Bind("createdBy") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblOwner" runat="server" Text='<%# Bind("createdBy") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="createdAt" HeaderText="Created At" 
-                            SortExpression="createdAt" />
+                            SortExpression="createdAt" >
+                            <HeaderStyle Wrap="False" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="questionFilePath" HeaderText="Image File" SortExpression="questionFilePath" />
                     </Columns>
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
@@ -156,7 +231,8 @@
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                &nbsp;
+            </td>
         </tr>
  
     
