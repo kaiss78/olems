@@ -272,6 +272,9 @@
     <Content Include="SystemAdministration\RemoveUsersFromRole.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="QuestionFiles\AdminTool.png" />
+    <Content Include="QuestionFiles\ApplicationSettings.png" />
+    <Content Include="QuestionFiles\EditApplicationSetting.png" />
     <Content Include="Restricted\web.config" />
   </ItemGroup>
   <ItemGroup>
