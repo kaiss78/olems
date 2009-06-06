@@ -272,6 +272,9 @@
     <Content Include="SystemAdministration\RemoveUsersFromRole.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Restricted\web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
     <Folder Include="QuestionDevelopment\App_LocalResources\" />

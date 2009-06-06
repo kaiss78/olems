@@ -26,7 +26,7 @@ namespace OLEMS.SystemAdministration
             if (FileUpload1.HasFile)
             {
                 Stream uploadedFile = FileUpload1.PostedFile.InputStream;
-                DataSet data = BuildDataSet(uploadedFile, "MyTable", ",");
+                DataSet data = BuildDataSetFromDelimitedFile(uploadedFile, "MyTable", ",");
                 GridView1.DataSource = data;
                 GridView1.DataBind();
                 LabelInfo.Text = "Text file read successfully.";
@@ -59,6 +59,17 @@ namespace OLEMS.SystemAdministration
                         try
                         {
                             if (Roles.IsUserInRole(strStudentUserName, "Student"))
+                            {
+                                break;
+                            }
+                        }
+                        catch
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            if (Roles.IsUserInRole(strStudentUserName, "StudentMustChangePassword"))
                             {
                                 break;
                             }
