@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
@@ -17,7 +18,7 @@ namespace OLEMS.QuestionDevelopment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void QuestionDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
@@ -60,6 +61,48 @@ namespace OLEMS.QuestionDevelopment
                 ShowMessageBox("Question successfully updated");
             } 
         }
+
+        protected void QuestionDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
+        {
+            //question owner
+            Question_SqlDataSource.InsertParameters["createdBy"].DefaultValue = HttpContext.Current.User.Identity.Name.ToString();
+            //question image file
+            FileUpload fUpload = (FileUpload)QuestionDetailsView.Rows[0].FindControl("imageFileUpload");
+            String txtPath = fUpload.PostedFile.FileName;
+            Question_SqlDataSource.InsertParameters["questionFilePath"].DefaultValue = txtPath;
+            LblError.Text = "";
+        }
+
+        protected void QuestionGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            Label questionOwner = (Label)QuestionGridView.Rows[e.NewEditIndex].FindControl("lblOwner");
+            if (questionOwner.Text != HttpContext.Current.User.Identity.Name.ToString())
+            {
+                LblError.ForeColor = Color.Red;
+                LblError.Text = "You can't edit unless you are the owner of the question!";
+                e.Cancel = true;
+            }else LblError.Text = "";
+
+        }
+
+        protected void QuestionGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            Label questionOwner = (Label)QuestionGridView.Rows[e.RowIndex].FindControl("lblOwner");
+            if (questionOwner.Text != HttpContext.Current.User.Identity.Name.ToString())
+            {
+                LblError.ForeColor = Color.Red;
+                LblError.Text = "You can't delete unless you are the owner of the question!";
+                e.Cancel = true;
+            }else LblError.Text = "";
+        }
+
+      
+
+       
+
+      
+
+        
 
     }
 }
