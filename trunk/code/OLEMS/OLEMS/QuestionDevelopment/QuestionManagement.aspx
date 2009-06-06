@@ -58,7 +58,8 @@
                     DefaultMode="Insert" AutoGenerateInsertButton="True" 
                     AutoGenerateRows="False" Font-Names="Arial" Font-Size="Small" 
                     oniteminserted="QuestionDetailsView_ItemInserted" 
-                    oniteminserting="QuestionDetailsView_ItemInserting">
+                    oniteminserting="QuestionDetailsView_ItemInserting" 
+                    onitemcommand="QuestionDetailsView_ItemCommand">
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -95,8 +96,7 @@
                                 <asp:RangeValidator Display="Dynamic" ID="valPoint" runat="server" ControlToValidate="txtPoint"
                                     MaximumValue="100" MinimumValue="1" Type="Integer" Font-Names="Arial" Font-Size="Small"> Point should be between 1-100
                                 </asp:RangeValidator>
-                            </InsertItemTemplate>
-                           
+                            </InsertItemTemplate>                           
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Type" SortExpression="questionTypeId">
                             <InsertItemTemplate>
@@ -110,8 +110,7 @@
                         <asp:BoundField DataField="createdBy" HeaderText="createdBy" 
                             SortExpression="createdBy" Visible="False" />
                         <asp:BoundField DataField="createdAt" HeaderText="createdAt" SortExpression="createdAt" Visible="False" />
-                        <asp:TemplateField HeaderText="Image File" SortExpression="questionFilePath">
-                           
+                        <asp:TemplateField HeaderText="Image File" SortExpression="questionFilePath">                           
                             <InsertItemTemplate>
                                 <asp:FileUpload ID="imageFileUpload" runat="server"  />
                             </InsertItemTemplate>
@@ -142,7 +141,8 @@
                     AllowSorting="True" onrowdeleted="QuestionGridView_RowDeleted" 
                     onrowupdated="QuestionGridView_RowUpdated" 
                     onrowediting="QuestionGridView_RowEditing" 
-                    onrowdeleting="QuestionGridView_RowDeleting">
+                    onrowdeleting="QuestionGridView_RowDeleting" 
+                    onrowupdating="QuestionGridView_RowUpdating">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <EmptyDataRowStyle ForeColor="Red" />
                     <Columns>
@@ -166,16 +166,15 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Body" SortExpression="body">
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtBody"  Width ="100" runat="server" Text='<%# Bind("body") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtBody" Width ="300px" TextMode="MultiLine" runat="server" Text='<%# Bind("body") %>'></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorGVBody" ValidationGroup="GV" runat="server" 
                                     ErrorMessage="Please enter body"
                                     ControlToValidate="txtBody" Font-Names="Arial" Font-Size="Small">
                                 </asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblBody" runat="server" Width ="200" Text='<%# Bind("body") %>'></asp:Label>
+                                <asp:Label ID="lblBody" runat="server" Width ="300px" Text='<%# Bind("body") %>'></asp:Label>
                             </ItemTemplate>
-                            <ItemStyle Width="200px" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Point" SortExpression="point">
                             <EditItemTemplate>
@@ -191,6 +190,9 @@
                             <ItemTemplate>
                                 <asp:Label ID="lblPoint" runat="server" Text='<%# Bind("point") %>'></asp:Label>
                             </ItemTemplate>
+                            <ControlStyle Width="40px" />
+                            <HeaderStyle Width="40px" />
+                            <ItemStyle Width="40px" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Type" SortExpression="questionTypeId">
                             <EditItemTemplate>
@@ -208,18 +210,22 @@
                         </asp:TemplateField>
                         <asp:CheckBoxField DataField="isActive" HeaderText="Status" SortExpression="isActive" />
                         <asp:TemplateField HeaderText="Owner" SortExpression="createdBy">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="txtOwner" runat="server" Text='<%# Bind("createdBy") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblOwner" runat="server" Text='<%# Bind("createdBy") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="createdAt" HeaderText="Created At" 
-                            SortExpression="createdAt" >
+                        <asp:BoundField DataField="createdAt" HeaderText="Created At" ReadOnly="true" SortExpression="createdAt" >
                             <HeaderStyle Wrap="False" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="questionFilePath" HeaderText="Image File" SortExpression="questionFilePath" />
+                        <asp:TemplateField HeaderText="Image File" SortExpression="questionFilePath">
+                            <EditItemTemplate>
+                               <asp:FileUpload ID="imageGVFileUpload" runat="server"  />
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                             <%--   <asp:Label ID="Label1" runat="server" Text='<%# Bind("questionFilePath") %>'></asp:Label>--%>
+                                <asp:HyperLink runat="server" Target="_blank" Text='<%# HttpUtility.UrlPathEncode(Eval("questionFilePath").ToString()) %>' NavigateUrl='<%# string.Concat("../QuestionFiles/",Eval("questionFilePath").ToString())%>'  />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />

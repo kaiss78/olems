@@ -68,7 +68,7 @@ namespace OLEMS.QuestionDevelopment
             Question_SqlDataSource.InsertParameters["createdBy"].DefaultValue = HttpContext.Current.User.Identity.Name.ToString();
             //question image file
             FileUpload fUpload = (FileUpload)QuestionDetailsView.Rows[0].FindControl("imageFileUpload");
-            String txtPath = fUpload.PostedFile.FileName;
+            String txtPath = fUpload.FileName;
             Question_SqlDataSource.InsertParameters["questionFilePath"].DefaultValue = txtPath;
             LblError.Text = "";
         }
@@ -81,7 +81,10 @@ namespace OLEMS.QuestionDevelopment
                 LblError.ForeColor = Color.Red;
                 LblError.Text = "You can't edit unless you are the owner of the question!";
                 e.Cancel = true;
-            }else LblError.Text = "";
+            }else 
+            {
+                LblError.Text = "";
+            }
 
         }
 
@@ -94,6 +97,18 @@ namespace OLEMS.QuestionDevelopment
                 LblError.Text = "You can't delete unless you are the owner of the question!";
                 e.Cancel = true;
             }else LblError.Text = "";
+        }
+
+        protected void QuestionDetailsView_ItemCommand(object sender, DetailsViewCommandEventArgs e)
+        {
+            LblError.Text = "";
+        }
+
+        protected void QuestionGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            FileUpload fUpload = (FileUpload)QuestionGridView.Rows[e.RowIndex].FindControl("imageGVFileUpload");
+            String txtPath = fUpload.FileName;
+            Question_SqlDataSource.UpdateParameters["questionFilePath"].DefaultValue = txtPath;
         }
 
       
