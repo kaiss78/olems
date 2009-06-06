@@ -70,7 +70,7 @@ namespace OLEMS
         /// <param name="tableName">name of the DataTable we want to add</param>
         /// <param name="delimeter">delimiter to split on</param>
         /// <returns>a populated DataSet</returns>
-        public DataSet BuildDataSet(Stream uploadedContent, string tableName, string delimeter)
+        public DataSet BuildDataSetFromDelimitedFile(Stream uploadedContent, string tableName, string delimeter)
         {
             //create our DataSet
             DataSet domains = new DataSet();
