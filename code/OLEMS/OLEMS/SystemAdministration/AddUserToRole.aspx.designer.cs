@@ -8,54 +8,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OLEMS.SectionManagement {
+namespace OLEMS.SystemAdministration {
     
     
-    public partial class CreateSection {
+    public partial class AddUserToRole {
         
         /// <summary>
-        /// baslik control.
+        /// Msg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label baslik;
+        protected global::System.Web.UI.WebControls.Label Msg;
         
         /// <summary>
-        /// Section_SqlDataSource control.
+        /// RolesListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Section_SqlDataSource;
+        protected global::System.Web.UI.WebControls.ListBox RolesListBox;
         
         /// <summary>
-        /// SectionDetailsView control.
+        /// UsersListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView SectionDetailsView;
+        protected global::System.Web.UI.WebControls.ListBox UsersListBox;
         
         /// <summary>
-        /// lnkSearch control.
+        /// AddUserButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkSearch;
-        
-        /// <summary>
-        /// SectionGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView SectionGridView;
+        protected global::System.Web.UI.WebControls.Button AddUserButton;
     }
 }

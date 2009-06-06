@@ -151,6 +151,20 @@
     <Compile Include="SectionManagement\SectionInstructorManagement.aspx.designer.cs">
       <DependentUpon>SectionInstructorManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdministration\AddUserToRole.aspx.cs">
+      <DependentUpon>AddUserToRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdministration\AddUserToRole.aspx.designer.cs">
+      <DependentUpon>AddUserToRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdministration\CreateNewUser.aspx.cs">
+      <DependentUpon>CreateNewUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdministration\CreateNewUser.aspx.designer.cs">
+      <DependentUpon>CreateNewUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdministration\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,6 +290,8 @@
     <Content Include="QuestionFiles\ApplicationSettings.png" />
     <Content Include="QuestionFiles\EditApplicationSetting.png" />
     <Content Include="Restricted\web.config" />
+    <Content Include="SystemAdministration\AddUserToRole.aspx" />
+    <Content Include="SystemAdministration\CreateNewUser.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
