@@ -14,6 +14,15 @@ namespace OLEMS.SystemAdministration {
     public partial class CreateNewUser {
         
         /// <summary>
+        /// PageHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PageHeader;
+        
+        /// <summary>
         /// CreateUserWizard1 control.
         /// </summary>
         /// <remarks>
@@ -41,6 +50,24 @@ namespace OLEMS.SystemAdministration {
         protected global::System.Web.UI.WebControls.WizardStep Wizardstep1;
         
         /// <summary>
+        /// LabelDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDetails;
+        
+        /// <summary>
+        /// LabelName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelName;
+        
+        /// <summary>
         /// firstName control.
         /// </summary>
         /// <remarks>
@@ -48,6 +75,15 @@ namespace OLEMS.SystemAdministration {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox firstName;
+        
+        /// <summary>
+        /// LabelSurname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSurname;
         
         /// <summary>
         /// lastName control.

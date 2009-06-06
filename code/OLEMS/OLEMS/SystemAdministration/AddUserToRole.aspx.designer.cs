@@ -14,6 +14,15 @@ namespace OLEMS.SystemAdministration {
     public partial class AddUserToRole {
         
         /// <summary>
+        /// PageHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PageHeader;
+        
+        /// <summary>
         /// Msg control.
         /// </summary>
         /// <remarks>
@@ -23,6 +32,15 @@ namespace OLEMS.SystemAdministration {
         protected global::System.Web.UI.WebControls.Label Msg;
         
         /// <summary>
+        /// LabelRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRoles;
+        
+        /// <summary>
         /// RolesListBox control.
         /// </summary>
         /// <remarks>
@@ -30,6 +48,15 @@ namespace OLEMS.SystemAdministration {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox RolesListBox;
+        
+        /// <summary>
+        /// LabelUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUsers;
         
         /// <summary>
         /// UsersListBox control.

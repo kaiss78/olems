@@ -298,12 +298,53 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\AddUserToRole.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\RemoveUsersFromRole.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\AddStudents.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\LocationManagement.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SectionManagement\App_LocalResources\SectionInstructorManagement.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SectionManagement\App_LocalResources\SectionManagement.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Restricted\App_LocalResources\ChangePassword.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QuestionDevelopment\App_LocalResources\QuestionManagement.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QuestionDevelopment\App_LocalResources\TopicManagement.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserManagement\App_LocalResources\EditEmailAddress.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UserManagement\App_LocalResources\ManageProfile.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
-    <Folder Include="QuestionDevelopment\App_LocalResources\" />
     <Folder Include="Reports\App_LocalResources\" />
-    <Folder Include="SectionManagement\App_LocalResources\" />
-    <Folder Include="UserManagement\App_LocalResources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
