@@ -106,10 +106,20 @@ namespace OLEMS.QuestionDevelopment
 
         protected void QuestionGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            FileUpload fUpload = (FileUpload)QuestionGridView.Rows[e.RowIndex].FindControl("imageGVFileUpload");
+            FileUpload fUpload = (FileUpload) QuestionGridView.Rows[e.RowIndex].FindControl("imageGVFileUpload");
             String txtPath = fUpload.FileName;
-            Question_SqlDataSource.UpdateParameters["questionFilePath"].DefaultValue = txtPath;
+            if (txtPath != null && txtPath.Trim().Length>0) 
+            {
+                Question_SqlDataSource.UpdateParameters["questionFilePath"].DefaultValue = txtPath;
+                Question_SqlDataSource.UpdateCommand = "UPDATE Question SET topicId=@topicId , body=@body, point=@point, questionTypeId=@questionTypeId, isActive=@isActive,questionFilePath=@questionFilePath WHERE id=@id";
+            }
+            else
+            {
+                Question_SqlDataSource.UpdateCommand ="UPDATE Question SET topicId=@topicId , body=@body, point=@point, questionTypeId=@questionTypeId, isActive=@isActive WHERE id=@id";
+            }
+            
         }
+    }
 
       
 
@@ -120,4 +130,4 @@ namespace OLEMS.QuestionDevelopment
         
 
     }
-}
+
