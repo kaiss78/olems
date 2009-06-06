@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="LocationManagement.aspx.cs"
-    Inherits="OLEMS.SystemAdministration.LocationManagement" %>
+    Inherits="OLEMS.SystemAdministration.LocationManagement" Title="<%$ Resources:PageTitle %>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
