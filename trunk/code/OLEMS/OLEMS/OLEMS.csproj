@@ -294,12 +294,15 @@
     <Content Include="SystemAdministration\CreateNewUser.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\CreateNewUser.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
     <Folder Include="QuestionDevelopment\App_LocalResources\" />
     <Folder Include="Reports\App_LocalResources\" />
     <Folder Include="SectionManagement\App_LocalResources\" />
-    <Folder Include="SystemAdministration\App_LocalResources\" />
     <Folder Include="UserManagement\App_LocalResources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
