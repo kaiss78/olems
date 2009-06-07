@@ -11,6 +11,33 @@
 namespace OLEMS.SectionManagement {
     
     
-    public partial class WebForm1 {
+    public partial class SectionInstructorManagement {
+        
+        /// <summary>
+        /// SectionInstructorSqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SectionInstructorSqlDataSource;
+        
+        /// <summary>
+        /// InstructorDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList InstructorDropDownList;
+        
+        /// <summary>
+        /// SectionInstructorGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SectionInstructorGridView;
     }
 }
