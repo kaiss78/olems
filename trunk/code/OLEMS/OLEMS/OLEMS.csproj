@@ -67,6 +67,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UILabels.resx</DependentUpon>
     </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_FR.aspx.cs">
+      <DependentUpon>AnswersetManagement_FR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_FR.aspx.designer.cs">
+      <DependentUpon>AnswersetManagement_FR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_MC.aspx.cs">
+      <DependentUpon>AnswersetManagement_MC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_MC.aspx.designer.cs">
+      <DependentUpon>AnswersetManagement_MC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_MTC.aspx.cs">
+      <DependentUpon>AnswersetManagement_MTC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_MTC.aspx.designer.cs">
+      <DependentUpon>AnswersetManagement_MTC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_TF.aspx.cs">
+      <DependentUpon>AnswersetManagement_TF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionDevelopment\AnswersetManagement_TF.aspx.designer.cs">
+      <DependentUpon>AnswersetManagement_TF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuestionDevelopment\QuestionManagement.aspx.cs">
       <DependentUpon>QuestionManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -164,6 +192,13 @@
     </Compile>
     <Compile Include="SystemAdministration\AddUserToRole.aspx.designer.cs">
       <DependentUpon>AddUserToRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdministration\AssignQuestionOwnership.aspx.cs">
+      <DependentUpon>AssignQuestionOwnership.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdministration\AssignQuestionOwnership.aspx.designer.cs">
+      <DependentUpon>AssignQuestionOwnership.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemAdministration\CreateNewUser.aspx.cs">
       <DependentUpon>CreateNewUser.aspx</DependentUpon>
@@ -348,6 +383,15 @@
     <Content Include="SectionManagement\StudentSectionManagement.aspx" />
     <Content Include="UserManagement\App_LocalResources\ManageProfile.aspx.resx">
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QuestionDevelopment\AnswersetManagement_FR.aspx" />
+    <Content Include="QuestionDevelopment\AnswersetManagement_MC.aspx" />
+    <Content Include="QuestionDevelopment\AnswersetManagement_MTC.aspx" />
+    <Content Include="QuestionDevelopment\AnswersetManagement_TF.aspx" />
+    <Content Include="SystemAdministration\App_LocalResources\AssignQuestionOwnership.aspx.resx">
+    </Content>
+    <Content Include="SystemAdministration\AssignQuestionOwnership.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
