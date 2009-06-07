@@ -20,7 +20,9 @@
             <siteMapNode url="~/SystemAdministration/LocationManagement.aspx" title="Location Management"  description="" />
             <siteMapNode url="~/SystemAdministration/AddStudents.aspx" title="Add Students"  description="" />
             <siteMapNode url="~/SystemAdministration/CreateNewUser.aspx" title="Create New User"  description="" />
+            <siteMapNode url="~/SystemAdministration/AssignQuestionOwnership.aspx" title="Assign Question Ownership"  description="" />
             <siteMapNode url="~/SystemAdministration/AddUserToRole.aspx" title="Add User To Role"  description="" />
+            <siteMapNode url="~/SystemAdministration/RemoveUsersFromRole.aspx" title="Remove Users From Role"  description="" />
         </siteMapNode>
         <siteMapNode url="~/Reports/" title="Reports"  description="">
             <siteMapNode url="~/Reports/Default.aspx" title="Reports"  description="" />
