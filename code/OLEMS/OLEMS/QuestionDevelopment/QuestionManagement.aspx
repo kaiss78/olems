@@ -133,7 +133,8 @@
                     Font-Names="Arial" Font-Size="Small" ForeColor="#333333" GridLines="None" AllowPaging="True"
                     AllowSorting="True" OnRowDeleted="QuestionGridView_RowDeleted" OnRowUpdated="QuestionGridView_RowUpdated"
                     OnRowEditing="QuestionGridView_RowEditing" OnRowDeleting="QuestionGridView_RowDeleting"
-                    OnRowUpdating="QuestionGridView_RowUpdating">
+                    OnRowUpdating="QuestionGridView_RowUpdating" 
+                    onselectedindexchanging="QuestionGridView_SelectedIndexChanging">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <EmptyDataRowStyle ForeColor="Red" />
                     <Columns>
@@ -146,8 +147,11 @@
                         <asp:CommandField ShowDeleteButton="True" ValidationGroup="GV">
                             <ControlStyle Font-Bold="True" />
                         </asp:CommandField>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id"
-                            Visible="False" />
+                        <asp:TemplateField HeaderText="id" SortExpression="id" Visible="False">
+                            <ItemTemplate>
+                                <asp:Label ID="lblQuestionID" runat="server" Visible="false" Text='<%# Bind("id") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Topic" SortExpression="topicId">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="topicDropDownList" runat="server" DataSourceID="Topic_SqlDataSource"
