@@ -119,6 +119,37 @@ namespace OLEMS.QuestionDevelopment
             }
             
         }
+
+        protected void QuestionGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+        
+            Label questionID = (Label)QuestionGridView.Rows[e.NewSelectedIndex].FindControl("lblQuestionID");
+            DropDownList questionType = (DropDownList)QuestionGridView.Rows[e.NewSelectedIndex].FindControl("qTypeDropDownList2");
+            String url = null;
+            int selectedType = questionType.SelectedIndex;
+            switch (selectedType)
+            {
+                case 0: // Free Response 
+                    url = "AnswersetManagement_FR.aspx?questionID=" + questionID.Text;
+                    break;
+                case 1: // Matching Choice
+                    url = "AnswersetManagement_MTC.aspx?questionID=" + questionID.Text;
+                    break;
+                case 2: // Multiple Choice
+                    url = "AnswersetManagement_MC.aspx?questionID=" + questionID.Text;
+                    break;
+                case 3: // True false 
+                    url = "AnswersetManagement_TF.aspx?questionID=" + questionID.Text;
+                    break;
+            }
+            OpenNewWindow(url);
+            
+        }
+        public void OpenNewWindow(string url)
+        {
+
+            ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}', '','toolbar=0,height=500,width=750,top=200,left=250,resizable=0,scrollbars=0');</script>", url));
+        }
     }
 
       
