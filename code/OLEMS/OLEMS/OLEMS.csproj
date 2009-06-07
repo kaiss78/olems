@@ -151,6 +151,13 @@
     <Compile Include="SectionManagement\SectionManagement.aspx.designer.cs">
       <DependentUpon>SectionManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SectionManagement\StudentSectionManagement.aspx.cs">
+      <DependentUpon>StudentSectionManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SectionManagement\StudentSectionManagement.aspx.designer.cs">
+      <DependentUpon>StudentSectionManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdministration\AddUserToRole.aspx.cs">
       <DependentUpon>AddUserToRole.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -338,6 +345,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SectionManagement\StudentSectionManagement.aspx" />
     <Content Include="UserManagement\App_LocalResources\ManageProfile.aspx.resx">
     </Content>
   </ItemGroup>
