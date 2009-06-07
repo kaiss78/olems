@@ -25,6 +25,14 @@
                 </asp:SqlDataSource>
             </td>
             <td>
+                <asp:SqlDataSource ID="InstructorSqlDataSource" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
+                    SelectCommand="SELECT [UserId], [UserName] FROM [vUsersNameSurname] WHERE ([RoleName] = @RoleName)">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="Instructor" Name="RoleName" 
+                            Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </td>
         </tr>
         <tr>
@@ -63,11 +71,17 @@
                             SortExpression="name" />
                         <asp:TemplateField HeaderText="Instructor Name" SortExpression="instructorId">
                             <EditItemTemplate>
-                                <asp:DropDownList ID="SectionInstructorDropDownList2" runat="server">
+                                <asp:DropDownList ID="SectionInstructorDropDownList2" runat="server" 
+                                    DataSourceID="InstructorSqlDataSource" DataTextField="UserName" 
+                                    DataValueField="UserId" SelectedValue='<%# Bind("instructorId") %>'
+                                    AppendDataBoundItems="true">
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:DropDownList ID="SectionInstructorDropDownList" runat="server">
+                                <asp:DropDownList ID="SectionInstructorDropDownList" runat="server" 
+                                    DataSourceID="InstructorSqlDataSource" DataTextField="UserName" 
+                                    DataValueField="UserId" SelectedValue='<%# Bind("instructorId") %>'
+                                    AppendDataBoundItems="true">
                                 </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>

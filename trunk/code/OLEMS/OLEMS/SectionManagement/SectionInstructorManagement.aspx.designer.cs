@@ -23,6 +23,15 @@ namespace OLEMS.SectionManagement {
         protected global::System.Web.UI.WebControls.SqlDataSource SectionInstructorSqlDataSource;
         
         /// <summary>
+        /// InstructorSqlDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource InstructorSqlDataSource;
+        
+        /// <summary>
         /// InstructorDropDownList control.
         /// </summary>
         /// <remarks>
