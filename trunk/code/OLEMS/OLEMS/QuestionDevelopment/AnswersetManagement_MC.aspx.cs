@@ -17,7 +17,12 @@ namespace OLEMS.QuestionDevelopment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            String questionID = Request.QueryString["questionID"].ToString();
+            ChoicesSqlDataSource.SelectCommand = "SELECT [id], [questionId], [body], [truthValue] FROM [Choice] where [questionId]='"+ questionID+ "'";
+            ChoicesSqlDataSource.UpdateParameters["id"].DefaultValue = questionID;
+            ChoicesSqlDataSource.DeleteParameters["id"].DefaultValue = questionID;
+            ChoicesSqlDataSource.InsertParameters["questionId"].DefaultValue = questionID;
+            QuestionSqlDataSource.SelectCommand = "SELECT [body] FROM [Question] where [id]='" + questionID + "'";
         }
         protected void ShowMessageBox(string message)
         {
@@ -36,11 +41,6 @@ namespace OLEMS.QuestionDevelopment
             }
 
         }
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            //int questionID = Convert.ToInt32(Request.QueryString["questionID"].ToString());
-            //int questionType = Convert.ToInt32(Request.QueryString["questionType"].ToString());
-            ShowMessageBox("gelen q ID=" + Request.QueryString["questionID"].ToString()) ;
-        }
     }
+    
 }

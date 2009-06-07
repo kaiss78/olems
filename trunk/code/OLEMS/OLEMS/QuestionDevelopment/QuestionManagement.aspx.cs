@@ -148,7 +148,7 @@ namespace OLEMS.QuestionDevelopment
         public void OpenNewWindow(string url)
         {
 
-            ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}', '','toolbar=0,height=500,width=750,top=200,left=250,resizable=0,scrollbars=0');</script>", url));
+            ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}', '','toolbar=0,height=500,width=750,top=100,left=250,resizable=0,scrollbars=1');</script>", url));
         }
     }
 
