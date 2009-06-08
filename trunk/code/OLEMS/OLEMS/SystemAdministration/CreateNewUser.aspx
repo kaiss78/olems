@@ -9,8 +9,7 @@
     </h3>
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" BackColor="#FFFBD6" BorderColor="#FFDFAD"
         BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em"
-        OnNextButtonClick="CreateUserWizard1_NextButtonClick" ContinueDestinationPageUrl="~/SystemAdministration/AddUserToRole.aspx"
-        OnFinishButtonClick="CreateUserWizard1_FinishButtonClick">
+        ContinueDestinationPageUrl="~/SystemAdministration/AddUserToRole.aspx" OnFinishButtonClick="CreateUserWizard1_FinishButtonClick">
         <SideBarStyle BackColor="#990000" Font-Size="0.9em" VerticalAlign="Top" />
         <SideBarButtonStyle ForeColor="White" />
         <ContinueButtonStyle BackColor="White" BorderColor="#CC9966" BorderStyle="Solid"
