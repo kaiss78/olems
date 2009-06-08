@@ -12,9 +12,6 @@ namespace OLEMS.SectionManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string[] instructorList = Roles.GetUsersInRole("Instructor");
-            InstructorDropDownList.DataSource = instructorList;
-            InstructorDropDownList.DataBind();
         }
 
         protected void ApplyFilter()
