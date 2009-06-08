@@ -22,8 +22,12 @@ namespace OLEMS.SystemAdministration
         {
             users = Membership.GetAllUsers();
 
-            if (!IsPostBack)
+            if (IsPostBack)
             {
+            }
+            else
+            {
+                Msg.Text = "";
                 // Bind users to ListBox.
                 UsersListBox.DataSource = users;
                 UsersListBox.DataBind();
@@ -49,18 +53,27 @@ namespace OLEMS.SystemAdministration
         {
             if (UsersListBox.SelectedItem == null)
             {
+                Msg.Text = "Please select a user.";
                 return;
             }
             else if (u.IsApproved == true)
             {
                 u.IsApproved = false;
                 Membership.UpdateUser(u);
+                Msg.Text = "User deactivated.";
+
             }
             else
             {
+                Msg.Text = "User is already deactivated.";
                 return;
             }
 
+        }
+
+        protected void UsersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Msg.Text = "";
         }
 
 
