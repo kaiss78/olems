@@ -17,7 +17,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SectionSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
-                    SelectCommand="SELECT [id], [name] FROM [Section] UNION SELECT NULL as id, '' as name">
+                    SelectCommand="SELECT [id], [name] FROM [Section] UNION SELECT NULL as id, 'Not Assigned' as name">
                 </asp:SqlDataSource>
             </td>
         </tr>
