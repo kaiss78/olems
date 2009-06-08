@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 namespace OLEMS.SystemAdministration
 {
-    public partial class RemoveUsersFromRole : System.Web.UI.Page
+    public partial class RemoveUsersFromRole : COLEMSPage
     {
         string[] rolesArray;
         string[] users;
