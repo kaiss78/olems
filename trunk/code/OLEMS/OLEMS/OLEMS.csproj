@@ -207,6 +207,13 @@
     <Compile Include="SystemAdministration\CreateNewUser.aspx.designer.cs">
       <DependentUpon>CreateNewUser.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdministration\DeactivateUser.aspx.cs">
+      <DependentUpon>DeactivateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdministration\DeactivateUser.aspx.designer.cs">
+      <DependentUpon>DeactivateUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdministration\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -392,6 +399,11 @@
     <Content Include="SystemAdministration\App_LocalResources\AssignQuestionOwnership.aspx.resx">
     </Content>
     <Content Include="SystemAdministration\AssignQuestionOwnership.aspx" />
+    <Content Include="SystemAdministration\DeactivateUser.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SystemAdministration\App_LocalResources\DeactivateUser.aspx.resx">
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

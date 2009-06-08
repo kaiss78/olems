@@ -7,23 +7,23 @@
     <h3>
         <asp:Label ID="PageHeader" runat="server" Text="<%$ Resources:PageHeader %>"></asp:Label></h3>
     <asp:Label ID="Msg" ForeColor="maroon" runat="server" /><br />
-    <table cellpadding="3" border="0">
-        <tr>
-            <td valign="top">
+    <table width="100%" cellpadding="3" border="0">
+        <tr valign="top">
+            <td>
                 <asp:Label ID="LabelRoles" runat="server" Text="<%$ Resources:LabelRoles %>" AssociatedControlID="RolesListBox"></asp:Label>
             </td>
-            <td valign="top">
+            <td>
                 <asp:ListBox ID="RolesListBox" AutoPostBack="true" OnSelectedIndexChanged="RolesListBox_OnSelectedIndexChanged"
                     runat="server" Rows="8" />
             </td>
-            <td valign="top">
+            <td>
                 <asp:Label ID="LabelUsers" runat="server" Text="<%$ Resources:LabelUsers %>" AssociatedControlID="UsersListBox"></asp:Label>
             </td>
-            <td valign="top">
+            <td>
                 <asp:ListBox ID="UsersListBox" Rows="8" SelectionMode="Multiple" runat="server" />
             </td>
-            <td valign="top">
-                <asp:Button Text="Remove User(s) from Role" ID="RemoveUsersButton" runat="server"
+            <td>
+                <asp:Button Text="<%$ Resources:RemoveUsersButton %>" ID="RemoveUsersButton" runat="server"
                     OnClick="RemoveUsers_OnClick" />
             </td>
         </tr>

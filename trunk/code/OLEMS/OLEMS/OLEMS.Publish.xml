@@ -2,51 +2,53 @@
   <publishTarget publishUrl="http://localhost/OLEMSC/">
     <file relUrl="QuestionDevelopment/Default.aspx" publishTime="06/01/2009 12:27:58" />
     <file relUrl="OLEMS.Master" publishTime="06/03/2009 14:26:27" />
-    <file relUrl="Default.aspx" publishTime="06/01/2009 12:27:59" />
     <file relUrl="UserManagement/EditEmailAddress.aspx" publishTime="06/02/2009 12:10:02" />
     <file relUrl="QuestionDevelopment/TopicManagement.aspx" publishTime="06/02/2009 11:16:27" />
+    <file relUrl="bin/OLEMS.dll" publishTime="06/08/2009 16:09:11" />
     <file relUrl="App_GlobalResources/UILabels.resx" publishTime="06/01/2009 12:27:55" />
     <file relUrl="UserManagement/Default.aspx" publishTime="06/02/2009 11:45:11" />
-    <file relUrl="SystemAdministration/App_LocalResources/AddUserToRole.aspx.resx" publishTime="06/07/2009 01:52:02" />
+    <file relUrl="SystemAdministration/App_LocalResources/AddUserToRole.aspx.resx" publishTime="06/08/2009 16:06:16" />
     <file relUrl="QuestionFiles/ApplicationSettings.png" publishTime="06/06/2009 13:23:56" />
     <file relUrl="Reports/web.config" publishTime="06/03/2009 18:28:18" />
-    <file relUrl="SystemAdministration/AddUserToRole.aspx" publishTime="06/07/2009 02:04:22" />
-    <file relUrl="SystemAdministration/RemoveUsersFromRole.aspx" publishTime="06/07/2009 02:04:21" />
-    <file relUrl="Springboard.aspx" publishTime="06/02/2009 12:02:41" />
+    <file relUrl="QuestionDevelopment/AnswersetManagement_MC.aspx" publishTime="06/07/2009 20:56:07" />
     <file relUrl="SystemAdministration/App_LocalResources/LocationManagement.aspx.resx" publishTime="06/07/2009 02:12:32" />
-    <file relUrl="QuestionDevelopment/App_LocalResources/TopicManagement.aspx.resx" publishTime="06/07/2009 02:22:48" />
+    <file relUrl="bin/.svn/text-base/OLEMS.dll.svn-base" publishTime="06/08/2009 01:48:14" />
     <file relUrl="SystemAdministration/App_LocalResources/AssignQuestionOwnership.aspx.resx" publishTime="06/08/2009 01:20:00" />
     <file relUrl="Restricted/App_LocalResources/ChangePassword.aspx.resx" publishTime="06/07/2009 02:22:04" />
     <file relUrl="ExamManagement/web.config" publishTime="06/03/2009 18:27:59" />
-    <file relUrl="SectionManagement/SectionManagement.aspx" publishTime="06/07/2009 20:56:07" />
+    <file relUrl="SystemAdministration/CreateNewUser.aspx" publishTime="06/08/2009 11:48:48" />
+    <file relUrl="SystemAdministration/web.config" publishTime="06/03/2009 18:28:45" />
     <file relUrl="UserManagement/ManageProfile.aspx" publishTime="06/01/2009 12:27:58" />
     <file relUrl="QuestionDevelopment/AnswersetManagement_MTC.aspx" publishTime="06/07/2009 15:09:05" />
-    <file relUrl="SectionManagement/StudentSectionManagement.aspx" publishTime="06/08/2009 01:36:26" />
-    <file relUrl="Web.sitemap" publishTime="06/08/2009 01:46:26" />
+    <file relUrl="SectionManagement/StudentSectionManagement.aspx" publishTime="06/08/2009 11:25:38" />
+    <file relUrl="Web.sitemap" publishTime="06/08/2009 13:06:44" />
     <file relUrl="SystemAdministration/App_LocalResources/AddStudents.aspx.resx" publishTime="06/07/2009 02:02:15" />
+    <file relUrl="SystemAdministration/App_LocalResources/RemoveUsersFromRole.aspx.resx" publishTime="06/08/2009 16:11:20" />
     <file relUrl="QuestionDevelopment/AnswersetManagement_FR.aspx" publishTime="06/07/2009 15:09:05" />
     <file relUrl="SystemAdministration/LocationManagement.aspx" publishTime="06/07/2009 02:12:35" />
-    <file relUrl="bin/OLEMS.pdb" publishTime="06/08/2009 01:46:27" />
+    <file relUrl="bin/OLEMS.pdb" publishTime="06/08/2009 16:09:10" />
     <file relUrl="SectionManagement/Default.aspx" publishTime="06/01/2009 12:27:56" />
     <file relUrl="QuestionFiles/AdminTool.png" publishTime="06/06/2009 13:24:04" />
-    <file relUrl="QuestionDevelopment/AnswersetManagement_MC.aspx" publishTime="06/07/2009 20:56:07" />
     <file relUrl="Web.config" publishTime="06/01/2009 23:19:52" />
     <file relUrl="ExamManagement/Default.aspx" publishTime="06/01/2009 12:27:54" />
+    <file relUrl="UserManagement/web.config" publishTime="06/03/2009 18:28:53" />
     <file relUrl="QuestionDevelopment/App_LocalResources/QuestionManagement.aspx.resx" publishTime="06/07/2009 02:22:35" />
-    <file relUrl="SystemAdministration/web.config" publishTime="06/03/2009 18:28:45" />
-    <file relUrl="SystemAdministration/CreateNewUser.aspx" publishTime="06/07/2009 02:07:43" />
+    <file relUrl="QuestionDevelopment/App_LocalResources/TopicManagement.aspx.resx" publishTime="06/07/2009 02:22:48" />
+    <file relUrl="Springboard.aspx" publishTime="06/02/2009 12:02:41" />
+    <file relUrl="SystemAdministration/App_LocalResources/DeactivateUser.aspx.resx" publishTime="06/08/2009 15:26:20" />
+    <file relUrl="SystemAdministration/DeactivateUser.aspx" publishTime="06/08/2009 15:59:21" />
     <file relUrl="Login.aspx" publishTime="06/02/2009 12:11:13" />
-    <file relUrl="SystemAdministration/AssignQuestionOwnership.aspx" publishTime="06/08/2009 01:35:04" />
-    <file relUrl="bin/.svn/entries" publishTime="06/08/2009 01:38:02" />
+    <file relUrl="SystemAdministration/AssignQuestionOwnership.aspx" publishTime="06/08/2009 16:03:55" />
+    <file relUrl="bin/.svn/entries" publishTime="06/08/2009 15:34:03" />
     <file relUrl="Restricted/ChangePassword.aspx" publishTime="06/02/2009 17:37:27" />
     <file relUrl="bin/.svn/prop-base/OLEMS.pdb.svn-base" publishTime="06/06/2009 09:56:20" />
-    <file relUrl="OLEMS.css" publishTime="06/01/2009 12:27:59" />
+    <file relUrl="App_GlobalResources/Errors.resx" publishTime="06/01/2009 12:27:55" />
     <file relUrl="bin/.svn/prop-base/OLEMS.dll.svn-base" publishTime="06/06/2009 09:56:20" />
     <file relUrl="Restricted/web.config" publishTime="06/03/2009 18:28:28" />
     <file relUrl="QuestionFiles/EditApplicationSetting.png" publishTime="06/06/2009 13:23:49" />
     <file relUrl="SectionManagement/App_LocalResources/SectionManagement.aspx.resx" publishTime="06/07/2009 02:21:44" />
-    <file relUrl="bin/.svn/text-base/OLEMS.pdb.svn-base" publishTime="06/08/2009 01:37:48" />
-    <file relUrl="bin/OLEMS.dll" publishTime="06/08/2009 01:46:27" />
+    <file relUrl="bin/.svn/text-base/OLEMS.pdb.svn-base" publishTime="06/08/2009 01:48:18" />
+    <file relUrl="SystemAdministration/AddUserToRole.aspx" publishTime="06/08/2009 16:06:39" />
     <file relUrl="SystemAdministration/App_LocalResources/CreateNewUser.aspx.resx" publishTime="06/07/2009 02:06:03" />
     <file relUrl="QuestionDevelopment/web.config" publishTime="06/03/2009 18:28:09" />
     <file relUrl="images/MSExcel.jpg" publishTime="06/01/2009 20:13:29" />
@@ -54,16 +56,16 @@
     <file relUrl="SystemAdministration/Default.aspx" publishTime="06/02/2009 11:45:54" />
     <file relUrl="UserManagement/App_LocalResources/EditEmailAddress.aspx.resx" publishTime="06/07/2009 02:23:09" />
     <file relUrl="SectionManagement/App_LocalResources/SectionInstructorManagement.aspx.resx" publishTime="06/07/2009 02:21:29" />
-    <file relUrl="SectionManagement/SectionInstructorManagement.aspx" publishTime="06/08/2009 01:36:26" />
-    <file relUrl="UserManagement/web.config" publishTime="06/03/2009 18:28:53" />
-    <file relUrl="bin/.svn/all-wcprops" publishTime="06/08/2009 01:38:02" />
-    <file relUrl="bin/.svn/text-base/OLEMS.dll.svn-base" publishTime="06/08/2009 01:37:38" />
+    <file relUrl="SectionManagement/SectionInstructorManagement.aspx" publishTime="06/08/2009 11:27:18" />
+    <file relUrl="SystemAdministration/RemoveUsersFromRole.aspx" publishTime="06/08/2009 16:11:20" />
+    <file relUrl="bin/.svn/all-wcprops" publishTime="06/08/2009 09:05:50" />
+    <file relUrl="OLEMS.css" publishTime="06/01/2009 12:27:59" />
     <file relUrl="QuestionDevelopment/AnswersetManagement_TF.aspx" publishTime="06/07/2009 15:09:05" />
     <file relUrl="QuestionDevelopment/QuestionManagement.aspx" publishTime="06/07/2009 15:09:05" />
     <file relUrl="Reports/Default.aspx" publishTime="06/01/2009 12:27:55" />
-    <file relUrl="SystemAdministration/App_LocalResources/RemoveUsersFromRole.aspx.resx" publishTime="06/07/2009 01:58:42" />
+    <file relUrl="SectionManagement/SectionManagement.aspx" publishTime="06/08/2009 10:37:55" />
     <file relUrl="SystemAdministration/AddStudents.aspx" publishTime="06/07/2009 02:05:26" />
     <file relUrl="UserManagement/App_LocalResources/ManageProfile.aspx.resx" publishTime="06/07/2009 02:23:23" />
-    <file relUrl="App_GlobalResources/Errors.resx" publishTime="06/01/2009 12:27:55" />
+    <file relUrl="Default.aspx" publishTime="06/01/2009 12:27:59" />
   </publishTarget>
 </publishData>
