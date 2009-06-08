@@ -7,15 +7,14 @@
     <h3>
         <asp:Label ID="PageHeader" runat="server" Text="<%$ Resources:PageHeader %>" /></h3>
     <asp:Label ID="Msg" ForeColor="maroon" runat="server" /><br />
-    <table border="0" cellspacing="4">
+    <table width="100%" border="0" cellspacing="4">
         <tr>
             <td valign="top">
                 <asp:ListBox ID="UsersListBox" DataTextField="Username" Rows="8" AutoPostBack="true"
-                    runat="server" 
-                    onselectedindexchanged="UsersListBox_SelectedIndexChanged" />
+                    runat="server" OnSelectedIndexChanged="UsersListBox_SelectedIndexChanged" />
             </td>
             <td valign="top">
-                <table border="0" cellpadding="2" cellspacing="0">
+                <table width="100%" border="0" cellpadding="2" cellspacing="0">
                     <tr>
                         <td>
                             <asp:Label runat="server" ID="Email" Text="<%$ Resources:Email %>" />

@@ -129,4 +129,7 @@
   <data name="PageTitle" xml:space="preserve">
     <value>Remove Users from Role</value>
   </data>
+  <data name="RemoveUsersButton" xml:space="preserve">
+    <value>Remove User(s) from Role</value>
+  </data>
 </root>
