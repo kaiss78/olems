@@ -11,7 +11,8 @@
         <tr>
             <td valign="top">
                 <asp:ListBox ID="UsersListBox" DataTextField="Username" Rows="8" AutoPostBack="true"
-                    runat="server" />
+                    runat="server" 
+                    onselectedindexchanged="UsersListBox_SelectedIndexChanged" />
             </td>
             <td valign="top">
                 <table border="0" cellpadding="2" cellspacing="0">

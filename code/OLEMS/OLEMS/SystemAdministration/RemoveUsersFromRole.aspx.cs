@@ -18,7 +18,7 @@ namespace OLEMS.SystemAdministration
         string[] rolesArray;
         string[] users;
 
-        protected void Page_Load()
+        protected void Page_Load(object sender, EventArgs e)
         {
             Msg.Text = "";
 
