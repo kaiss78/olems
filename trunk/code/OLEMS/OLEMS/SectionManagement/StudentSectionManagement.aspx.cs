@@ -17,12 +17,12 @@ namespace OLEMS.SectionManagement
         protected void StudentSectionRowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
 
-//            ApplyFilter();
-//            if (e.Exception == null)
+            //            ApplyFilter();
+            //            if (e.Exception == null)
             {
                 ShowMessageBox("Section successfully updated");
             }
-        
+
         }
 
         protected void ShowMessageBox(string message)
