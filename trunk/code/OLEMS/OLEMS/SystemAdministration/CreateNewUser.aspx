@@ -28,7 +28,7 @@
                 <asp:Label BackColor="#FFCC66" BorderColor="#FFFBD6" BorderStyle="Solid" BorderWidth="2px"
                     Font-Bold="True" Font-Size="0.9em" ForeColor="#333333" HorizontalAlign="Center"
                     ID="LabelDetails" runat="server" Text="<%$ Resources:LabelDetails %>"></asp:Label><br />
-                <table width="100%">
+                <table>
                     <tr>
                         <td>
                             <asp:Label ID="LabelName" runat="server" Text="<%$ Resources:LabelName %>" AssociatedControlID="firstName"></asp:Label>
