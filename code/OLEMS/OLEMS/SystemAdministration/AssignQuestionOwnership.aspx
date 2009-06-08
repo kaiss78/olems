@@ -22,7 +22,7 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <br />
-    <table width="100%" cellpadding="3" border="0">
+    <table cellpadding="3" border="0">
         <tr valign="top">
             <td>
                 <asp:Label ID="LabelAssignFrom" runat="server" Text="<%$ Resources:AssignFrom %>"

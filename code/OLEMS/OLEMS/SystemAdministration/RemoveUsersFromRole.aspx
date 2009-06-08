@@ -7,7 +7,7 @@
     <h3>
         <asp:Label ID="PageHeader" runat="server" Text="<%$ Resources:PageHeader %>"></asp:Label></h3>
     <asp:Label ID="Msg" ForeColor="maroon" runat="server" /><br />
-    <table width="100%" cellpadding="3" border="0">
+    <table cellpadding="3" border="0">
         <tr valign="top">
             <td>
                 <asp:Label ID="LabelRoles" runat="server" Text="<%$ Resources:LabelRoles %>" AssociatedControlID="RolesListBox"></asp:Label>
