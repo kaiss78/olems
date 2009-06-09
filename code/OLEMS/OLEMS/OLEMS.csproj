@@ -102,6 +102,13 @@
     <Compile Include="QuestionDevelopment\QuestionManagement.aspx.designer.cs">
       <DependentUpon>QuestionManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\GenerateStudentListReport.aspx.cs">
+      <DependentUpon>GenerateStudentListReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\GenerateStudentListReport.aspx.designer.cs">
+      <DependentUpon>GenerateStudentListReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Restricted\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -402,6 +409,7 @@
     <Content Include="SystemAdministration\DeactivateUser.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\GenerateStudentListReport.aspx" />
     <Content Include="SystemAdministration\App_LocalResources\DeactivateUser.aspx.resx">
     </Content>
   </ItemGroup>
