@@ -67,6 +67,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UILabels.resx</DependentUpon>
     </Compile>
+    <Compile Include="Examination\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examination\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuestionDevelopment\AnswersetManagement_FR.aspx.cs">
       <DependentUpon>AnswersetManagement_FR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -422,7 +429,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Examination\Default.aspx" />
     <Content Include="Reports\App_LocalResources\StudentList.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Examination\App_LocalResources\Default.aspx.resx">
     </Content>
   </ItemGroup>
   <ItemGroup>
