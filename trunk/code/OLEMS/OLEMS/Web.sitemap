@@ -27,6 +27,7 @@
         </siteMapNode>
         <siteMapNode url="~/Reports/" title="Reports"  description="">
             <siteMapNode url="~/Reports/Default.aspx" title="Reports"  description="" />
+            <siteMapNode url="~/Reports/GenerateStudentListReport.aspx" title="Generate Student List Report"  description="" />
         </siteMapNode>
         <siteMapNode url="~/ExamManagement/" title="Exam Management"  description="">
             <siteMapNode url="~/ExamManagement/Default.aspx" title="Exam Management"  description="" />
