@@ -8,7 +8,8 @@ namespace OLEMS
         {
             if (Roles.IsUserInRole("Student"))
             {
-                Response.Redirect("~/ExamManagement/", true);
+                Session["StudentGUID"] = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+                Response.Redirect("~/Examination/", true);
             }
             else if (Roles.IsUserInRole("Exam Creator"))
             {

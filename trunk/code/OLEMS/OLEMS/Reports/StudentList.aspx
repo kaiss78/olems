@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>
-        <asp:Label ID="PageHeader" runat="server" Text="<%$ Resources:PageHeader %>"></asp:Label>
+        <asp:Label ID="PageHeader" runat="server" Text="<%$ Resources:PageHeader %>" />
     </h3>
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
