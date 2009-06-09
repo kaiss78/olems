@@ -29,7 +29,7 @@ namespace OLEMS.Examination
             else
             {
                 Session["StudentExaminationGUID"] = new Guid(GridView1.SelectedDataKey.Value.ToString());
-                Response.Redirect("~/Examination/", true);
+                Response.Redirect("~/Examination/Examination.aspx", true);
 
             }
         }

@@ -74,6 +74,13 @@
     <Compile Include="Examination\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Examination\Examination.aspx.cs">
+      <DependentUpon>Examination.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examination\Examination.aspx.designer.cs">
+      <DependentUpon>Examination.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuestionDevelopment\AnswersetManagement_FR.aspx.cs">
       <DependentUpon>AnswersetManagement_FR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -436,6 +443,7 @@
   <ItemGroup>
     <Content Include="Examination\App_LocalResources\Default.aspx.resx">
     </Content>
+    <Content Include="Examination\Examination.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
