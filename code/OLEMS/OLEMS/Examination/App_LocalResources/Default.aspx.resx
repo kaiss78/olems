@@ -129,4 +129,10 @@
   <data name="PageTitle" xml:space="preserve">
     <value>Student's Main Page</value>
   </data>
+  <data name="AvailableAndCompletedExams" xml:space="preserve">
+    <value>Available and Completed Exams</value>
+  </data>
+  <data name="UpcomingExams" xml:space="preserve">
+    <value>Upcoming Exams</value>
+  </data>
 </root>

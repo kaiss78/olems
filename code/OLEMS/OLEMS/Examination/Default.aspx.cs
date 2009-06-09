@@ -19,5 +19,34 @@ namespace OLEMS.Examination
         {
 
         }
+
+        protected void btnTakeExam_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                Session["StudentExaminationGUID"] = new Guid(GridView1.SelectedDataKey.Value.ToString());
+                Response.Redirect("~/Examination/", true);
+
+            }
+        }
+
+        protected void btnDisplayExamResult_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                Session["StudentExaminationGUID"] = new Guid(GridView1.SelectedDataKey.Value.ToString());
+                Response.Redirect("~/Examination/", true);
+
+            }
+
+        }
     }
 }
