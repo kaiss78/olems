@@ -2,25 +2,20 @@
     Inherits="OLEMS.Examination.Examination" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table cellpadding="0" cellspacing="1" class="style1">
+    <table cellpadding="0" cellspacing="1" width="100%">
         <tr>
-            <td rowspan="4">
+            <td rowspan="5" valign="top">
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1"
-                    DataTextField="questionOrder" DataValueField="questionId">
+                    DataTextField="questionOrder" DataValueField="questionId" 
+                    OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" 
+                    ondatabound="RadioButtonList1_DataBound">
                 </asp:RadioButtonList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
-                    SelectCommand="SELECT [questionOrder], [questionId] FROM [StudentExaminationQuestions] WHERE ([studentExaminationId] = @studentExaminationId) ORDER BY [questionOrder]">
+                    SelectCommand="selListOfQuestionsInExamForStudent" SelectCommandType="StoredProcedure">
                     <SelectParameters>
-                        <asp:SessionParameter Name="studentExaminationId" SessionField="StudentExaminationGUID"
-                            Type="Object" />
+                        <asp:SessionParameter Name="studentExaminationId" SessionField="StudentExaminationGUID" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </td>
@@ -72,9 +67,29 @@
             </td>
         </tr>
         <tr>
+            <td colspan="2">
+                <asp:MultiView ID="MultiView1" runat="server">
+                    <asp:View ID="FreeResponse" runat="server">
+                        FreeResponse
+                    </asp:View>
+                    <asp:View ID="Matching" runat="server">
+                        Matching
+                    </asp:View>
+                    <asp:View ID="TrueFalse" runat="server">
+                        TrueFalse
+                    </asp:View>
+                    <asp:View ID="MultipleChoice" runat="server">
+                        MultipleChoice
+                    </asp:View>
+                </asp:MultiView>
+            </td>
+        </tr>
+        <tr>
             <td>
+                &nbsp;
             </td>
             <td>
+                &nbsp;
             </td>
         </tr>
     </table>

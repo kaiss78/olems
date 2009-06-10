@@ -193,6 +193,13 @@
     <Compile Include="SectionManagement\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SectionManagement\ScheduleExamForSection.aspx.cs">
+      <DependentUpon>ScheduleExamForSection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SectionManagement\ScheduleExamForSection.aspx.designer.cs">
+      <DependentUpon>ScheduleExamForSection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SectionManagement\SectionInstructorManagement.aspx.cs">
       <DependentUpon>SectionInstructorManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,6 +451,7 @@
     <Content Include="Examination\App_LocalResources\Default.aspx.resx">
     </Content>
     <Content Include="Examination\Examination.aspx" />
+    <Content Include="SectionManagement\ScheduleExamForSection.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
