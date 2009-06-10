@@ -333,30 +333,49 @@ namespace OLEMS.Examination
 
         protected void ButtonMatch_Click(object sender, EventArgs e)
         {
-            ListItem li = new ListItem(ListBoxMatchingBody.SelectedItem.Text.ToString() + ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"] + ListBoxMatchingTruthValue.SelectedItem.Text.ToString(), ListBoxMatchingBody.SelectedItem.Value.ToString());
-            ListBoxMatchingResponse.Items.Add(li);
-            ListBoxMatchingBody.Items.RemoveAt(ListBoxMatchingBody.SelectedIndex);
-            ListBoxMatchingTruthValue.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
-
+            if (ListBoxMatchingBody.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                if (ListBoxMatchingTruthValue.SelectedIndex == -1)
+                {
+                    return;
+                }
+                else
+                {
+                    ListItem li = new ListItem(ListBoxMatchingBody.SelectedItem.Text.ToString() + ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"] + ListBoxMatchingTruthValue.SelectedItem.Text.ToString(), ListBoxMatchingBody.SelectedItem.Value.ToString());
+                    ListBoxMatchingResponse.Items.Add(li);
+                    ListBoxMatchingBody.Items.RemoveAt(ListBoxMatchingBody.SelectedIndex);
+                    ListBoxMatchingTruthValue.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+                }
+            }
         }
 
         protected void ButtonUnmatch_Click(object sender, EventArgs e)
         {
-            int intWhereToSeparate;
-            string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
-            string strToSeparate = ListBoxMatchingResponse.SelectedItem.Text.ToString();
-            intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
-            string strBody = strToSeparate.Substring(0, intWhereToSeparate + 1);
-            string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
+            if (ListBoxMatchingResponse.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                int intWhereToSeparate;
+                string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
+                string strToSeparate = ListBoxMatchingResponse.SelectedItem.Text.ToString();
+                intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
+                string strBody = strToSeparate.Substring(0, intWhereToSeparate + 1);
+                string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
 
-            ListItem liBody = new ListItem(strBody, ListBoxMatchingResponse.SelectedValue.ToString());
-            ListBoxMatchingBody.Items.Add(liBody);
+                ListItem liBody = new ListItem(strBody, ListBoxMatchingResponse.SelectedValue.ToString());
+                ListBoxMatchingBody.Items.Add(liBody);
 
-            ListItem liTruthValue = new ListItem(strTruthValue, strTruthValue);
-            ListBoxMatchingTruthValue.Items.Add(liTruthValue);
+                ListItem liTruthValue = new ListItem(strTruthValue, strTruthValue);
+                ListBoxMatchingTruthValue.Items.Add(liTruthValue);
 
-            ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
-
+                ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+            }
         }
     }
 }
