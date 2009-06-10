@@ -49,6 +49,14 @@
         </tr>
         <tr>
             <td>
+                <asp:LinkButton ID="lnkSearch" Font-Bold="true" runat="server" CausesValidation="false"
+                    Font-Names="Arial" Font-Size="Small" ForeColor="Black" OnClick="lnkSearch_Click"
+                    ToolTip="Type a keyword in body or select topic/status and press this button for search">Search Question(s)
+                </asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <asp:DetailsView ID="QuestionDetailsView" runat="server" CellPadding="4" ForeColor="#333333"
                     GridLines="None" Height="50px" Width="452px" DataSourceID="Question_SqlDataSource"
                     DataKeyNames="id" DefaultMode="Insert" AutoGenerateInsertButton="True" AutoGenerateRows="False"
@@ -99,7 +107,11 @@
                                 </asp:DropDownList>
                             </InsertItemTemplate>
                         </asp:TemplateField>
-                        <asp:CheckBoxField DataField="isActive" HeaderText="Status" SortExpression="isActive" />
+                        <asp:TemplateField HeaderText="Status" SortExpression="isActive">                          
+                            <InsertItemTemplate>
+                                <asp:CheckBox ID="chkStatus" runat="server" Checked='<%# Bind("isActive") %>' />
+                            </InsertItemTemplate>                           
+                        </asp:TemplateField>
                         <asp:BoundField DataField="createdBy" HeaderText="createdBy" SortExpression="createdBy"
                             Visible="False" />
                         <asp:BoundField DataField="createdAt" HeaderText="createdAt" SortExpression="createdAt"
@@ -119,6 +131,13 @@
                 </asp:DetailsView>
             </td>
         </tr>
+        <tr>     
+            <td>
+               <%--check box----------------------------------------------------------------------------------------------%>
+                <asp:CheckBox ID="SearchAllCheckBox" runat="server" Font-Names="Arial" Font-Size="Small"
+                    Text="Search in All Questions" />
+            </td>
+        </tr>
         <tr>
             <td>
                 <asp:Label ID="LblError" runat="server" Font-Bold="True" Font-Names="Arial" Font-Size="Small"
@@ -131,7 +150,8 @@
                 <asp:GridView ID="QuestionGridView" runat="server" AutoGenerateColumns="False" CellPadding="4"
                     DataKeyNames="id" DataSourceID="Question_SqlDataSource" EmptyDataText="No records found!"
                     Font-Names="Arial" Font-Size="Small" ForeColor="#333333" GridLines="None" AllowPaging="True"
-                    AllowSorting="True" OnRowDeleted="QuestionGridView_RowDeleted" OnRowUpdated="QuestionGridView_RowUpdated"
+                    AllowSorting="True" OnRowDeleted="QuestionGridView_RowDeleted" 
+                    OnRowUpdated="QuestionGridView_RowUpdated"
                     OnRowEditing="QuestionGridView_RowEditing" OnRowDeleting="QuestionGridView_RowDeleting"
                     OnRowUpdating="QuestionGridView_RowUpdating" 
                     onselectedindexchanging="QuestionGridView_SelectedIndexChanging">
@@ -168,7 +188,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Body" SortExpression="body">
                             <EditItemTemplate>
-                                <asp:TextBox ID="txtBody" Width="300px" TextMode="MultiLine" runat="server" Text='<%# Bind("body") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtBody" Width="300px"  Font-Names ="Arial" Font-Size ="Small" TextMode="MultiLine" runat="server" Text='<%# Bind("body") %>'></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidatorGVBody" ValidationGroup="GV"
                                     runat="server" ErrorMessage="Please enter body" ControlToValidate="txtBody" Font-Names="Arial"
                                     Font-Size="Small">
@@ -177,6 +197,7 @@
                             <ItemTemplate>
                                 <asp:Label ID="lblBody" runat="server" Width="300px" Text='<%# Bind("body") %>'></asp:Label>
                             </ItemTemplate>
+                            <ItemStyle Font-Names="Arial" Font-Size="Small" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Point" SortExpression="point">
                             <EditItemTemplate>
@@ -235,6 +256,7 @@
                     <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
                     <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <EditRowStyle Font-Names="Arial" Font-Size="Small" />
                     <AlternatingRowStyle BackColor="White" />
                 </asp:GridView>
             </td>

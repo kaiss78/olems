@@ -18,7 +18,7 @@ namespace OLEMS.QuestionDevelopment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            //
         }
 
         protected void QuestionDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
@@ -51,11 +51,23 @@ namespace OLEMS.QuestionDevelopment
             if (e.Exception == null)
             {
                 ShowMessageBox("Question successfully deleted");
-            } 
+            }
+            else
+            {
+                e.ExceptionHandled = true;
+                if (e.Exception.Message.Contains("FK_Choice_Question") == true)
+                {
+                    LblError.Text = "Question has choices, You can't delete!";
+                }else
+                {
+                    LblError.Text = "Question is used in a past exam, You can't delete!"; 
+                }
+            }
         }
 
         protected void QuestionGridView_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
+            ApplyFilter();
             if (e.Exception == null)
             {
                 ShowMessageBox("Question successfully updated");
@@ -64,6 +76,7 @@ namespace OLEMS.QuestionDevelopment
 
         protected void QuestionDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
         {
+            ApplyFilter();
             //question owner
             Question_SqlDataSource.InsertParameters["createdBy"].DefaultValue = HttpContext.Current.User.Identity.Name.ToString();
             //question image file
@@ -75,6 +88,7 @@ namespace OLEMS.QuestionDevelopment
 
         protected void QuestionGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            ApplyFilter();
             Label questionOwner = (Label)QuestionGridView.Rows[e.NewEditIndex].FindControl("lblOwner");
             if (questionOwner.Text != HttpContext.Current.User.Identity.Name.ToString())
             {
@@ -90,6 +104,7 @@ namespace OLEMS.QuestionDevelopment
 
         protected void QuestionGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            ApplyFilter(); 
             Label questionOwner = (Label)QuestionGridView.Rows[e.RowIndex].FindControl("lblOwner");
             if (questionOwner.Text != HttpContext.Current.User.Identity.Name.ToString())
             {
@@ -150,6 +165,42 @@ namespace OLEMS.QuestionDevelopment
 
             ClientScript.RegisterStartupScript(this.GetType(), "newWindow", String.Format("<script>window.open('{0}', '','toolbar=0,height=500,width=750,top=100,left=250,resizable=0,scrollbars=1');</script>", url));
         }
+
+        protected void ApplyFilter()
+        {
+            //bu yordam filtrelenmiş bir satırın edit edilebilmesi ve herhangi bir işlem yapıldıktan sonra filtrenin hala kalması için yazıldı
+            Question_SqlDataSource.FilterExpression = (string)(Session["SearchQuestionFilter"]);
+            QuestionGridView.DataBind();
+        }
+     
+        protected void lnkSearch_Click(object sender, EventArgs e)
+        {
+            String sorgu;
+            sorgu = "1=1";
+            QuestionGridView.EditIndex = -1;
+            TextBox txtBody = (TextBox)QuestionDetailsView.Rows[0].FindControl("txtBody");
+        
+            //if ((txtBody.Text != "") && (txtBody.Text)==true) //boş değilse
+            //{
+            sorgu = sorgu + " AND body like '%" + txtBody.Text + "%'";
+            
+
+            if (SearchAllCheckBox.Checked == false) //eğer tüm sorularda arama yapılmak istenmiyorsa
+            {
+                DropDownList topic = (DropDownList)QuestionDetailsView.Rows[0].FindControl("topicDropDownList");
+                sorgu = sorgu + " AND topicId ='" + topic.SelectedValue + "'";
+                CheckBox chkStatus = (CheckBox)QuestionDetailsView.Rows[0].FindControl("chkStatus");
+                if (chkStatus.Checked==true) //sadece aktif sorularda arama yapılacaksa
+                {
+                    sorgu = sorgu + " AND isActive = 'True'";
+                }else
+                    sorgu = sorgu + " AND isActive = 'False'";
+            }
+
+            Session["SearchQuestionFilter"] = sorgu; //filter bilgisini başka eventlerde kullanmak için session'da bir değişken olarak saklarız
+            Question_SqlDataSource.FilterExpression = sorgu;
+        }
+
     }
 
       
