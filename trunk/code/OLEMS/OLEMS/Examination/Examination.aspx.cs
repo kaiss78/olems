@@ -319,7 +319,7 @@ namespace OLEMS.Examination
                     string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
                     string strToSeparate = ListBoxMatchingResponse.Items[i].Text.ToString();
                     intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
-                    string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
+                    string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length);
 
                     SqlParameter responseValue = new SqlParameter("@responseValue", strTruthValue);
                     sqlQueryString.Parameters.Add(responseValue);
@@ -366,7 +366,7 @@ namespace OLEMS.Examination
                 string strToSeparate = ListBoxMatchingResponse.SelectedItem.Text.ToString();
                 intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
                 string strBody = strToSeparate.Substring(0, intWhereToSeparate + 1);
-                string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
+                string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length);
 
                 ListItem liBody = new ListItem(strBody, ListBoxMatchingResponse.SelectedValue.ToString());
                 ListBoxMatchingBody.Items.Add(liBody);
