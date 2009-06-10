@@ -125,7 +125,7 @@
             </asp:DetailsView>
         
             <asp:Button ID="SendEmailNotificationButton" runat="server" Height="21px" 
-                Text="Send E-mail Notification to Section Students" Width="276px" PostBackUrl="~/SectionManagement/MailMessageSender.aspx"/>
+                Text="Send E-mail Notification to Section Students" Width="276px" OnClick="btnSend_Click" />
         
         </td>
     </tr>
