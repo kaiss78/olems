@@ -17,30 +17,30 @@ namespace OLEMS.QuestionDevelopment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            String questionID = Request.QueryString["questionID"].ToString();
+            ChoicesSqlDataSource.SelectCommand = "SELECT [id], [questionId], [body],[truthValue] FROM [Choice] where [questionId]='" + questionID + "'";
+            ChoicesSqlDataSource.UpdateParameters["id"].DefaultValue = questionID;
+            ChoicesSqlDataSource.DeleteParameters["id"].DefaultValue = questionID;
+            ChoicesSqlDataSource.InsertParameters["questionId"].DefaultValue = questionID;
+            QuestionSqlDataSource.SelectCommand = "SELECT [body] FROM [Question] where [id]='" + questionID + "'";
         }
-        protected void ShowMessageBox(string message)
+  
+        protected void ChoicesDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
         {
-            // Define the name and type of the client scripts on the page.
-            String csname = "MessageBox";
-            Type cstype = this.GetType();
-
-            // Get a ClientScriptManager reference from the Page class.
-            ClientScriptManager cs = Page.ClientScript;
-
-            // Check to see if the startup script is already registered.
-            if (!cs.IsStartupScriptRegistered(cstype, csname))
-            {
-                String cstext = "alert('" + message + "');";
-                cs.RegisterStartupScript(cstype, csname, cstext, true);
-            }
-
+           //seçilen şıkkın tersini truth value false olacak şekilde tabloya yazarız
+            String questionID = Request.QueryString["questionID"].ToString();
+            String body = (String) Session["TFChoice"].ToString();
+            if (body == "True") body = "False";
+                else body = "True";
+            ChoicesSqlDataSource.InsertCommand = "INSERT INTO [Choice](questionId,body,truthValue) VALUES ('" + questionID + "','" + body + "','False')";
+            ChoicesSqlDataSource.Insert();
         }
-        protected void LinkButton1_Click(object sender, EventArgs e)
+
+        protected void ChoicesDetailsView_ItemInserting(object sender, DetailsViewInsertEventArgs e)
         {
-            //int questionID = Convert.ToInt32(Request.QueryString["questionID"].ToString());
-            //int questionType = Convert.ToInt32(Request.QueryString["questionType"].ToString());
-            ShowMessageBox("gelen q ID=" + Request.QueryString["questionID"].ToString()) ;
+            DropDownList body = (DropDownList)ChoicesDetailsView.Rows[0].FindControl("TFDropDownList1");
+            Session["TFChoice"] = body.SelectedValue; 
+
         }
     }
 }
