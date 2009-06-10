@@ -16,11 +16,29 @@ namespace OLEMS.Examination
 {
     public partial class Examination : COLEMSPage
     {
+        private Boolean booQuestionAnswered;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+            {
+                if (booQuestionAnswered)
+                {
+                    RadioButtonList1.SelectedIndex = -1;
+                    booQuestionAnswered = false;
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+                booQuestionAnswered = false;
+            }
             if (RadioButtonList1.SelectedIndex == -1)
             {
                 MultiView1.Visible = false;
+                booQuestionAnswered = false;
             }
             else
             {
@@ -152,6 +170,7 @@ namespace OLEMS.Examination
         {
             if (RadioButtonListMultipleChoice.SelectedIndex == -1)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
@@ -189,6 +208,8 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Open();
                 sqlQueryString.ExecuteNonQuery();
                 sqlQueryString.Connection.Close();
+
+                booQuestionAnswered = true;
             }
         }
 
@@ -196,6 +217,7 @@ namespace OLEMS.Examination
         {
             if (RadioButtonListTrueFalse.SelectedIndex == -1)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
@@ -233,6 +255,8 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Open();
                 sqlQueryString.ExecuteNonQuery();
                 sqlQueryString.Connection.Close();
+
+                booQuestionAnswered = true;
             }
         }
 
@@ -240,6 +264,7 @@ namespace OLEMS.Examination
         {
             if (TextBoxFreeResponse.Text == String.Empty)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
@@ -274,6 +299,8 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Open();
                 sqlQueryString.ExecuteNonQuery();
                 sqlQueryString.Connection.Close();
+
+                booQuestionAnswered = true;
             }
         }
 
@@ -281,18 +308,21 @@ namespace OLEMS.Examination
         {
             if (ListBoxMatchingResponse.Items.Count == 0)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
             {
                 if (ListBoxMatchingBody.Items.Count != 0)
                 {
+                    booQuestionAnswered = false;
                     return;
                 }
                 else
                 {
                     if (ListBoxMatchingTruthValue.Items.Count != 0)
                     {
+                        booQuestionAnswered = false;
                         return;
                     }
                     else
@@ -338,6 +368,8 @@ namespace OLEMS.Examination
                             sqlQueryString.Connection.Open();
                             sqlQueryString.ExecuteNonQuery();
                             sqlQueryString.Connection.Close();
+
+                            booQuestionAnswered = true;
                         }
                     }
                 }
@@ -348,12 +380,14 @@ namespace OLEMS.Examination
         {
             if (ListBoxMatchingBody.SelectedIndex == -1)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
             {
                 if (ListBoxMatchingTruthValue.SelectedIndex == -1)
                 {
+                    booQuestionAnswered = false;
                     return;
                 }
                 else
@@ -362,6 +396,8 @@ namespace OLEMS.Examination
                     ListBoxMatchingResponse.Items.Add(li);
                     ListBoxMatchingBody.Items.RemoveAt(ListBoxMatchingBody.SelectedIndex);
                     ListBoxMatchingTruthValue.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+
+                    booQuestionAnswered = false;
                 }
             }
         }
@@ -370,6 +406,7 @@ namespace OLEMS.Examination
         {
             if (ListBoxMatchingResponse.SelectedIndex == -1)
             {
+                booQuestionAnswered = false;
                 return;
             }
             else
@@ -388,6 +425,8 @@ namespace OLEMS.Examination
                 ListBoxMatchingTruthValue.Items.Add(liTruthValue);
 
                 ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingResponse.SelectedIndex);
+
+                booQuestionAnswered = false;
             }
         }
 
