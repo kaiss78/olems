@@ -18,73 +18,73 @@ namespace OLEMS.Examination
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                if (RadioButtonList1.SelectedIndex == -1)
+            if (RadioButtonList1.SelectedIndex == -1)
+            {
+                MultiView1.Visible = false;
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+
+                SqlCommand sqlQueryString = new SqlCommand();
+                sqlQueryString.CommandType = CommandType.Text;
+                sqlQueryString.CommandText = "SELECT QuestionType.pagePath FROM Question INNER JOIN QuestionType ON Question.questionTypeId = QuestionType.id WHERE (Question.id = @questionId)";
+                sqlQueryString.Connection = conn;
+
+                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                QuestionId.Value = gQuestionId;
+                sqlQueryString.Parameters.Add(QuestionId);
+
+                object resultR = null;
+                ConnectionState previousConnectionState = conn.State;
+                try
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    resultR = sqlQueryString.ExecuteScalar();
+                }
+                finally
+                {
+                    if (previousConnectionState == ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+                if (resultR == null)
                 {
                     MultiView1.Visible = false;
                 }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
-
-                    Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
-
-                    SqlCommand sqlQueryString = new SqlCommand();
-                    sqlQueryString.CommandType = CommandType.Text;
-                    sqlQueryString.CommandText = "SELECT QuestionType.pagePath FROM Question INNER JOIN QuestionType ON Question.questionTypeId = QuestionType.id WHERE (Question.id = @questionId)";
-                    sqlQueryString.Connection = conn;
-
-                    SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-                    QuestionId.Value = gQuestionId;
-                    sqlQueryString.Parameters.Add(QuestionId);
-
-                    object resultR = null;
-                    ConnectionState previousConnectionState = conn.State;
-                    try
+                    switch (resultR.ToString())
                     {
-                        if (conn.State == ConnectionState.Closed)
-                        {
-                            conn.Open();
-                        }
-                        resultR = sqlQueryString.ExecuteScalar();
-                    }
-                    finally
-                    {
-                        if (previousConnectionState == ConnectionState.Closed)
-                        {
-                            conn.Close();
-                        }
-                    }
-                    if (resultR == null)
-                    {
-                        MultiView1.Visible = false;
-                    }
-                    else
-                    {
-                        switch (resultR.ToString())
-                        {
-                            case "FreeResponse":
-                                MultiView1.Visible = true;
-                                MultiView1.SetActiveView(FreeResponse);
-                                break;
-                            case "Matching":
-                                MultiView1.Visible = true;
-                                MultiView1.SetActiveView(Matching);
-                                break;
-                            case "TrueFalse":
-                                MultiView1.Visible = true;
-                                MultiView1.SetActiveView(TrueFalse);
-                                break;
-                            case "MultipleChoice":
-                                MultiView1.Visible = true;
-                                MultiView1.SetActiveView(MultipleChoice);
-                                break;
-                            default:
-                                MultiView1.Visible = false;
-                                break;
-                        }
+                        case "FreeResponse":
+                            MultiView1.Visible = true;
+                            MultiView1.SetActiveView(FreeResponse);
+                            break;
+                        case "Matching":
+                            MultiView1.Visible = true;
+                            MultiView1.SetActiveView(Matching);
+                            break;
+                        case "TrueFalse":
+                            MultiView1.Visible = true;
+                            MultiView1.SetActiveView(TrueFalse);
+                            break;
+                        case "MultipleChoice":
+                            MultiView1.Visible = true;
+                            MultiView1.SetActiveView(MultipleChoice);
+                            break;
+                        default:
+                            MultiView1.Visible = false;
+                            break;
                     }
                 }
             }
+        }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -93,7 +93,7 @@ namespace OLEMS.Examination
 
         protected void RadioButtonList1_DataBound(object sender, EventArgs e)
         {
-                if (RadioButtonList1.Items.Count > 0)
+            if (RadioButtonList1.Items.Count > 0)
             {
                 foreach (ListItem li in RadioButtonList1.Items)
                 {
@@ -150,7 +150,118 @@ namespace OLEMS.Examination
                         li.Enabled = boolEnabled;
                     }
                 }
-}
+            }
+        }
+
+        protected void ButtonMultipleChoice_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+
+            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+
+            SqlCommand sqlQueryString = new SqlCommand();
+            sqlQueryString.CommandType = CommandType.StoredProcedure;
+            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+            sqlQueryString.Connection = conn;
+
+            SqlParameter type = new SqlParameter("@type", "MultipleChoice");
+            sqlQueryString.Parameters.Add(type);
+
+            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+            StudentExaminationId.Value = gStudentExaminationId;
+            sqlQueryString.Parameters.Add(StudentExaminationId);
+
+            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+            QuestionId.Value = gQuestionId;
+            sqlQueryString.Parameters.Add(QuestionId);
+
+            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+            ChoiceId.Value = gChoiceId;
+            sqlQueryString.Parameters.Add(ChoiceId);
+
+            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+            sqlQueryString.Parameters.Add(responseValue);
+
+            sqlQueryString.Connection.Open();
+            sqlQueryString.ExecuteNonQuery();
+            sqlQueryString.Connection.Close(); 
+        }
+
+        protected void ButtonTrueFalse_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+
+            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+
+            SqlCommand sqlQueryString = new SqlCommand();
+            sqlQueryString.CommandType = CommandType.StoredProcedure;
+            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+            sqlQueryString.Connection = conn;
+
+            SqlParameter type = new SqlParameter("@type", "TrueFalse");
+            sqlQueryString.Parameters.Add(type);
+
+            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+            StudentExaminationId.Value = gStudentExaminationId;
+            sqlQueryString.Parameters.Add(StudentExaminationId);
+
+            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+            QuestionId.Value = gQuestionId;
+            sqlQueryString.Parameters.Add(QuestionId);
+
+            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+            ChoiceId.Value = gChoiceId;
+            sqlQueryString.Parameters.Add(ChoiceId);
+
+            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+            sqlQueryString.Parameters.Add(responseValue);
+            
+            sqlQueryString.Connection.Open();
+            sqlQueryString.ExecuteNonQuery();
+            sqlQueryString.Connection.Close();
+        }
+
+        protected void ButtonFreeResponse_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+
+            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+
+            SqlCommand sqlQueryString = new SqlCommand();
+            sqlQueryString.CommandType = CommandType.StoredProcedure;
+            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+            sqlQueryString.Connection = conn;
+
+            SqlParameter type = new SqlParameter("@type", "FreeResponse");
+            sqlQueryString.Parameters.Add(type);
+
+            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+            StudentExaminationId.Value = gStudentExaminationId;
+            sqlQueryString.Parameters.Add(StudentExaminationId);
+
+            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+            QuestionId.Value = gQuestionId;
+            sqlQueryString.Parameters.Add(QuestionId);
+
+            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+            ChoiceId.Value = gChoiceId;
+            sqlQueryString.Parameters.Add(ChoiceId);
+
+            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+            sqlQueryString.Parameters.Add(responseValue);
+
+            sqlQueryString.Connection.Open();
+            sqlQueryString.ExecuteNonQuery();
+            sqlQueryString.Connection.Close();
         }
     }
 }
