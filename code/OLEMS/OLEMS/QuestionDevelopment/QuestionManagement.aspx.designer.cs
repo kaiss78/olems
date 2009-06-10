@@ -50,6 +50,15 @@ namespace OLEMS.QuestionDevelopment {
         protected global::System.Web.UI.WebControls.SqlDataSource QuestionType_SqlDataSource;
         
         /// <summary>
+        /// lnkSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkSearch;
+        
+        /// <summary>
         /// QuestionDetailsView control.
         /// </summary>
         /// <remarks>
@@ -57,6 +66,15 @@ namespace OLEMS.QuestionDevelopment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView QuestionDetailsView;
+        
+        /// <summary>
+        /// SearchAllCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox SearchAllCheckBox;
         
         /// <summary>
         /// LblError control.
