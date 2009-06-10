@@ -8,8 +8,7 @@
         <tr>
             <td rowspan="5" valign="top">
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1"
-                    DataTextField="questionOrder" DataValueField="questionId" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged"
-                    OnDataBound="RadioButtonList1_DataBound">
+                    DataTextField="questionOrder" DataValueField="questionId" OnDataBound="RadioButtonList1_DataBound">
                 </asp:RadioButtonList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
                     SelectCommand="selListOfQuestionsInExamForStudent" SelectCommandType="StoredProcedure">
