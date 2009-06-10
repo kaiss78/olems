@@ -302,14 +302,6 @@ namespace OLEMS.Examination
                         Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
                         Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-                        SqlParameter type = new SqlParameter("@type", "Matching");
-
-                        SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
-                        StudentExaminationId.Value = gStudentExaminationId;
-
-                        SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-                        QuestionId.Value = gQuestionId;
-
                         for (int i = 1; i < ListBoxMatchingResponse.Items.Count; i++)
                         {
                             Guid gChoiceId = new Guid(ListBoxMatchingResponse.Items[i].Value.ToString());
@@ -319,8 +311,15 @@ namespace OLEMS.Examination
                             sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
                             sqlQueryString.Connection = conn;
 
+                            SqlParameter type = new SqlParameter("@type", "Matching");
                             sqlQueryString.Parameters.Add(type);
+
+                            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                            StudentExaminationId.Value = gStudentExaminationId;
                             sqlQueryString.Parameters.Add(StudentExaminationId);
+
+                            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                            QuestionId.Value = gQuestionId;
                             sqlQueryString.Parameters.Add(QuestionId);
 
                             SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
