@@ -454,6 +454,10 @@
     <Content Include="SectionManagement\ScheduleExamForSection.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Examination\App_LocalResources\Examination.aspx.resx">
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ExamManagement\App_LocalResources\" />
   </ItemGroup>
