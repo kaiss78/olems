@@ -476,6 +476,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Examination\web.config" />
+    <Content Include="SectionManagement\MailMessageSender.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
