@@ -11,6 +11,7 @@
             <siteMapNode url="~/SectionManagement/SectionManagement.aspx" title="Section Management"  description="" />
             <siteMapNode url="~/SectionManagement/SectionInstructorManagement.aspx" title="Section Instructor Management"  description="" />
           <siteMapNode url="~/SectionManagement/StudentSectionManagement.aspx" title="Student's Section Management"  description="" />
+          <siteMapNode url="~/SectionManagement/ScheduleExamForSection.aspx" title="Schedule Exam for Section"  description="" />
         </siteMapNode>
         <siteMapNode url="~/QuestionDevelopment/" title="Question Development"  description="">
             <siteMapNode url="~/QuestionDevelopment/TopicManagement.aspx" title="Topic Management"  description="" />

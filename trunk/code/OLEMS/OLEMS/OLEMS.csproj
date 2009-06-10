@@ -446,6 +446,7 @@
     <Content Include="Examination\Default.aspx" />
     <Content Include="Reports\App_LocalResources\StudentList.aspx.resx">
     </Content>
+    <Content Include="SectionManagement\ScheduleExamForSection.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Examination\App_LocalResources\Default.aspx.resx">
