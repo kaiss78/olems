@@ -285,48 +285,62 @@ namespace OLEMS.Examination
             }
             else
             {
-                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
-
-                Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
-                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
-
-                SqlParameter type = new SqlParameter("@type", "Matching");
-
-                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
-                StudentExaminationId.Value = gStudentExaminationId;
-
-                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-                QuestionId.Value = gQuestionId;
-
-                for (int i = 1; i < ListBoxMatchingResponse.Items.Count; i++)
+                if (ListBoxMatchingBody.Items.Count != 0)
                 {
-                    Guid gChoiceId = new Guid(ListBoxMatchingResponse.Items[i].Value.ToString());
+                    return;
+                }
+                else
+                {
+                    if (ListBoxMatchingTruthValue.Items.Count != 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
 
-                    SqlCommand sqlQueryString = new SqlCommand();
-                    sqlQueryString.CommandType = CommandType.StoredProcedure;
-                    sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
-                    sqlQueryString.Connection = conn;
+                        Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+                        Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-                    sqlQueryString.Parameters.Add(type);
-                    sqlQueryString.Parameters.Add(StudentExaminationId);
-                    sqlQueryString.Parameters.Add(QuestionId);
+                        SqlParameter type = new SqlParameter("@type", "Matching");
 
-                    SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
-                    ChoiceId.Value = gChoiceId;
-                    sqlQueryString.Parameters.Add(ChoiceId);
+                        SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                        StudentExaminationId.Value = gStudentExaminationId;
 
-                    int intWhereToSeparate;
-                    string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
-                    string strToSeparate = ListBoxMatchingResponse.Items[i].Text.ToString();
-                    intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
-                    string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length);
+                        SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                        QuestionId.Value = gQuestionId;
 
-                    SqlParameter responseValue = new SqlParameter("@responseValue", strTruthValue);
-                    sqlQueryString.Parameters.Add(responseValue);
+                        for (int i = 1; i < ListBoxMatchingResponse.Items.Count; i++)
+                        {
+                            Guid gChoiceId = new Guid(ListBoxMatchingResponse.Items[i].Value.ToString());
 
-                    sqlQueryString.Connection.Open();
-                    sqlQueryString.ExecuteNonQuery();
-                    sqlQueryString.Connection.Close();
+                            SqlCommand sqlQueryString = new SqlCommand();
+                            sqlQueryString.CommandType = CommandType.StoredProcedure;
+                            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+                            sqlQueryString.Connection = conn;
+
+                            sqlQueryString.Parameters.Add(type);
+                            sqlQueryString.Parameters.Add(StudentExaminationId);
+                            sqlQueryString.Parameters.Add(QuestionId);
+
+                            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+                            ChoiceId.Value = gChoiceId;
+                            sqlQueryString.Parameters.Add(ChoiceId);
+
+                            int intWhereToSeparate;
+                            string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
+                            string strToSeparate = ListBoxMatchingResponse.Items[i].Text.ToString();
+                            intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
+                            string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length);
+
+                            SqlParameter responseValue = new SqlParameter("@responseValue", strTruthValue);
+                            sqlQueryString.Parameters.Add(responseValue);
+
+                            sqlQueryString.Connection.Open();
+                            sqlQueryString.ExecuteNonQuery();
+                            sqlQueryString.Connection.Close();
+                        }
+                    }
                 }
             }
         }
@@ -376,6 +390,11 @@ namespace OLEMS.Examination
 
                 ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingResponse.SelectedIndex);
             }
+        }
+
+        protected void ListBoxMatchingTruthValue_DataBound(object sender, EventArgs e)
+        {
+            ListBoxMatchingResponse.Items.Clear();
         }
     }
 }

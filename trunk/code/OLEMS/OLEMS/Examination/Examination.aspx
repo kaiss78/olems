@@ -94,7 +94,8 @@
                                         </SelectParameters>
                                     </asp:SqlDataSource>
                                     <asp:ListBox ID="ListBoxMatchingTruthValue" runat="server" DataSourceID="SqlDataSourceMatchingTruthValue"
-                                        DataTextField="truthValue" DataValueField="id"></asp:ListBox>
+                                        DataTextField="truthValue" DataValueField="id" 
+                                        ondatabound="ListBoxMatchingTruthValue_DataBound"></asp:ListBox>
                                 </td>
                                 <td>
                                     <asp:Button ID="ButtonMatch" runat="server" Text="<%$ Resources:ButtonMatch %>" OnClick="ButtonMatch_Click" />
