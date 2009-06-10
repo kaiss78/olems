@@ -77,7 +77,8 @@
                     <asp:View ID="FreeResponse" runat="server">
                         <asp:TextBox ID="TextBoxFreeResponse" runat="server" MaxLength="250" Rows="2" TextMode="MultiLine"></asp:TextBox>
                         <br />
-                        <asp:Button ID="ButtonFreeResponse" runat="server" Text="<%$ Resources:SubmitButton %>" />
+                        <asp:Button ID="ButtonFreeResponse" runat="server" 
+                            Text="<%$ Resources:SubmitButton %>" onclick="ButtonFreeResponse_Click" />
                     </asp:View>
                     <asp:View ID="Matching" runat="server">
                         <table cellpadding="0" cellspacing="0" class="style1">
@@ -119,8 +120,7 @@
                         <asp:SqlDataSource ID="SqlDataSourceTrueFalse" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
                             SelectCommand="SELECT [id], [body] FROM [Choice] WHERE ([questionId] = @questionId) ORDER BY NewID()">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="RadioButtonList1" Name="questionId" PropertyName="SelectedValue"
-                                    Type="Object" />
+                                <asp:ControlParameter ControlID="RadioButtonList1" Name="questionId" PropertyName="SelectedValue" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                         <asp:RadioButtonList ID="RadioButtonListTrueFalse" runat="server" RepeatColumns="2"
@@ -128,21 +128,22 @@
                             DataTextField="body" DataValueField="id">
                         </asp:RadioButtonList>
                         <br />
-                        <asp:Button ID="ButtonTrueFalse" runat="server" Text="<%$ Resources:SubmitButton %>" />
+                        <asp:Button ID="ButtonTrueFalse" runat="server" 
+                            Text="<%$ Resources:SubmitButton %>" onclick="ButtonTrueFalse_Click" />
                     </asp:View>
                     <asp:View ID="MultipleChoice" runat="server">
                         <asp:SqlDataSource ID="SqlDataSourceMultipleChoice" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
                             SelectCommand="SELECT [id], [body] FROM [Choice] WHERE ([questionId] = @questionId) ORDER BY NewID()">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="RadioButtonList1" Name="questionId" PropertyName="SelectedValue"
-                                    Type="Object" />
+                                <asp:ControlParameter ControlID="RadioButtonList1" Name="questionId" PropertyName="SelectedValue" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                         <asp:RadioButtonList ID="RadioButtonListMultipleChoice" runat="server" DataSourceID="SqlDataSourceMultipleChoice"
                             DataTextField="body" DataValueField="id">
                         </asp:RadioButtonList>
                         <br />
-                        <asp:Button ID="ButtonMultipleChoice" runat="server" Text="<%$ Resources:SubmitButton %>" />
+                        <asp:Button ID="ButtonMultipleChoice" runat="server" Text="<%$ Resources:SubmitButton %>"
+                            OnClick="ButtonMultipleChoice_Click" />
                     </asp:View>
                 </asp:MultiView>
             </td>
