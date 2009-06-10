@@ -11,12 +11,7 @@ namespace OLEMS.SectionManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.ExaminationDetailsView.CurrentMode == DetailsViewMode.Insert)
-            {
-                TextBox txtBox = new TextBox();
-                txtBox = (TextBox)this.ExaminationDetailsView.FindControl("startedAt");
-                txtBox.Text = System.DateTime.Now.ToLongTimeString();
-            }
+
         }
 
         protected void ExaminationDetailsView_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
