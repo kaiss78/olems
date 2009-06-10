@@ -2,12 +2,6 @@
     Inherits="OLEMS.Examination.Examination" Title="<%$ Resources:PageTitle %>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table cellpadding="0" cellspacing="1" width="100%">
@@ -77,11 +71,11 @@
                     <asp:View ID="FreeResponse" runat="server">
                         <asp:TextBox ID="TextBoxFreeResponse" runat="server" MaxLength="250" Rows="2" TextMode="MultiLine"></asp:TextBox>
                         <br />
-                        <asp:Button ID="ButtonFreeResponse" runat="server" 
-                            Text="<%$ Resources:SubmitButton %>" onclick="ButtonFreeResponse_Click" />
+                        <asp:Button ID="ButtonFreeResponse" runat="server" Text="<%$ Resources:SubmitButton %>"
+                            OnClick="ButtonFreeResponse_Click" />
                     </asp:View>
                     <asp:View ID="Matching" runat="server">
-                        <table cellpadding="0" cellspacing="0" class="style1">
+                        <table cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <td>
                                     <asp:SqlDataSource ID="SqlDataSourceMatchingBody" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
@@ -104,9 +98,10 @@
                                         DataTextField="truthValue" DataValueField="id"></asp:ListBox>
                                 </td>
                                 <td>
-                                    <asp:Button ID="ButtonMatch" runat="server" Text="<%$ Resources:ButtonMatch %>" />
+                                    <asp:Button ID="ButtonMatch" runat="server" Text="<%$ Resources:ButtonMatch %>" OnClick="ButtonMatch_Click" />
                                     <br />
-                                    <asp:Button ID="ButtonUnmatch" runat="server" Text="<%$ Resources:ButtonUnmatch %>" />
+                                    <asp:Button ID="ButtonUnmatch" runat="server" Text="<%$ Resources:ButtonUnmatch %>"
+                                        OnClick="ButtonUnmatch_Click" />
                                 </td>
                                 <td>
                                     <asp:ListBox ID="ListBoxMatchingResponse" runat="server"></asp:ListBox>
@@ -114,7 +109,8 @@
                             </tr>
                         </table>
                         <br />
-                        <asp:Button ID="ButtonMatching" runat="server" Text="<%$ Resources:SubmitButton %>" />
+                        <asp:Button ID="ButtonMatching" runat="server" Text="<%$ Resources:SubmitButton %>"
+                            OnClick="ButtonMatching_Click" />
                     </asp:View>
                     <asp:View ID="TrueFalse" runat="server">
                         <asp:SqlDataSource ID="SqlDataSourceTrueFalse" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
@@ -128,8 +124,8 @@
                             DataTextField="body" DataValueField="id">
                         </asp:RadioButtonList>
                         <br />
-                        <asp:Button ID="ButtonTrueFalse" runat="server" 
-                            Text="<%$ Resources:SubmitButton %>" onclick="ButtonTrueFalse_Click" />
+                        <asp:Button ID="ButtonTrueFalse" runat="server" Text="<%$ Resources:SubmitButton %>"
+                            OnClick="ButtonTrueFalse_Click" />
                     </asp:View>
                     <asp:View ID="MultipleChoice" runat="server">
                         <asp:SqlDataSource ID="SqlDataSourceMultipleChoice" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
