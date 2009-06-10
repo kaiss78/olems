@@ -34,15 +34,15 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SectionSqlDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
-        SelectCommand="SELECT [id], [name] FROM [Section]  UNION SELECT NULL as id, 'Not Selected' as name" >
+        SelectCommand="SELECT NULL as id, 'Not Selected' as name UNION SELECT [id], [name] FROM [Section]" >
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="ExamSqlDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
-        SelectCommand="SELECT [id], [name] FROM [Exam] UNION SELECT NULL as id, 'Not Selected' as name" >
+        SelectCommand="SELECT NULL as id, 'Not Selected' as name UNION SELECT [id], [name] FROM [Exam]" >
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="LocationSqlDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
-        SelectCommand="SELECT [id], [name] FROM [Location] UNION SELECT NULL as id, 'Not Selected' as name" >
+        SelectCommand="SELECT NULL as id, 'Not Selected' as name UNION SELECT [id], [name] FROM [Location]" >
     </asp:SqlDataSource>
     
 <table>
@@ -114,14 +114,18 @@
                     <asp:TemplateField HeaderText="Exam Time">
                         <InsertItemTemplate>
                             <asp:TextBox ID="startedAt" runat="server" 
-                                Text='<%# Bind("startDate", "{0:T}") %>'></asp:TextBox>
-                        </InsertItemTemplate>
+                                Text='<%# Bind("startedAt", "{0:t}") %>' 
+                                ToolTip="Enter time in HH:MM format"></asp:TextBox>
+                        </InsertItemTemplate>  
                     </asp:TemplateField>
                     <asp:CommandField ShowInsertButton="True" />
                 </Fields>
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <AlternatingRowStyle BackColor="White" />
             </asp:DetailsView>
+        
+            <asp:Button ID="SendEmailNotificationButton" runat="server" Height="21px" 
+                Text="Send E-mail Notification to Section Students" Width="276px" PostBackUrl="~/SectionManagement/MailMessageSender.aspx"/>
         
         </td>
     </tr>
