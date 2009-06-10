@@ -374,7 +374,7 @@ namespace OLEMS.Examination
                 ListItem liTruthValue = new ListItem(strTruthValue, strTruthValue);
                 ListBoxMatchingTruthValue.Items.Add(liTruthValue);
 
-                ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+                ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingResponse.SelectedIndex);
             }
         }
     }
