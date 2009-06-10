@@ -86,11 +86,6 @@ namespace OLEMS.Examination
             }
         }
 
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void RadioButtonList1_DataBound(object sender, EventArgs e)
         {
             if (RadioButtonList1.Items.Count > 0)
@@ -155,113 +150,213 @@ namespace OLEMS.Examination
 
         protected void ButtonMultipleChoice_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+            if (RadioButtonListMultipleChoice.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
 
-            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
-            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+                Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+                Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
 
-            SqlCommand sqlQueryString = new SqlCommand();
-            sqlQueryString.CommandType = CommandType.StoredProcedure;
-            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
-            sqlQueryString.Connection = conn;
+                SqlCommand sqlQueryString = new SqlCommand();
+                sqlQueryString.CommandType = CommandType.StoredProcedure;
+                sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+                sqlQueryString.Connection = conn;
 
-            SqlParameter type = new SqlParameter("@type", "MultipleChoice");
-            sqlQueryString.Parameters.Add(type);
+                SqlParameter type = new SqlParameter("@type", "MultipleChoice");
+                sqlQueryString.Parameters.Add(type);
 
-            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
-            StudentExaminationId.Value = gStudentExaminationId;
-            sqlQueryString.Parameters.Add(StudentExaminationId);
+                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                StudentExaminationId.Value = gStudentExaminationId;
+                sqlQueryString.Parameters.Add(StudentExaminationId);
 
-            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-            QuestionId.Value = gQuestionId;
-            sqlQueryString.Parameters.Add(QuestionId);
+                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                QuestionId.Value = gQuestionId;
+                sqlQueryString.Parameters.Add(QuestionId);
 
-            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
-            ChoiceId.Value = gChoiceId;
-            sqlQueryString.Parameters.Add(ChoiceId);
+                SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+                ChoiceId.Value = gChoiceId;
+                sqlQueryString.Parameters.Add(ChoiceId);
 
-            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
-            sqlQueryString.Parameters.Add(responseValue);
+                SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+                sqlQueryString.Parameters.Add(responseValue);
 
-            sqlQueryString.Connection.Open();
-            sqlQueryString.ExecuteNonQuery();
-            sqlQueryString.Connection.Close(); 
+                sqlQueryString.Connection.Open();
+                sqlQueryString.ExecuteNonQuery();
+                sqlQueryString.Connection.Close();
+            }
         }
 
         protected void ButtonTrueFalse_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+            if (RadioButtonListTrueFalse.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
 
-            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
-            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+                Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+                Guid gChoiceId = new Guid(RadioButtonListTrueFalse.SelectedValue.ToString());
 
-            SqlCommand sqlQueryString = new SqlCommand();
-            sqlQueryString.CommandType = CommandType.StoredProcedure;
-            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
-            sqlQueryString.Connection = conn;
+                SqlCommand sqlQueryString = new SqlCommand();
+                sqlQueryString.CommandType = CommandType.StoredProcedure;
+                sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+                sqlQueryString.Connection = conn;
 
-            SqlParameter type = new SqlParameter("@type", "TrueFalse");
-            sqlQueryString.Parameters.Add(type);
+                SqlParameter type = new SqlParameter("@type", "TrueFalse");
+                sqlQueryString.Parameters.Add(type);
 
-            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
-            StudentExaminationId.Value = gStudentExaminationId;
-            sqlQueryString.Parameters.Add(StudentExaminationId);
+                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                StudentExaminationId.Value = gStudentExaminationId;
+                sqlQueryString.Parameters.Add(StudentExaminationId);
 
-            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-            QuestionId.Value = gQuestionId;
-            sqlQueryString.Parameters.Add(QuestionId);
+                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                QuestionId.Value = gQuestionId;
+                sqlQueryString.Parameters.Add(QuestionId);
 
-            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
-            ChoiceId.Value = gChoiceId;
-            sqlQueryString.Parameters.Add(ChoiceId);
+                SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+                ChoiceId.Value = gChoiceId;
+                sqlQueryString.Parameters.Add(ChoiceId);
 
-            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
-            sqlQueryString.Parameters.Add(responseValue);
-            
-            sqlQueryString.Connection.Open();
-            sqlQueryString.ExecuteNonQuery();
-            sqlQueryString.Connection.Close();
+                SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+                sqlQueryString.Parameters.Add(responseValue);
+
+                sqlQueryString.Connection.Open();
+                sqlQueryString.ExecuteNonQuery();
+                sqlQueryString.Connection.Close();
+            }
         }
 
         protected void ButtonFreeResponse_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+            if (TextBoxFreeResponse.Text == String.Empty)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
 
-            Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
-            Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+                Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-            Guid gChoiceId = new Guid(RadioButtonListMultipleChoice.SelectedValue.ToString());
+                SqlCommand sqlQueryString = new SqlCommand();
+                sqlQueryString.CommandType = CommandType.StoredProcedure;
+                sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+                sqlQueryString.Connection = conn;
 
-            SqlCommand sqlQueryString = new SqlCommand();
-            sqlQueryString.CommandType = CommandType.StoredProcedure;
-            sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
-            sqlQueryString.Connection = conn;
+                SqlParameter type = new SqlParameter("@type", "FreeResponse");
+                sqlQueryString.Parameters.Add(type);
 
-            SqlParameter type = new SqlParameter("@type", "FreeResponse");
-            sqlQueryString.Parameters.Add(type);
+                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                StudentExaminationId.Value = gStudentExaminationId;
+                sqlQueryString.Parameters.Add(StudentExaminationId);
 
-            SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
-            StudentExaminationId.Value = gStudentExaminationId;
-            sqlQueryString.Parameters.Add(StudentExaminationId);
+                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                QuestionId.Value = gQuestionId;
+                sqlQueryString.Parameters.Add(QuestionId);
 
-            SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
-            QuestionId.Value = gQuestionId;
-            sqlQueryString.Parameters.Add(QuestionId);
+                SqlParameter ChoiceId = new SqlParameter("@choiceId", DBNull.Value);
+                sqlQueryString.Parameters.Add(ChoiceId);
 
-            SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
-            ChoiceId.Value = gChoiceId;
-            sqlQueryString.Parameters.Add(ChoiceId);
+                SqlParameter responseValue = new SqlParameter("@responseValue", TextBoxFreeResponse.Text.Trim().ToString());
+                sqlQueryString.Parameters.Add(responseValue);
 
-            SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
-            sqlQueryString.Parameters.Add(responseValue);
+                sqlQueryString.Connection.Open();
+                sqlQueryString.ExecuteNonQuery();
+                sqlQueryString.Connection.Close();
+            }
+        }
 
-            sqlQueryString.Connection.Open();
-            sqlQueryString.ExecuteNonQuery();
-            sqlQueryString.Connection.Close();
+        protected void ButtonMatching_Click(object sender, EventArgs e)
+        {
+            if (ListBoxMatchingResponse.Items.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+                Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
+                Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
+
+                SqlParameter type = new SqlParameter("@type", "Matching");
+
+                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                StudentExaminationId.Value = gStudentExaminationId;
+
+                SqlParameter QuestionId = new SqlParameter("@questionId", SqlDbType.UniqueIdentifier);
+                QuestionId.Value = gQuestionId;
+
+                for (int i = 1; i < ListBoxMatchingResponse.Items.Count; i++)
+                {
+                    Guid gChoiceId = new Guid(ListBoxMatchingResponse.Items[i].Value.ToString());
+
+                    SqlCommand sqlQueryString = new SqlCommand();
+                    sqlQueryString.CommandType = CommandType.StoredProcedure;
+                    sqlQueryString.CommandText = "upStudentExaminationQuestionsResponse";
+                    sqlQueryString.Connection = conn;
+
+                    sqlQueryString.Parameters.Add(type);
+                    sqlQueryString.Parameters.Add(StudentExaminationId);
+                    sqlQueryString.Parameters.Add(QuestionId);
+
+                    SqlParameter ChoiceId = new SqlParameter("@choiceId", SqlDbType.UniqueIdentifier);
+                    ChoiceId.Value = gChoiceId;
+                    sqlQueryString.Parameters.Add(ChoiceId);
+
+                    int intWhereToSeparate;
+                    string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
+                    string strToSeparate = ListBoxMatchingResponse.Items[i].Text.ToString();
+                    intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
+                    string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
+
+                    SqlParameter responseValue = new SqlParameter("@responseValue", strTruthValue);
+                    sqlQueryString.Parameters.Add(responseValue);
+
+                    sqlQueryString.Connection.Open();
+                    sqlQueryString.ExecuteNonQuery();
+                    sqlQueryString.Connection.Close();
+                }
+            }
+        }
+
+        protected void ButtonMatch_Click(object sender, EventArgs e)
+        {
+            ListItem li = new ListItem(ListBoxMatchingBody.SelectedItem.Text.ToString() + ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"] + ListBoxMatchingTruthValue.SelectedItem.Text.ToString(), ListBoxMatchingBody.SelectedItem.Value.ToString());
+            ListBoxMatchingResponse.Items.Add(li);
+            ListBoxMatchingBody.Items.RemoveAt(ListBoxMatchingBody.SelectedIndex);
+            ListBoxMatchingTruthValue.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+
+        }
+
+        protected void ButtonUnmatch_Click(object sender, EventArgs e)
+        {
+            int intWhereToSeparate;
+            string strSeparator = ConfigurationManager.AppSettings["Default.MatchingQuestionMatchSeparator"];
+            string strToSeparate = ListBoxMatchingResponse.SelectedItem.Text.ToString();
+            intWhereToSeparate = strToSeparate.IndexOf(strSeparator);
+            string strBody = strToSeparate.Substring(0, intWhereToSeparate + 1);
+            string strTruthValue = strToSeparate.Substring(intWhereToSeparate + strSeparator.Length + 1);
+
+            ListItem liBody = new ListItem(strBody, ListBoxMatchingResponse.SelectedValue.ToString());
+            ListBoxMatchingBody.Items.Add(liBody);
+
+            ListItem liTruthValue = new ListItem(strTruthValue, strTruthValue);
+            ListBoxMatchingTruthValue.Items.Add(liTruthValue);
+
+            ListBoxMatchingResponse.Items.RemoveAt(ListBoxMatchingTruthValue.SelectedIndex);
+
         }
     }
 }
