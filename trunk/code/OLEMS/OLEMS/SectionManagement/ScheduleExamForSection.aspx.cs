@@ -26,6 +26,7 @@ namespace OLEMS.SectionManagement
             }
             else // if (e.Exception == null)
             {
+                SendMailNotification();
                 ShowMessageBox("Exam is successfully scheduled for the section");
             }
         }
@@ -48,59 +49,15 @@ namespace OLEMS.SectionManagement
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
-            if (ExaminationDetailsView.FindControl("SectionDropDownList") == null)
-                return;
-
-            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));    
-          
-            string txtSectionId = ((DropDownList)ExaminationDetailsView.FindControl("SectionDropDownList")).SelectedValue;
-
-            Guid gSectionId = new Guid(txtSectionId);
             
-            SqlCommand sqlSelectCmdSection = new SqlCommand();
-            sqlSelectCmdSection.CommandType = CommandType.Text;
-            sqlSelectCmdSection.CommandText = "SELECT * FROM vUsersNameSurname, Student  WHERE(Student.sectionId = @sectionId AND Student.UserId = vUsersNameSurname.UserId);";
-            sqlSelectCmdSection.Connection = conn;
-
-            //SqlParameter sectionId = new SqlParameter("@sectionId", DBNull.Value);
-            //sectionId.Value = txtSectionId;
-            //sqlSelectCmdSection.Parameters.Add(sectionId);
-
-            SqlParameter SectionId = new SqlParameter("@sectionId", SqlDbType.UniqueIdentifier);
-            SectionId.Value = gSectionId;
-            sqlSelectCmdSection.Parameters.Add(SectionId);
-
-            ConnectionState previousConnectionState = conn.State;
-            try
-            {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-                SqlDataReader oDr = sqlSelectCmdSection.ExecuteReader(CommandBehavior.CloseConnection);
-                while (oDr.Read())
-                {
-                    SendMail((string)oDr["Email"]);
-
-                    System.Diagnostics.Debug.WriteLine("Email Address " + oDr["Email"]);
-                }
-
-            }
-            finally
-            {
-                if (previousConnectionState == ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
 
         }
 
-        private void SendMail(string txtTo)
+        private void SendMail(string txtTo, string ExamLocation, string ExamName, string SectionName, string ExamDate, string ExamHour)
         {
-            string txtFrom = "edaercan@gmail.com";
-            string txtSubject = "subject";
-            string txtBody = "body";
+            string txtFrom = "admin@olems.com";
+            string txtSubject = "Exam Notification";
+            string txtBody = "Exam " + ExamName + " for section " + SectionName + " will be held at location " + ExamLocation + " on " + ExamDate + " " + ExamHour;
             //Create message object and populate w/ data from form
             System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
             message.From = new System.Net.Mail.MailAddress(txtFrom.Trim());
@@ -152,7 +109,169 @@ namespace OLEMS.SectionManagement
 
                 ShowMessageBox(ex.Message);   //Log error to event log.
             }
-            ShowMessageBox("Message sent!");
+            ShowMessageBox("Notification message sent!");
         }
+
+
+        private void SendMailNotification()
+        {
+            
+            SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
+
+            string ExamLocation = "NotSelected";
+            string ExamName = "NotSelected";
+            string SectionName = "NotSelected";
+            string ExamDate = "NotSelected";
+            string ExamHour = "NotSelected";
+
+            DateTime myStartDate = ((Calendar)ExaminationDetailsView.FindControl("startDate")).SelectedDate;
+            ExamDate = myStartDate.ToString("dd/MM/yyyy");
+            ExamHour = ((TextBox)ExaminationDetailsView.FindControl("startedAt")).Text;
+
+
+            string txtSectionId = ((DropDownList)ExaminationDetailsView.FindControl("SectionDropDownList")).SelectedValue;
+            Guid gSectionId = new Guid(txtSectionId);
+
+
+            string txtExamId = ((DropDownList)ExaminationDetailsView.FindControl("ExamDropDownList")).SelectedValue;
+            Guid gExamId = new Guid(txtExamId);
+
+            string txtLocationId = ((DropDownList)ExaminationDetailsView.FindControl("LocationDropDownList")).SelectedValue;
+            Guid gLocationId = new Guid(txtLocationId);
+
+            SqlCommand sqlSelectCmdSection = new SqlCommand();
+            sqlSelectCmdSection.CommandType = CommandType.Text;
+            sqlSelectCmdSection.CommandText = "SELECT DISTINCT vUsersNameSurname.Email FROM Section INNER JOIN Student ON Section.id = Student.sectionId INNER JOIN Examination ON Section.id = Examination.sectionId INNER JOIN vUsersNameSurname ON dbo.Student.UserId = dbo.vUsersNameSurname.UserId WHERE (Examination.examId = @examId) AND (Examination.sectionId = @sectionId)";
+            sqlSelectCmdSection.Connection = conn;
+
+            SqlParameter SectionId = new SqlParameter("@sectionId", SqlDbType.UniqueIdentifier);
+            SectionId.Value = gSectionId;
+            sqlSelectCmdSection.Parameters.Add(SectionId);
+
+            SqlParameter ExamId = new SqlParameter("@examId", SqlDbType.UniqueIdentifier);
+            ExamId.Value = gExamId;
+            sqlSelectCmdSection.Parameters.Add(ExamId);
+
+            SqlCommand sqlSelectExamName = new SqlCommand();
+            sqlSelectExamName.CommandType = CommandType.Text;
+            sqlSelectExamName.CommandText = "SELECT Exam.name FROM Exam  WHERE(Exam.id = @examId);";
+            sqlSelectExamName.Connection = conn;
+            SqlParameter SelectExamId = new SqlParameter("@examId", SqlDbType.UniqueIdentifier);
+            SelectExamId.Value = gExamId;
+            sqlSelectExamName.Parameters.Add(SelectExamId);
+
+            SqlCommand sqlSelectSectionName = new SqlCommand();
+            sqlSelectSectionName.CommandType = CommandType.Text;
+            sqlSelectSectionName.CommandText = "SELECT Section.name FROM Section  WHERE(Section.id = @sectionId);";
+            sqlSelectSectionName.Connection = conn; 
+            SqlParameter SelectSectionId = new SqlParameter("@sectionId", SqlDbType.UniqueIdentifier);
+            SelectSectionId.Value = gSectionId;
+            sqlSelectSectionName.Parameters.Add(SelectSectionId);
+
+            SqlCommand sqlSelectLocationName = new SqlCommand();
+            sqlSelectLocationName.CommandType = CommandType.Text;
+            sqlSelectLocationName.CommandText = "SELECT Location.name FROM Location  WHERE(Location.id = @locationId);";
+            sqlSelectLocationName.Connection = conn;
+            SqlParameter LocationId = new SqlParameter("@locationId", SqlDbType.UniqueIdentifier);
+            LocationId.Value = gLocationId;
+            sqlSelectLocationName.Parameters.Add(LocationId);
+
+
+            ConnectionState previousConnectionState = conn.State;
+
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlDataReader examNameDr = sqlSelectExamName.ExecuteReader(CommandBehavior.CloseConnection);
+                if (examNameDr.Read())
+                {
+                    ExamName = (string)examNameDr["name"];
+                }
+
+            }
+            finally
+            {
+                if (previousConnectionState == ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+
+            ///////////////////////////
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlDataReader sectionNameDr = sqlSelectSectionName.ExecuteReader(CommandBehavior.CloseConnection);
+                if (sectionNameDr.Read())
+                {
+                    SectionName = (string)sectionNameDr["name"];
+                }
+
+            }
+            finally
+            {
+                if (previousConnectionState == ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+
+            ////////////////////////////
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlDataReader locationNameDr = sqlSelectLocationName.ExecuteReader(CommandBehavior.CloseConnection);
+                if (locationNameDr.Read())
+                {
+                    ExamLocation = (string)locationNameDr["name"];
+                }
+
+            }
+            finally
+            {
+                if (previousConnectionState == ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+
+            ////////////////////////////
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlDataReader oDr = sqlSelectCmdSection.ExecuteReader(CommandBehavior.CloseConnection);
+                while (oDr.Read())
+                {
+                    SendMail((string)oDr["Email"], ExamLocation, ExamName, SectionName, ExamDate, ExamHour );
+
+                    System.Diagnostics.Debug.WriteLine("Email Address " + oDr["Email"]);
+                }
+
+            }
+            finally
+            {
+                if (previousConnectionState == ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
     }
 }
