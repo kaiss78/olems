@@ -475,7 +475,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Examination\web.config" />
-    <Content Include="SectionManagement\MailMessageSender.aspx" />
+    <Content Include="QuestionFiles\MSExcel.jpg" />
+    <Content Include="QuestionFiles\soruResim.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
