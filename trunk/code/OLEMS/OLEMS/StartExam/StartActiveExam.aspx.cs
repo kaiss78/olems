@@ -101,6 +101,122 @@ namespace OLEMS.StartExam
                     conn.Close();
                 }
             }
+
+            GridView1.DataBind();
+            //DetailsViewExamination.DataBind();
+        }
+
+        protected void btnExtendExam_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedRow == null)
+            {
+                ShowMessageBox("Please select a student");
+                return;
+            }
+
+            int extensionMinutes = 0;
+            try
+            {
+                extensionMinutes = System.Convert.ToInt16(txtMin.Text);
+                if (extensionMinutes == 0)
+                {
+                    lblError.Text = "Please enter number for extension minutes.";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "Please enter number for extension minutes.";
+                return;
+            }
+
+            Label lblStudentExamination = (Label)GridView1.SelectedRow.FindControl("lblSexaminationId");
+
+            SqlConnection conn = getConnection();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand comm = new SqlCommand("INSERT INTO StudentExaminationExtended(studentExaminationId, extendedMinutes) VALUES(@examinationId,@extension)", conn);
+                comm.Parameters.Add(new SqlParameter("@extension", extensionMinutes));
+                comm.Parameters.Add(new SqlParameter("@examinationId", lblStudentExamination.Text));
+
+                int result = comm.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    ShowMessageBox("Students duration is extended successfully.");
+                    lblError.Text = "";
+                }
+                else
+                {
+                    ShowMessageBox("Error. Please try again.");
+                }
+
+            }
+            finally
+            {
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
+        protected void btnFinalize_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedRow == null)
+            {
+                lblError.Text = "Please select a student";
+                return;
+            }
+
+            Label lblStudentExamination = (Label)GridView1.SelectedRow.FindControl("lblSexaminationId");
+
+            SqlConnection conn = getConnection();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand comControl = new SqlCommand("SELECT finalizedAt FROM StudentExamination WHERE id = @studentExaminationId", conn);
+                comControl.Parameters.Add(new SqlParameter("@studentExaminationId", lblStudentExamination.Text));
+
+                Object onull = (Object)comControl.ExecuteScalar();
+                if (!onull.Equals(System.DBNull.Value))
+                {
+                    lblError.Text = "Student's exam has been already finalized.";
+                    return;
+                }
+
+                SqlCommand comm = new SqlCommand("UPDATE StudentExamination SET finalizedAt = (SELECT getdate()) WHERE id = @studentExaminationId", conn);
+                comm.Parameters.Add(new SqlParameter("@studentExaminationId", lblStudentExamination.Text));
+
+                int result = (int)comm.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    ShowMessageBox("Student's exam is finalized successfully.");
+                    lblError.Text = "";
+                }
+                else
+                {
+                    lblError.Text = "Error. Please try again.";
+                }
+
+            }
+            finally
+            {
+
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
         }
     }
 }
