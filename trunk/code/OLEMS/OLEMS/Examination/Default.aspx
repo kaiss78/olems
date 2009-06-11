@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs"
+<%@ Page Language="C#" MasterPageFile="~/OLEMS.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs"
     Inherits="OLEMS.Examination.Default" Title="<%$ Resources:PageTitle %>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
@@ -16,6 +16,31 @@
             </td>
         </tr>
         <tr>
+            <td>                 
+                <asp:DetailsView ID="examPasswordDetailsView" runat="server" Visible="False"
+                    AutoGenerateRows="False" CellPadding="4" DataSourceID="pwdSqlDataSource" 
+                    Font-Bold="True" Font-Names="Arial" Font-Size="Small" ForeColor="#333333" 
+                    GridLines="None" Height="50px" Width="611px">
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <Fields>
+                        <asp:TemplateField HeaderText="StartingPassword" SortExpression="startingPassword">                           
+                            <ItemTemplate>
+                                <asp:Label ID="lblStartingPassword" runat="server" Text='<%# Bind("startingPassword") %>'></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="100px" />
+                        </asp:TemplateField>
+                    </Fields>
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="White" />
+                </asp:DetailsView>            
+            </td>
+        </tr>
+        <tr>
+        
             <td style="text-align: left" colspan="2">
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
                     SelectCommand="selUpcomingExamsForStudent" SelectCommandType="StoredProcedure">
@@ -23,6 +48,11 @@
                         <asp:SessionParameter Name="StudentId" SessionField="StudentGUID" />
                     </SelectParameters>
                 </asp:SqlDataSource>
+                <asp:SqlDataSource ID="pwdSqlDataSource" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" 
+                    SelectCommand="SELECT [startingPassword] FROM [IS50220082G4].[dbo].[Examination]">                    
+                </asp:SqlDataSource>
+       
                 <asp:GridView ID="GridView2" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None"
                     Width="100%" DataSourceID="SqlDataSource2">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -40,27 +70,37 @@
                     <asp:Label ID="AvailableAndCompletedExams" runat="server" Text="<%$ Resources:AvailableAndCompletedExams %>" />
                 </h4>
             </td>
+            
         </tr>
         <tr>
-            <td style="text-align: center">
-                <asp:Button ID="btnTakeExam" runat="server" Text="<%$ Resources:btnTakeExam %>" OnClick="btnTakeExam_Click" />
+            <td>
+                <asp:Label ID="lblpass" runat="server" Text="  Starting Password  " Font-Names="Arial" Font-Size="Small" Font-Bold="true"/>
+                <asp:TextBox ID="txtPassword" runat="server" ></asp:TextBox>
+            
+                <asp:RequiredFieldValidator Display="Dynamic" ID="reqValidator" runat="server" ErrorMessage="Please enter password"
+                         ControlToValidate="txtPassword" Font-Names="Arial" Font-Size="Small">
+                </asp:RequiredFieldValidator>
             </td>
-            <td style="text-align: center">
+                       
+            <td>
+                <asp:Button ID="btnTakeExam" runat="server" Text="<%$ Resources:btnTakeExam %>" OnClick="btnTakeExam_Click" />
                 <asp:Button ID="btnDisplayExamResult" runat="server" Text="<%$ Resources:btnDisplayExamResult %>"
                     OnClick="btnDisplayExamResult_Click" />
             </td>
         </tr>
+        
         <tr>
             <td colspan="2">
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>"
-                    SelectCommand="SELECT [StudentExamination_id], [Section_name], [ExamType_name], [Exam_name], [Examination_Schedule], [Building_name], [Location_name] FROM [vStudentExamination] WHERE ([StudentId] = @StudentId)">
+                    SelectCommand="SELECT [StudentExamination_id], [Section_name], [ExamType_name], [Exam_name], [Examination_Schedule], [Building_name], [Location_name],[Examination_id] FROM [vStudentExamination] WHERE ([StudentId] = @StudentId)">
                     <SelectParameters>
                         <asp:SessionParameter Name="StudentId" SessionField="StudentGUID" Type="Object" />
                     </SelectParameters>
                 </asp:SqlDataSource>
                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None"
                     Width="100%" AutoGenerateColumns="False" DataKeyNames="StudentExamination_id"
-                    DataSourceID="SqlDataSource1">
+                    DataSourceID="SqlDataSource1" 
+                    onselectedindexchanging="GridView1_SelectedIndexChanging">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <Columns>
                         <asp:CommandField ShowSelectButton="True" />
@@ -73,6 +113,11 @@
                             SortExpression="Examination_Schedule" />
                         <asp:BoundField DataField="Building_name" HeaderText="Building_name" SortExpression="Building_name" />
                         <asp:BoundField DataField="Location_name" HeaderText="Location_name" SortExpression="Location_name" />
+                        <asp:TemplateField HeaderText="Examination_id" SortExpression="Examination_id" Visible="False">                          
+                            <ItemTemplate>
+                                <asp:Label ID="lblExaminationID" runat="server" Text='<%# Bind("Examination_id") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
