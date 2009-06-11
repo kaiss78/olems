@@ -248,7 +248,7 @@
                             <ItemTemplate>
                                 <%--   <asp:Label ID="Label1" runat="server" Text='<%# Bind("questionFilePath") %>'></asp:Label>--%>
                                 <asp:HyperLink runat="server" Target="_blank" Text='<%# HttpUtility.UrlPathEncode(Eval("questionFilePath").ToString()) %>'
-                                    NavigateUrl='<%# string.Concat("../QuestionFiles/",Eval("questionFilePath").ToString())%>' />
+                                    NavigateUrl='<%# Eval("questionFilePath")%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

@@ -81,7 +81,7 @@ namespace OLEMS.QuestionDevelopment
             Question_SqlDataSource.InsertParameters["createdBy"].DefaultValue = HttpContext.Current.User.Identity.Name.ToString();
             //question image file
             FileUpload fUpload = (FileUpload)QuestionDetailsView.Rows[0].FindControl("imageFileUpload");
-            String txtPath = fUpload.FileName;
+            String txtPath = "~/QuestionFiles/" + fUpload.FileName;
             Question_SqlDataSource.InsertParameters["questionFilePath"].DefaultValue = txtPath;
             LblError.Text = "";
         }
@@ -125,7 +125,7 @@ namespace OLEMS.QuestionDevelopment
             String txtPath = fUpload.FileName;
             if (txtPath != null && txtPath.Trim().Length>0) 
             {
-                Question_SqlDataSource.UpdateParameters["questionFilePath"].DefaultValue = txtPath;
+                Question_SqlDataSource.UpdateParameters["questionFilePath"].DefaultValue = "~/QuestionFiles/" + txtPath;
                 Question_SqlDataSource.UpdateCommand = "UPDATE Question SET topicId=@topicId , body=@body, point=@point, questionTypeId=@questionTypeId, isActive=@isActive,questionFilePath=@questionFilePath WHERE id=@id";
             }
             else
