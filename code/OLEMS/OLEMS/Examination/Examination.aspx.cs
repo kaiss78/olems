@@ -26,6 +26,7 @@ namespace OLEMS.Examination
                 {
                     RadioButtonList1.SelectedIndex = -1;
                     booQuestionAnswered = false;
+                    RadioButtonList1.DataBind();
                 }
                 else
                 {
@@ -210,6 +211,9 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Close();
 
                 booQuestionAnswered = true;
+                RadioButtonList1.DataBind();
+                MultiView1.Visible = false;
+
             }
         }
 
@@ -257,6 +261,8 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Close();
 
                 booQuestionAnswered = true;
+                RadioButtonList1.DataBind();
+                MultiView1.Visible = false;
             }
         }
 
@@ -301,6 +307,8 @@ namespace OLEMS.Examination
                 sqlQueryString.Connection.Close();
 
                 booQuestionAnswered = true;
+                RadioButtonList1.DataBind();
+                MultiView1.Visible = false;
             }
         }
 
@@ -370,6 +378,8 @@ namespace OLEMS.Examination
                             sqlQueryString.Connection.Close();
 
                             booQuestionAnswered = true;
+                            RadioButtonList1.DataBind();
+                            MultiView1.Visible = false;
                         }
                     }
                 }
