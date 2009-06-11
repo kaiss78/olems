@@ -203,7 +203,7 @@ namespace OLEMS.Examination
                 ChoiceId.Value = gChoiceId;
                 sqlQueryString.Parameters.Add(ChoiceId);
 
-                SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+                SqlParameter responseValue = new SqlParameter("@responseValue", "True");
                 sqlQueryString.Parameters.Add(responseValue);
 
                 sqlQueryString.Connection.Open();
@@ -253,7 +253,7 @@ namespace OLEMS.Examination
                 ChoiceId.Value = gChoiceId;
                 sqlQueryString.Parameters.Add(ChoiceId);
 
-                SqlParameter responseValue = new SqlParameter("@responseValue", "TRUE");
+                SqlParameter responseValue = new SqlParameter("@responseValue", "True");
                 sqlQueryString.Parameters.Add(responseValue);
 
                 sqlQueryString.Connection.Open();
