@@ -54,15 +54,21 @@ namespace OLEMS.SectionManagement
             SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));    
           
             string txtSectionId = ((DropDownList)ExaminationDetailsView.FindControl("SectionDropDownList")).SelectedValue;
+
+            Guid gSectionId = new Guid(txtSectionId);
             
             SqlCommand sqlSelectCmdSection = new SqlCommand();
             sqlSelectCmdSection.CommandType = CommandType.Text;
-            sqlSelectCmdSection.CommandText = "SELECT * FROM IS50220082G4.dbo.vUsersNameSurname as vUsersNameSurname, IS50220082G4.dbo.Student as Student WHERE(Student.sectionId = @sectionId AND Student.UserId = vUsersNameSurname.UserId);";
+            sqlSelectCmdSection.CommandText = "SELECT * FROM vUsersNameSurname, Student  WHERE(Student.sectionId = @sectionId AND Student.UserId = vUsersNameSurname.UserId);";
             sqlSelectCmdSection.Connection = conn;
 
-            SqlParameter sectionId = new SqlParameter("@sectionId", DBNull.Value);
-            sectionId.Value = txtSectionId;
-            sqlSelectCmdSection.Parameters.Add(sectionId);
+            //SqlParameter sectionId = new SqlParameter("@sectionId", DBNull.Value);
+            //sectionId.Value = txtSectionId;
+            //sqlSelectCmdSection.Parameters.Add(sectionId);
+
+            SqlParameter SectionId = new SqlParameter("@sectionId", SqlDbType.UniqueIdentifier);
+            SectionId.Value = gSectionId;
+            sqlSelectCmdSection.Parameters.Add(SectionId);
 
             ConnectionState previousConnectionState = conn.State;
             try
@@ -74,9 +80,9 @@ namespace OLEMS.SectionManagement
                 SqlDataReader oDr = sqlSelectCmdSection.ExecuteReader(CommandBehavior.CloseConnection);
                 while (oDr.Read())
                 {
-                    SendMail((string)oDr["email"]);
+                    SendMail((string)oDr["Email"]);
 
-                    System.Diagnostics.Debug.WriteLine("Email Address " + oDr["email"]);
+                    System.Diagnostics.Debug.WriteLine("Email Address " + oDr["Email"]);
                 }
 
             }
@@ -88,7 +94,6 @@ namespace OLEMS.SectionManagement
                 }
             }
 
-            //SendMail();
         }
 
         private void SendMail(string txtTo)
