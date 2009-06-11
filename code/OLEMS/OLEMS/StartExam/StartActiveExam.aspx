@@ -3,11 +3,11 @@
     <style type="text/css">
         .style1
         {
-            width: 218px;
+            width: 366px;
         }
         .style2
         {
-            width: 62px;
+            width: 293px;
         }
         .style3
         {
@@ -17,7 +17,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<table cellpadding="0" cellspacing="1" width="100%">
+<table cellpadding="0" cellspacing="1">
         <tr>
             <td valign="top" colspan="2" class="style3">
                
@@ -37,11 +37,11 @@
         <tr>
             <td class="style1" >
                 <asp:DetailsView ID="DetailsViewExamination" runat="server" Height="50px" 
-                    Width="247px" AutoGenerateRows="False" CellPadding="4" 
+                    Width="474px" AutoGenerateRows="False" CellPadding="4" 
                     DataSourceID="SqlDataSource_Examination" ForeColor="#333333" 
                     GridLines="None" 
                     EmptyDataText="There is no examination with selected exam and section." 
-                    DataKeyNames="id">
+                    DataKeyNames="id" Font-Bold="False">
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                     <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
@@ -102,6 +102,24 @@
                     Text="Generate Password" />
                 <br />
                 <br />
+                <asp:Label ID="Label7" runat="server" Font-Bold="True" 
+                    Text="Please select the student(s) and extend their exams:"></asp:Label>
+                <br />
+                <asp:Button ID="btnExtendExam" runat="server" onclick="btnExtendExam_Click" 
+                    Text="Extend Student(s) Exam" />
+                <asp:TextBox ID="txtMin" runat="server"></asp:TextBox>
+                <asp:Label ID="lblMin" runat="server" Font-Bold="True" Text="min."></asp:Label>
+                <br />
+                <br />
+                <asp:Label ID="Label8" runat="server" Font-Bold="True" 
+                    Text="Please select student(s) to finalize their exams:"></asp:Label>
+                <br />
+                <asp:Button ID="btnFinalize" runat="server" Text="Finalize Student(s) Exam" 
+                    onclick="btnFinalize_Click" />
+                <br />
+                <br />
+                <asp:Label ID="lblError" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                <br />
                 <br />
                 
             </td>
@@ -111,47 +129,35 @@
                 
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                     CellPadding="4" DataSourceID="SqlDataSource_StudentExamination" 
-                    ForeColor="#333333" GridLines="None">
+                    ForeColor="#333333" GridLines="None" DataKeyNames="UserId">
                     <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
                     <Columns>
-                        <asp:TemplateField HeaderText="Section" SortExpression="sectionId">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("sectionId") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:CommandField ShowSelectButton="True" />
+                        <asp:TemplateField HeaderText="UserId" SortExpression="UserId" Visible="False">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("sectionId") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Exam" SortExpression="examId">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("examId") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("examId") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="id" SortExpression="id" Visible="False">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("id") %>'></asp:TextBox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                                <asp:Label ID="Label6" runat="server" Text='<%# Bind("UserId") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Name" SortExpression="name">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Surname" SortExpression="surname">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("surname") %>'></asp:TextBox>
-                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Bind("surname") %>'></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("surname") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Examination Id" SortExpression="sexaminationId" 
+                            Visible="False">
+                            <ItemTemplate>
+                                <asp:Label ID="lblSexaminationId" runat="server" Text='<%# Bind("id") %>' 
+                                    Visible="false"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Finalized At" SortExpression="finalizedAt">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("finalizedAt") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -177,15 +183,15 @@
             
             SelectCommand="SELECT [id], [name], [instructorId], [capacity], [createdBy], [createdAt] FROM [Section]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource_StudentExamination" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" SelectCommand="SELECT     Examination.sectionId, Examination.examId, StudentExamination.id, StudentExamination.examinationId, StudentExamination.studentId, Users.UserId, 
-                      Users.name, Users.surname
-FROM         Examination INNER JOIN
-                      StudentExamination ON Examination.id = StudentExamination.examinationId CROSS JOIN
-                      Users
-WHERE     (Examination.sectionId = @sectionId) AND (Examination.examId = @examId)">
+            ConnectionString="<%$ ConnectionStrings:IS50220082G4_ConnectionString %>" SelectCommand="SELECT     Users.UserId, 
+            Users.name, Users.surname, StudentExamination.id, StudentExamination.startedAt,
+            StudentExamination.finalizedAt, StudentExamination.finishedAt 
+FROM         Users,StudentExamination 
+WHERE    (StudentExamination.examinationId = @examinationId)
+AND			Users.UserId = StudentExamination.studentId">
             <SelectParameters>
-                <asp:FormParameter DefaultValue="" FormField="sectionId" Name="sectionId" />
-                <asp:FormParameter DefaultValue="" FormField="examId" Name="ExamId" />
+                <asp:ControlParameter ControlID="DetailsViewExamination" Name="examinationId" 
+                    PropertyName="SelectedValue" />
             </SelectParameters>
         </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource_Examination" runat="server" 
