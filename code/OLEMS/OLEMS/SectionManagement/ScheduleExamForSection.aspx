@@ -115,7 +115,7 @@
                         <InsertItemTemplate>
                             <asp:TextBox ID="startedAt" runat="server" 
                                 Text='<%# Bind("startedAt", "{0:t}") %>' 
-                                ToolTip="Enter time in HH:MM format"></asp:TextBox>
+                                ToolTip="Enter time in HH:MM format" MaxLength="5" ></asp:TextBox>
                         </InsertItemTemplate>  
                     </asp:TemplateField>
                     <asp:CommandField ShowInsertButton="True" />
@@ -123,9 +123,6 @@
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <AlternatingRowStyle BackColor="White" />
             </asp:DetailsView>
-        
-            <asp:Button ID="SendEmailNotificationButton" runat="server" Height="21px" 
-                Text="Send E-mail Notification to Section Students" Width="276px" OnClick="btnSend_Click" />
         
         </td>
     </tr>
