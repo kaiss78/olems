@@ -235,6 +235,13 @@
     <Compile Include="SectionManagement\StudentSectionManagement.aspx.designer.cs">
       <DependentUpon>StudentSectionManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StartExam\StartActiveExam.aspx.cs">
+      <DependentUpon>StartActiveExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StartExam\StartActiveExam.aspx.designer.cs">
+      <DependentUpon>StartActiveExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdministration\AddUserToRole.aspx.cs">
       <DependentUpon>AddUserToRole.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -477,6 +484,7 @@
     <Content Include="Examination\web.config" />
     <Content Include="QuestionFiles\MSExcel.jpg" />
     <Content Include="QuestionFiles\soruResim.jpg" />
+    <Content Include="StartExam\StartActiveExam.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
