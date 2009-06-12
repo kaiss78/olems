@@ -124,7 +124,7 @@ namespace OLEMS.StartExam
                     return;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 lblError.Text = "Please enter number for extension minutes.";
                 return;
