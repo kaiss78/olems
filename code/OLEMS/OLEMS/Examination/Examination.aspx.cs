@@ -340,7 +340,7 @@ namespace OLEMS.Examination
                         Guid gStudentExaminationId = new Guid(Session["StudentExaminationGUID"].ToString());
                         Guid gQuestionId = new Guid(RadioButtonList1.SelectedValue.ToString());
 
-                        for (int i = 1; i < ListBoxMatchingResponse.Items.Count; i++)
+                        for (int i = 0; i < ListBoxMatchingResponse.Items.Count-1; i++)
                         {
                             Guid gChoiceId = new Guid(ListBoxMatchingResponse.Items[i].Value.ToString());
 

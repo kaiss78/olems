@@ -123,6 +123,21 @@
   <data name="ButtonUnmatch" xml:space="preserve">
     <value>&lt;&lt;</value>
   </data>
+  <data name="LabelFreeResponseHeader" xml:space="preserve">
+    <value>Free Response Question</value>
+  </data>
+  <data name="LabelMatchingHeader" xml:space="preserve">
+    <value>Matching Question</value>
+  </data>
+  <data name="LabelMultipleChoiceHeader" xml:space="preserve">
+    <value>Multiple Choice Question</value>
+  </data>
+  <data name="LabelPressSubmit" xml:space="preserve">
+    <value>Press "Submit Answer" to record your answer</value>
+  </data>
+  <data name="LabelTrueFalseHeader" xml:space="preserve">
+    <value>True/False Question</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Examination</value>
   </data>

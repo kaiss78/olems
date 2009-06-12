@@ -10,10 +10,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace OLEMS.Examination
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : COLEMSPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,25 +43,57 @@ namespace OLEMS.Examination
         {
             if (GridView1.SelectedIndex == -1)
             {
-                ShowMessageBox("Select section first!");
+                ShowMessageBox("Select exam to take!");
                 return;
             }
             else
             {
-                String pwd = txtPassword.Text; //öğrencinin elle girdiği password
-                Label startingPassword = (Label)examPasswordDetailsView.Rows[0].FindControl("lblStartingPassword");
-               
+                String strStartingPassword = txtPassword.Text.Trim().ToString(); //öğrencinin elle girdiği password
+                SqlConnection conn = new SqlConnection(GetConnectionString("IS50220082G4_ConnectionString"));
 
-                    if (pwd == startingPassword.Text) // correct password
-                    {
-                        Session["StudentExaminationGUID"] = new Guid(GridView1.SelectedDataKey.Value.ToString());
-                        Response.Redirect("~/Examination/Examination.aspx", true);
-                    }
-                    else
-                    {
-                        ShowMessageBox("Incorrect Password!");
-                    }
+                Guid gStudentExaminationId = new Guid(GridView1.SelectedDataKey.Value.ToString());
 
+                SqlCommand sqlQueryString = new SqlCommand();
+                sqlQueryString.CommandType = CommandType.Text;
+                sqlQueryString.CommandText = "SELECT 'True' " +
+"FROM StudentExamination INNER JOIN " +
+"Examination ON StudentExamination.examinationId = Examination.id " +
+"WHERE (StudentExamination.id = @StudentExaminationId) AND (Examination.startingPassword = @startingPassword)";
+                sqlQueryString.Connection = conn;
+
+                SqlParameter StudentExaminationId = new SqlParameter("@studentExaminationId", SqlDbType.UniqueIdentifier);
+                StudentExaminationId.Value = gStudentExaminationId;
+                sqlQueryString.Parameters.Add(StudentExaminationId);
+
+                SqlParameter startingPassword = new SqlParameter("@startingPassword", strStartingPassword);
+                sqlQueryString.Parameters.Add(startingPassword);
+
+                object resultE = null;
+                ConnectionState previousConnectionState = conn.State;
+                try
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    resultE = sqlQueryString.ExecuteScalar();
+                }
+                finally
+                {
+                    if (previousConnectionState == ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+                if (resultE == null)
+                {
+                    ShowMessageBox("Incorrect Password!");
+                }
+                else
+                {
+                    Session["StudentExaminationGUID"] = new Guid(GridView1.SelectedDataKey.Value.ToString());
+                    Response.Redirect("~/Examination/Examination.aspx", true);
+                }
             }
         }
 
@@ -77,13 +110,6 @@ namespace OLEMS.Examination
 
             }
 
-        }
-
-        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            Label examinationID = (Label)GridView1.Rows[e.NewSelectedIndex].FindControl("lblExaminationID");
-            pwdSqlDataSource.SelectCommand = "SELECT [startingPassword] FROM [Examination] where [id]='" + examinationID.Text +"'";
-           
         }
     }
 }

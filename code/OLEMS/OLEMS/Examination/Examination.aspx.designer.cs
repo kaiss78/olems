@@ -41,6 +41,24 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// Timer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer1;
+        
+        /// <summary>
         /// DetailsView1 control.
         /// </summary>
         /// <remarks>
@@ -68,6 +86,15 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.View FreeResponse;
         
         /// <summary>
+        /// LabelFreeResponseHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFreeResponseHeader;
+        
+        /// <summary>
         /// TextBoxFreeResponse control.
         /// </summary>
         /// <remarks>
@@ -75,6 +102,15 @@ namespace OLEMS.Examination {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxFreeResponse;
+        
+        /// <summary>
+        /// LabelFreeResponsePressSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFreeResponsePressSubmit;
         
         /// <summary>
         /// ButtonFreeResponse control.
@@ -93,6 +129,15 @@ namespace OLEMS.Examination {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View Matching;
+        
+        /// <summary>
+        /// LabelMatchingHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMatchingHeader;
         
         /// <summary>
         /// SqlDataSourceMatchingBody control.
@@ -140,6 +185,15 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.Button ButtonMatch;
         
         /// <summary>
+        /// ListBoxMatchingResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListBoxMatchingResponse;
+        
+        /// <summary>
         /// ButtonUnmatch control.
         /// </summary>
         /// <remarks>
@@ -149,13 +203,13 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.Button ButtonUnmatch;
         
         /// <summary>
-        /// ListBoxMatchingResponse control.
+        /// LabelMatchingPressSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBoxMatchingResponse;
+        protected global::System.Web.UI.WebControls.Label LabelMatchingPressSubmit;
         
         /// <summary>
         /// ButtonMatching control.
@@ -176,6 +230,15 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.View TrueFalse;
         
         /// <summary>
+        /// LabelTrueFalseHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTrueFalseHeader;
+        
+        /// <summary>
         /// SqlDataSourceTrueFalse control.
         /// </summary>
         /// <remarks>
@@ -192,6 +255,15 @@ namespace OLEMS.Examination {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListTrueFalse;
+        
+        /// <summary>
+        /// LabelTrueFalsePressSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTrueFalsePressSubmit;
         
         /// <summary>
         /// ButtonTrueFalse control.
@@ -212,6 +284,15 @@ namespace OLEMS.Examination {
         protected global::System.Web.UI.WebControls.View MultipleChoice;
         
         /// <summary>
+        /// LabelMultipleChoiceHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMultipleChoiceHeader;
+        
+        /// <summary>
         /// SqlDataSourceMultipleChoice control.
         /// </summary>
         /// <remarks>
@@ -228,6 +309,15 @@ namespace OLEMS.Examination {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonListMultipleChoice;
+        
+        /// <summary>
+        /// LabelMultipleChoicePressSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMultipleChoicePressSubmit;
         
         /// <summary>
         /// ButtonMultipleChoice control.
