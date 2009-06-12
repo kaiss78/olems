@@ -2,11 +2,9 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode title="OLEMS"  description="" roles="*">
         <siteMapNode url="~/Login.aspx" title="Login"  description="" />
-        <siteMapNode url="~/UserManagement/" title="User Management"  description="">
             <siteMapNode url="~/Restricted/ChangePassword.aspx" title="Change Password"  description="" />
             <siteMapNode url="~/UserManagement/EditEmailAddress.aspx" title="Edit Email Address"  description="" />
             <siteMapNode url="~/UserManagement/ManageProfile.aspx" title="Manage Profile"  description="" />
-        </siteMapNode>
         <siteMapNode url="~/Examination/" title="Examination"  description="">
             <siteMapNode url="~/Examination/Default.aspx" title="My Exams"  description="" />
         </siteMapNode>
